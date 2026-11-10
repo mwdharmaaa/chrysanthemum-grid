@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chrysanthemum Gold</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="popup-card">
+    <header class="header">
+      <div class="brand">
+        <svg class="brand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="3" fill="#ffe27a" stroke="#dda034" />
+          <path d="M12 2v4M12 18v4M2 12h4M18 12h4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83" stroke="#e5ad42" />
+        </svg>
+        <div class="brand-text">
+          <span class="brand-title">Chrysanthemum</span>
+          <span class="brand-subtitle">Prince Edition</span>
+        </div>
+      </div>
+      <span class="version-tag">v1.0</span>
+    </header>
+
+    <section class="section">
+      <label class="label" for="paletteSelect">Theme Preset</label>
+      <select id="paletteSelect" class="select-field">
+        <option value="chrysanthemum">Chrysanthemum Gold (Default)</option>
+        <option value="imperialAmber">Imperial Amber</option>
+        <option value="liquidGold">Liquid Gold</option>
+      </select>
+    </section>
+
+    <section class="section">
+      <label class="label">Palette Preview</label>
+      <div class="swatch-strip" id="swatchStrip">
+        <div class="swatch" data-level="0" title="Level 0"></div>
+        <div class="swatch" data-level="1" title="Level 1"></div>
+        <div class="swatch" data-level="2" title="Level 2"></div>
+        <div class="swatch" data-level="3" title="Level 3"></div>
+        <div class="swatch" data-level="4" title="Level 4"></div>
+      </div>
+    </section>
+
+    <section class="section toggle-row">
+      <div class="toggle-info">
+        <span class="toggle-title">Aura Glow</span>
+        <span class="toggle-desc">Subtle radial bloom on Level 4 commits</span>
+      </div>
+      <label class="switch">
+        <input type="checkbox" id="glowToggle" checked>
+        <span class="slider"></span>
+      </label>
+    </section>
+
+    <section class="section toggle-row">
+      <div class="toggle-info">
+        <span class="toggle-title">Hover Dynamics</span>
+        <span class="toggle-desc">Smooth scale-up inspect on cursor hover</span>
+      </div>
+      <label class="switch">
+        <input type="checkbox" id="hoverToggle" checked>
+        <span class="slider"></span>
+      </label>
+    </section>
+
+    <footer class="footer">
+      <span class="status-indicator" id="statusMsg">Ready</span>
+      <span class="author-tag">@mwdharmaaa</span>
+    </footer>
+  </div>
+
+  <script src="../core/palette_config.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>
