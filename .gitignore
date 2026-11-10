@@ -1,0 +1,12 @@
+# Dependencies and system files
+.DS_Store
+Thumbs.db
+*.log
+
+# Development profiles
+chrome-dev-profile/
+.chrome-profile/
+
+# Build artifacts
+dist/
+*.zip

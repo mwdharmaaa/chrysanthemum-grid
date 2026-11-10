@@ -1,0 +1,40 @@
+{
+  "manifest_version": 3,
+  "name": "Chrysanthemum Gold Grid",
+  "version": "1.0.0",
+  "description": "Transforms GitHub contribution squares from green into Chrysanthemum Prince royal gold palette.",
+  "permissions": [
+    "storage"
+  ],
+  "action": {
+    "default_popup": "src/popup/popup.html",
+    "default_icon": {
+      "16": "icons/icon-16.png",
+      "48": "icons/icon-48.png",
+      "128": "icons/icon-128.png"
+    }
+  },
+  "icons": {
+    "16": "icons/icon-16.png",
+    "48": "icons/icon-48.png",
+    "128": "icons/icon-128.png"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://github.com/*",
+        "file:///*"
+      ],
+      "css": [
+        "src/styles/chrysanthemum.css"
+      ],
+      "js": [
+        "src/core/palette_config.js",
+        "src/features/gold_styler.js",
+        "src/features/calendar_observer.js",
+        "src/content_main.js"
+      ],
+      "run_at": "document_end"
+    }
+  ]
+}
