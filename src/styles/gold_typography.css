@@ -18,6 +18,18 @@ body {
   --underlineNav-borderColor-active: var(--cgg-l3, #dda034) !important;
   --dm-link: var(--cgg-text-highlight, #ffe27a) !important;
   --dm-link-hover: var(--cgg-l4, #ffcb47) !important;
+
+  /* Contribution & Activity Sparkline tokens */
+  --contribution-default-bgColor-0: var(--cgg-l0, #16202c) !important;
+  --contribution-default-borderColor-0: var(--cgg-l0-border, #243346) !important;
+  --contribution-default-bgColor-1: var(--cgg-l1, #6a4a1a) !important;
+  --contribution-default-borderColor-1: var(--cgg-l1, #6a4a1a) !important;
+  --contribution-default-bgColor-2: var(--cgg-l2, #a37226) !important;
+  --contribution-default-borderColor-2: var(--cgg-l2, #a37226) !important;
+  --contribution-default-bgColor-3: var(--cgg-l3, #dda034) !important;
+  --contribution-default-borderColor-3: var(--cgg-l3, #dda034) !important;
+  --contribution-default-bgColor-4: var(--cgg-l4, #ffcb47) !important;
+  --contribution-default-borderColor-4: var(--cgg-l4, #ffcb47) !important;
 }
 
 /* 1. Header Octocat Brand Logo */
