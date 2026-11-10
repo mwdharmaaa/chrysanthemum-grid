@@ -25,6 +25,12 @@ const GoldStyler = {
     root.style.setProperty("--color-calendar-graph-day-L2-bg", palette.l2);
     root.style.setProperty("--color-calendar-graph-day-L3-bg", palette.l3);
     root.style.setProperty("--color-calendar-graph-day-L4-bg", palette.l4);
+
+    // Accent typography and link overrides
+    root.style.setProperty("--fgColor-accent", palette.textHighlight);
+    root.style.setProperty("--color-accent-fg", palette.textHighlight);
+    root.style.setProperty("--color-fg-accent", palette.textHighlight);
+    root.style.setProperty("--color-accent-emphasis", palette.l3);
   },
 
   styleContainer(container, settings) {

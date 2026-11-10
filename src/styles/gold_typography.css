@@ -1,0 +1,75 @@
+/**
+ * Chrysanthemum Gold Grid - Gold Typography & Accent Overrides
+ * Transforms GitHub accent blue links, text, and active indicators to royal gold.
+ */
+
+/* Override GitHub core accent tokens */
+:root {
+  --fgColor-accent: var(--cgg-text-highlight) !important;
+  --color-accent-fg: var(--cgg-text-highlight) !important;
+  --color-fg-accent: var(--cgg-text-highlight) !important;
+  --color-accent-emphasis: var(--cgg-l3) !important;
+  --color-accent-subtle: rgba(221, 160, 52, 0.15) !important;
+  --color-accent-muted: rgba(221, 160, 52, 0.4) !important;
+}
+
+/* Explicit class-level accent overrides */
+.color-fg-accent,
+.fgColor-accent,
+[class*="color-fg-accent"],
+[class*="fgColor-accent"] {
+  color: var(--cgg-text-highlight) !important;
+}
+
+/* Profile calendar links & settings */
+#user-profile-frame a,
+.js-calendar-graph a,
+.profile-timeline-year-list a.js-year-link {
+  color: var(--cgg-text-highlight);
+  text-decoration-color: rgba(221, 160, 52, 0.4);
+}
+
+.js-calendar-graph a:hover,
+#user-profile-frame a:hover {
+  color: var(--cgg-l4) !important;
+  text-decoration-color: var(--cgg-l4);
+}
+
+/* Selected year pill in right-hand timeline */
+.profile-timeline-year-list a.js-year-link.selected {
+  background-color: var(--cgg-l1) !important;
+  color: var(--cgg-l4) !important;
+  border-left-color: var(--cgg-l4) !important;
+}
+
+/* Tab underline indicators (Overview, Repositories, Projects, Packages) */
+.UnderlineNav-item[aria-current="page"],
+.UnderlineNav-item[aria-selected="true"],
+.UnderlineNav-item.selected {
+  border-bottom-color: var(--cgg-l3) !important;
+  color: var(--cgg-text-highlight) !important;
+}
+
+.UnderlineNav-item:hover {
+  color: var(--cgg-text-highlight) !important;
+}
+
+/* Contribution activity & commit timeline links */
+.TimelineItem a,
+.activity-overview-point,
+.profile-rollup-summarized a {
+  color: var(--cgg-text-highlight);
+}
+
+.TimelineItem a:hover {
+  color: var(--cgg-l4) !important;
+}
+
+/* Button & Link primary overrides when rendered in accent blue */
+a.Link--primary {
+  color: var(--cgg-text-highlight) !important;
+}
+
+a.Link--primary:hover {
+  color: var(--cgg-l4) !important;
+}

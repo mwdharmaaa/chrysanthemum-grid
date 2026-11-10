@@ -26,7 +26,8 @@
         "file:///*"
       ],
       "css": [
-        "src/styles/chrysanthemum.css"
+        "src/styles/chrysanthemum.css",
+        "src/styles/gold_typography.css"
       ],
       "js": [
         "src/core/palette_config.js",
