@@ -19,6 +19,24 @@ body {
   --dm-link: var(--cgg-text-highlight, #ffe27a) !important;
   --dm-link-hover: var(--cgg-l4, #ffcb47) !important;
 
+  /* Imperial Crimson Tokens (from @mwdharmaaa Avatar Halo) */
+  --cgg-crimson: #b81d42;
+  --cgg-crimson-hover: #c42045;
+  --cgg-crimson-active: #8a122e;
+  --cgg-crimson-border: rgba(240, 246, 252, 0.1);
+  --cgg-crimson-glow: rgba(184, 29, 66, 0.45);
+
+  /* Primary Button Variable Overrides */
+  --button-primary-bgColor-rest: var(--cgg-crimson) !important;
+  --button-primary-bgColor-hover: var(--cgg-crimson-hover) !important;
+  --button-primary-bgColor-active: var(--cgg-crimson-active) !important;
+  --button-primary-borderColor-rest: var(--cgg-crimson-border) !important;
+  --button-primary-fgColor-rest: #ffffff !important;
+  --color-btn-primary-bg: var(--cgg-crimson) !important;
+  --color-btn-primary-hover-bg: var(--cgg-crimson-hover) !important;
+  --color-btn-primary-border: var(--cgg-crimson-border) !important;
+  --color-btn-primary-text: #ffffff !important;
+
   /* Contribution & Activity Sparkline tokens */
   --contribution-default-bgColor-0: var(--cgg-l0, #16202c) !important;
   --contribution-default-borderColor-0: var(--cgg-l0-border, #243346) !important;
@@ -118,16 +136,52 @@ a[data-hovercard-type="repository"]:hover {
 }
 
 /* 5. Universal Anchor Link Overrides (Surpasses Dark Mana and GitHub) */
-html[data-dark-mana="enabled"] a,
-html[data-color-mode] a,
-html a,
-a {
+html[data-dark-mana="enabled"] a:not(.btn-primary):not(.btn),
+html[data-color-mode] a:not(.btn-primary):not(.btn),
+html a:not(.btn-primary):not(.btn),
+a:not(.btn-primary):not(.btn) {
   color: var(--cgg-text-highlight, #ffe27a) !important;
 }
 
-html[data-dark-mana="enabled"] a:hover,
-html[data-color-mode] a:hover,
-html a:hover,
-a:hover {
+html[data-dark-mana="enabled"] a:not(.btn-primary):not(.btn):hover,
+html[data-color-mode] a:not(.btn-primary):not(.btn):hover,
+html a:not(.btn-primary):not(.btn):hover,
+a:not(.btn-primary):not(.btn):hover {
   color: var(--cgg-l4, #ffcb47) !important;
+}
+
+/* 6. Imperial Crimson Primary Buttons (Avatar Halo Aesthetic) */
+.btn-primary,
+a.btn.btn-primary,
+button.btn.btn-primary {
+  background-color: var(--cgg-crimson, #b81d42) !important;
+  border-color: var(--cgg-crimson-border, rgba(240, 246, 252, 0.1)) !important;
+  color: #ffffff !important;
+  box-shadow: 0 0 10px var(--cgg-crimson-glow, rgba(184, 29, 66, 0.45)), 0 1px 0 rgba(0, 0, 0, 0.1) !important;
+  transition: background-color 0.15s ease, box-shadow 0.15s ease, transform 0.08s ease !important;
+}
+
+.btn-primary:hover,
+a.btn.btn-primary:hover,
+button.btn.btn-primary:hover {
+  background-color: var(--cgg-crimson-hover, #c42045) !important;
+  border-color: var(--cgg-crimson-hover, #c42045) !important;
+  color: #ffffff !important;
+  box-shadow: 0 0 14px var(--cgg-crimson-glow, rgba(184, 29, 66, 0.65)) !important;
+}
+
+.btn-primary:active,
+a.btn.btn-primary:active,
+button.btn.btn-primary:active {
+  background-color: var(--cgg-crimson-active, #8a122e) !important;
+  border-color: var(--cgg-crimson-active, #8a122e) !important;
+  color: #ffffff !important;
+  transform: translateY(1px);
+}
+
+.btn-primary svg,
+.btn-primary .octicon,
+.btn-primary span {
+  fill: #ffffff !important;
+  color: #ffffff !important;
 }
