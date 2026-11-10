@@ -26,6 +26,18 @@ const GoldStyler = {
     root.style.setProperty("--color-calendar-graph-day-L3-bg", palette.l3);
     root.style.setProperty("--color-calendar-graph-day-L4-bg", palette.l4);
 
+    // Contribution and Sparkline tokens
+    root.style.setProperty("--contribution-default-bgColor-0", palette.l0);
+    root.style.setProperty("--contribution-default-borderColor-0", palette.l0Border);
+    root.style.setProperty("--contribution-default-bgColor-1", palette.l1);
+    root.style.setProperty("--contribution-default-borderColor-1", palette.l1);
+    root.style.setProperty("--contribution-default-bgColor-2", palette.l2);
+    root.style.setProperty("--contribution-default-borderColor-2", palette.l2);
+    root.style.setProperty("--contribution-default-bgColor-3", palette.l3);
+    root.style.setProperty("--contribution-default-borderColor-3", palette.l3);
+    root.style.setProperty("--contribution-default-bgColor-4", palette.l4);
+    root.style.setProperty("--contribution-default-borderColor-4", palette.l4);
+
     // Accent typography and link overrides
     root.style.setProperty("--fgColor-accent", palette.textHighlight);
     root.style.setProperty("--color-accent-fg", palette.textHighlight);
@@ -109,6 +121,37 @@ const GoldStyler = {
     badge.appendChild(dot);
     badge.appendChild(document.createTextNode("Gold"));
     header.appendChild(badge);
+  },
+
+  styleSparklines(settings) {
+    const paletteKey = settings.activePalette || "chrysanthemum";
+    const palette = PALETTES[paletteKey] || PALETTES.chrysanthemum;
+    const svgs = document.querySelectorAll(".text-right svg, poll-include-fragment svg, svg[width='155'], svg.js-activity-overview-graph");
+
+    svgs.forEach((svg) => {
+      svg.querySelectorAll("linearGradient stop").forEach((stop, idx) => {
+        const offset = stop.getAttribute("offset") || "";
+        const color = offset.startsWith("0") || idx === 0 ? palette.l1 :
+                      offset.includes("10") || idx === 1 ? palette.l2 :
+                      offset.includes("25") || idx === 2 ? palette.l3 : palette.l4;
+        stop.setAttribute("stop-color", color);
+        stop.style.setProperty("stop-color", color, "important");
+      });
+
+      svg.querySelectorAll("mask polyline, mask path").forEach((el) => {
+        el.setAttribute("stroke", "#ffffff");
+        el.style.setProperty("stroke", "#ffffff", "important");
+      });
+
+      svg.querySelectorAll("polyline:not(mask polyline), path:not(mask path)").forEach((el) => {
+        el.setAttribute("stroke", palette.l4);
+        el.style.setProperty("stroke", palette.l4, "important");
+      });
+
+      if (settings.enableGlow) {
+        svg.style.filter = `drop-shadow(0 0 1.5px ${palette.glowColor})`;
+      }
+    });
   }
 };
 
