@@ -11,6 +11,18 @@
   --cgg-l4: #ffcb47;
   --cgg-glow: rgba(255, 203, 71, 0.45);
   --cgg-text-highlight: #ffe27a;
+
+  /* GitHub Primer Contribution & Sparkline tokens */
+  --contribution-default-bgColor-0: var(--cgg-l0, #16202c) !important;
+  --contribution-default-borderColor-0: var(--cgg-l0-border, #243346) !important;
+  --contribution-default-bgColor-1: var(--cgg-l1, #6a4a1a) !important;
+  --contribution-default-borderColor-1: var(--cgg-l1, #6a4a1a) !important;
+  --contribution-default-bgColor-2: var(--cgg-l2, #a37226) !important;
+  --contribution-default-borderColor-2: var(--cgg-l2, #a37226) !important;
+  --contribution-default-bgColor-3: var(--cgg-l3, #dda034) !important;
+  --contribution-default-borderColor-3: var(--cgg-l3, #dda034) !important;
+  --contribution-default-bgColor-4: var(--cgg-l4, #ffcb47) !important;
+  --contribution-default-borderColor-4: var(--cgg-l4, #ffcb47) !important;
 }
 
 /* Day cell overrides for both table and SVG elements */
@@ -113,4 +125,27 @@
   border-radius: 50%;
   background: var(--cgg-l4);
   box-shadow: 0 0 6px var(--cgg-l4);
+}
+
+/* Repository Activity Sparklines (Chrysanthemum Gold) */
+.text-right svg,
+svg[width="155"],
+poll-include-fragment svg {
+  filter: drop-shadow(0 0 1.5px var(--cgg-glow));
+}
+
+/* Mask line luminance enhancement */
+mask[id^="sparkline-"] polyline,
+mask[id^="sparkline-"] path,
+.text-right mask polyline,
+.text-right mask path {
+  stroke: #ffffff !important;
+}
+
+/* Sparkline direct stroke fallbacks */
+.text-right svg polyline:not(mask polyline),
+.text-right svg path:not(mask path),
+svg.js-activity-overview-graph path,
+svg.js-activity-overview-graph polyline {
+  stroke: var(--cgg-l4) !important;
 }
