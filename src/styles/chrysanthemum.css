@@ -1,0 +1,116 @@
+/**
+ * Chrysanthemum Gold Grid - Scoped Stylesheet
+ */
+
+:root {
+  --cgg-l0: #16202c;
+  --cgg-l0-border: #243346;
+  --cgg-l1: #6a4a1a;
+  --cgg-l2: #a37226;
+  --cgg-l3: #dda034;
+  --cgg-l4: #ffcb47;
+  --cgg-glow: rgba(255, 203, 71, 0.45);
+  --cgg-text-highlight: #ffe27a;
+}
+
+/* Day cell overrides for both table and SVG elements */
+.js-calendar-graph [data-level="0"],
+.js-calendar-graph-svg [data-level="0"],
+.ContributionCalendar-day[data-level="0"] {
+  fill: var(--cgg-l0) !important;
+  background-color: var(--cgg-l0) !important;
+  border-color: var(--cgg-l0-border) !important;
+  outline-color: var(--cgg-l0-border) !important;
+}
+
+.js-calendar-graph [data-level="1"],
+.js-calendar-graph-svg [data-level="1"],
+.ContributionCalendar-day[data-level="1"] {
+  fill: var(--cgg-l1) !important;
+  background-color: var(--cgg-l1) !important;
+  border-color: var(--cgg-l1) !important;
+}
+
+.js-calendar-graph [data-level="2"],
+.js-calendar-graph-svg [data-level="2"],
+.ContributionCalendar-day[data-level="2"] {
+  fill: var(--cgg-l2) !important;
+  background-color: var(--cgg-l2) !important;
+  border-color: var(--cgg-l2) !important;
+}
+
+.js-calendar-graph [data-level="3"],
+.js-calendar-graph-svg [data-level="3"],
+.ContributionCalendar-day[data-level="3"] {
+  fill: var(--cgg-l3) !important;
+  background-color: var(--cgg-l3) !important;
+  border-color: var(--cgg-l3) !important;
+}
+
+.js-calendar-graph [data-level="4"],
+.js-calendar-graph-svg [data-level="4"],
+.ContributionCalendar-day[data-level="4"] {
+  fill: var(--cgg-l4) !important;
+  background-color: var(--cgg-l4) !important;
+  border-color: var(--cgg-l4) !important;
+  box-shadow: 0 0 7px var(--cgg-glow) !important;
+}
+
+/* Legend items */
+.ContributionCalendar-legend li[style*="background-color: var(--color-calendar-graph-day-L1-bg)"],
+.ContributionCalendar-legend [data-level="1"] {
+  background-color: var(--cgg-l1) !important;
+}
+
+.ContributionCalendar-legend li[style*="background-color: var(--color-calendar-graph-day-L2-bg)"],
+.ContributionCalendar-legend [data-level="2"] {
+  background-color: var(--cgg-l2) !important;
+}
+
+.ContributionCalendar-legend li[style*="background-color: var(--color-calendar-graph-day-L3-bg)"],
+.ContributionCalendar-legend [data-level="3"] {
+  background-color: var(--cgg-l3) !important;
+}
+
+.ContributionCalendar-legend li[style*="background-color: var(--color-calendar-graph-day-L4-bg)"],
+.ContributionCalendar-legend [data-level="4"] {
+  background-color: var(--cgg-l4) !important;
+  box-shadow: 0 0 5px var(--cgg-glow) !important;
+}
+
+/* Smooth transition & subtle scale on hover */
+.ContributionCalendar-day {
+  transition: transform 0.12s ease, filter 0.12s ease !important;
+}
+
+.ContributionCalendar-day:hover {
+  transform: scale(1.22);
+  filter: brightness(1.25);
+  z-index: 10;
+  position: relative;
+}
+
+/* Header badge indicator */
+.cgg-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--cgg-text-highlight);
+  background: rgba(221, 160, 52, 0.12);
+  border: 1px solid rgba(221, 160, 52, 0.35);
+  border-radius: 999px;
+  padding: 2px 8px;
+  margin-left: 8px;
+  vertical-align: middle;
+  letter-spacing: 0.02em;
+}
+
+.cgg-badge-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--cgg-l4);
+  box-shadow: 0 0 6px var(--cgg-l4);
+}
