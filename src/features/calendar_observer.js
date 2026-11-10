@@ -21,13 +21,13 @@ const CalendarObserver = {
     return null;
   },
 
-  init(onCalendarFound) {
+  init(onTrigger) {
     const trigger = () => {
       clearTimeout(this.debounceTimer);
       this.debounceTimer = setTimeout(() => {
         const calendar = this.findCalendarContainer();
-        if (calendar) {
-          onCalendarFound(calendar);
+        if (typeof onTrigger === "function") {
+          onTrigger(calendar);
         }
       }, 50);
     };
@@ -41,8 +41,10 @@ const CalendarObserver = {
     document.addEventListener("pjax:end", trigger);
     document.addEventListener("soft-nav:end", trigger);
 
-    // MutationObserver on profile parent frame
-    const targetNode = document.querySelector("#user-profile-frame") || document.body;
+    // MutationObserver on frame, main content, or body
+    const targetNode = document.querySelector("#user-profile-frame") ||
+                       document.querySelector("main") ||
+                       document.body;
     if (targetNode) {
       this.observer = new MutationObserver((mutations) => {
         for (const mutation of mutations) {
