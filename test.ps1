@@ -29,6 +29,7 @@ $requiredFiles = @(
     "icons/icon.svg",
     "src/core/palette_config.js",
     "src/styles/chrysanthemum.css",
+    "src/styles/gold_typography.css",
     "src/features/gold_styler.js",
     "src/features/calendar_observer.js",
     "src/content_main.js",

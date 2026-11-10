@@ -56,10 +56,22 @@
     }
   </style>
   <link rel="stylesheet" href="../src/styles/chrysanthemum.css">
+  <link rel="stylesheet" href="../src/styles/gold_typography.css">
 </head>
 <body>
   <div class="profile-container" id="user-profile-frame">
-    <h2>1,428 contributions in the last year</h2>
+    <nav style="display: flex; gap: 16px; margin-bottom: 20px; border-bottom: 1px solid #30363d; padding-bottom: 10px;">
+      <a href="#overview" class="UnderlineNav-item selected" aria-current="page" style="font-weight: 600; text-decoration: none;">Overview</a>
+      <a href="#repos" class="UnderlineNav-item" style="color: #58a6ff; text-decoration: none;">Repositories</a>
+      <a href="#projects" class="UnderlineNav-item" style="color: #58a6ff; text-decoration: none;">Projects</a>
+    </nav>
+
+    <h2>
+      <span>1,428 contributions in the last year</span>
+      <span style="margin-left: auto; font-size: 13px;">
+        <a href="#settings" class="Link--primary" style="color: #58a6ff;">Contribution settings</a>
+      </span>
+    </h2>
 
     <div class="js-calendar-graph">
       <table class="ContributionCalendar-grid">

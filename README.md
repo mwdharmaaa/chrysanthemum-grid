@@ -103,7 +103,8 @@ chrysanthemum-grid/
 │   │   ├── calendar_observer.js   # Turbo & DOM mutation watcher
 │   │   └── gold_styler.js         # Reactive CSS variable injector
 │   ├── styles/
-│   │   └── chrysanthemum.css      # Scoped styling & glow rules
+│   │   ├── chrysanthemum.css      # Scoped styling & glow rules
+│   │   └── gold_typography.css    # Blue links & accent text to gold
 │   └── popup/
 │       ├── popup.html             # Extension controller UI
 │       ├── popup.css              # Linear-grade dark UI styling
