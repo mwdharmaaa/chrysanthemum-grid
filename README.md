@@ -23,6 +23,7 @@ Designed specifically to match the profile aesthetic of [@mwdharmaaa](https://gi
 ┌───────────────────────────▼────────────────────────────┐
 │         GoldStyler (src/features/gold_styler)          │
 │    - Overrides CSS variables (--cgg-l0 .. --cgg-l4)    │
+│    - Transforms repo sparkline graphs into royal gold  │
 │    - Injects Level 4 radial bloom / glow               │
 │    - Attaches "Gold" status pill to summary header     │
 └───────────────────────────▲────────────────────────────┘
