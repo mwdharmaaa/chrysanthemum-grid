@@ -43,6 +43,15 @@ const GoldStyler = {
     root.style.setProperty("--color-accent-fg", palette.textHighlight);
     root.style.setProperty("--color-fg-accent", palette.textHighlight);
     root.style.setProperty("--color-accent-emphasis", palette.l3);
+
+    // Primary action button crimson overrides
+    root.style.setProperty("--cgg-crimson", "#b81d42");
+    root.style.setProperty("--cgg-crimson-hover", "#c42045");
+    root.style.setProperty("--cgg-crimson-active", "#8a122e");
+    root.style.setProperty("--button-primary-bgColor-rest", "#b81d42");
+    root.style.setProperty("--button-primary-bgColor-hover", "#c42045");
+    root.style.setProperty("--button-primary-bgColor-active", "#8a122e");
+    root.style.setProperty("--button-primary-fgColor-rest", "#ffffff");
   },
 
   styleContainer(container, settings) {
@@ -88,8 +97,9 @@ const GoldStyler = {
       el.setAttribute("data-dm-text", "gold");
     });
 
-    // 2. All anchor links, username, and tab labels (exempt from dark-mana)
+    // 2. All anchor links, username, and tab labels (exclude buttons)
     document.querySelectorAll("a, a.AppHeader-context-item, .UnderlineNav-item, .UnderlineNav-item span, span.repo").forEach((el) => {
+      if (el.closest(".btn-primary") || el.classList.contains("btn-primary") || el.classList.contains("btn")) return;
       el.style.setProperty("color", palette.textHighlight, "important");
       el.setAttribute("data-dm-text", "gold");
     });
@@ -104,6 +114,17 @@ const GoldStyler = {
     document.querySelectorAll(".UnderlineNav-item[aria-current='page'], .UnderlineNav-item.selected").forEach((el) => {
       el.style.setProperty("border-bottom-color", palette.l3, "important");
       el.style.setProperty("color", palette.l4, "important");
+    });
+
+    // 5. Imperial Crimson Primary Buttons (Avatar Halo Aesthetic)
+    document.querySelectorAll(".btn-primary, a.btn-primary, button.btn-primary").forEach((btn) => {
+      btn.style.setProperty("background-color", "#b81d42", "important");
+      btn.style.setProperty("color", "#ffffff", "important");
+      btn.style.setProperty("border-color", "rgba(240, 246, 252, 0.1)", "important");
+      btn.querySelectorAll("svg, .octicon, span").forEach((child) => {
+        child.style.setProperty("fill", "#ffffff", "important");
+        child.style.setProperty("color", "#ffffff", "important");
+      });
     });
   },
 
