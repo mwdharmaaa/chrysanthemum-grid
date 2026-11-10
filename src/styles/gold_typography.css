@@ -1,75 +1,109 @@
 /**
- * Chrysanthemum Gold Grid - Gold Typography & Accent Overrides
- * Transforms GitHub accent blue links, text, and active indicators to royal gold.
+ * Chrysanthemum Gold Grid - Gold Typography & Link Overrides
+ * Transforms GitHub accent blue links, tabs, and pinned repo titles to royal gold.
  */
 
-/* Override GitHub core accent tokens */
-:root {
-  --fgColor-accent: var(--cgg-text-highlight) !important;
-  --color-accent-fg: var(--cgg-text-highlight) !important;
-  --color-fg-accent: var(--cgg-text-highlight) !important;
-  --color-accent-emphasis: var(--cgg-l3) !important;
+:root,
+html,
+html[data-color-mode],
+html[data-dark-theme],
+body {
+  --fgColor-accent: var(--cgg-text-highlight, #ffe27a) !important;
+  --color-accent-fg: var(--cgg-text-highlight, #ffe27a) !important;
+  --color-fg-accent: var(--cgg-text-highlight, #ffe27a) !important;
+  --color-accent-emphasis: var(--cgg-l3, #dda034) !important;
   --color-accent-subtle: rgba(221, 160, 52, 0.15) !important;
   --color-accent-muted: rgba(221, 160, 52, 0.4) !important;
+  --underlineNav-borderColor-active: var(--cgg-l3, #dda034) !important;
 }
 
-/* Explicit class-level accent overrides */
+/* 1. App Header Username & Context */
+a.AppHeader-context-item,
+.AppHeader-context-item,
+.AppHeader-context-item-label,
+.Header-link,
+a.Header-link {
+  color: var(--cgg-text-highlight, #ffe27a) !important;
+}
+
+/* 2. Navigation Tabs (Overview, Repositories, Projects, Packages, Stars) */
+nav.UnderlineNav a,
+.UnderlineNav-item,
+.UnderlineNav-item span,
+a.UnderlineNav-item {
+  color: var(--cgg-text-highlight, #ffe27a) !important;
+}
+
+.UnderlineNav-item:hover,
+.UnderlineNav-item:hover span {
+  color: var(--cgg-l4, #ffcb47) !important;
+}
+
+/* Tab Active Underline Bar (e.g. under Overview) */
+.UnderlineNav-item[aria-current="page"],
+.UnderlineNav-item[aria-selected="true"],
+.UnderlineNav-item.selected {
+  border-bottom-color: var(--cgg-l3, #dda034) !important;
+  color: var(--cgg-l4, #ffcb47) !important;
+}
+
+.UnderlineNav-item[aria-current="page"]::after,
+.UnderlineNav-item[aria-selected="true"]::after,
+.UnderlineNav-item.selected::after {
+  background-color: var(--cgg-l3, #dda034) !important;
+}
+
+/* Tab Counter Badge (e.g. "37" in Repositories 37) */
+.UnderlineNav-item .Counter,
+nav.UnderlineNav .Counter {
+  color: var(--cgg-text-highlight, #ffe27a) !important;
+  background-color: rgba(221, 160, 52, 0.15) !important;
+  border-color: rgba(221, 160, 52, 0.35) !important;
+}
+
+/* 3. Pinned Repositories & Repo Link Titles */
+.pinned-item-list-item a,
+.pinned-item-list-item a.text-bold,
+.pinned-item-list-item span.repo,
+span.repo,
+a.text-bold,
+a[data-hovercard-type="repository"],
+.repo {
+  color: var(--cgg-text-highlight, #ffe27a) !important;
+}
+
+.pinned-item-list-item a:hover,
+span.repo:hover,
+a[data-hovercard-type="repository"]:hover {
+  color: var(--cgg-l4, #ffcb47) !important;
+  text-decoration: underline !important;
+}
+
+.pinned-item-list-item svg.octicon-repo,
+.pinned-item-list-item .octicon {
+  fill: var(--cgg-l3, #dda034) !important;
+  color: var(--cgg-l3, #dda034) !important;
+}
+
+/* 4. Timeline, Calendar & General Accent Overrides */
+#user-profile-frame a,
+.js-calendar-graph a,
+.profile-timeline-year-list a.js-year-link,
+.TimelineItem a,
+.activity-overview-point,
+a.Link--primary {
+  color: var(--cgg-text-highlight, #ffe27a) !important;
+}
+
+.profile-timeline-year-list a.js-year-link.selected {
+  background-color: var(--cgg-l1, #6a4a1a) !important;
+  color: var(--cgg-l4, #ffcb47) !important;
+  border-left-color: var(--cgg-l4, #ffcb47) !important;
+}
+
 .color-fg-accent,
 .fgColor-accent,
 [class*="color-fg-accent"],
 [class*="fgColor-accent"] {
-  color: var(--cgg-text-highlight) !important;
-}
-
-/* Profile calendar links & settings */
-#user-profile-frame a,
-.js-calendar-graph a,
-.profile-timeline-year-list a.js-year-link {
-  color: var(--cgg-text-highlight);
-  text-decoration-color: rgba(221, 160, 52, 0.4);
-}
-
-.js-calendar-graph a:hover,
-#user-profile-frame a:hover {
-  color: var(--cgg-l4) !important;
-  text-decoration-color: var(--cgg-l4);
-}
-
-/* Selected year pill in right-hand timeline */
-.profile-timeline-year-list a.js-year-link.selected {
-  background-color: var(--cgg-l1) !important;
-  color: var(--cgg-l4) !important;
-  border-left-color: var(--cgg-l4) !important;
-}
-
-/* Tab underline indicators (Overview, Repositories, Projects, Packages) */
-.UnderlineNav-item[aria-current="page"],
-.UnderlineNav-item[aria-selected="true"],
-.UnderlineNav-item.selected {
-  border-bottom-color: var(--cgg-l3) !important;
-  color: var(--cgg-text-highlight) !important;
-}
-
-.UnderlineNav-item:hover {
-  color: var(--cgg-text-highlight) !important;
-}
-
-/* Contribution activity & commit timeline links */
-.TimelineItem a,
-.activity-overview-point,
-.profile-rollup-summarized a {
-  color: var(--cgg-text-highlight);
-}
-
-.TimelineItem a:hover {
-  color: var(--cgg-l4) !important;
-}
-
-/* Button & Link primary overrides when rendered in accent blue */
-a.Link--primary {
-  color: var(--cgg-text-highlight) !important;
-}
-
-a.Link--primary:hover {
-  color: var(--cgg-l4) !important;
+  color: var(--cgg-text-highlight, #ffe27a) !important;
 }

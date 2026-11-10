@@ -18,6 +18,7 @@
 
   function applyActiveTheme() {
     GoldStyler.applyPaletteTokens(currentSettings);
+    GoldStyler.styleTypography(currentSettings);
     const container = CalendarObserver.findCalendarContainer();
     if (container) {
       GoldStyler.styleContainer(container, currentSettings);
@@ -30,6 +31,7 @@
 
       CalendarObserver.init((container) => {
         GoldStyler.applyPaletteTokens(currentSettings);
+        GoldStyler.styleTypography(currentSettings);
         GoldStyler.styleContainer(container, currentSettings);
       });
     });

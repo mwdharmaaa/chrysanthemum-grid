@@ -65,6 +65,32 @@ const GoldStyler = {
     this.injectBadge(container);
   },
 
+  styleTypography(settings) {
+    const paletteKey = settings.activePalette || "chrysanthemum";
+    const palette = PALETTES[paletteKey] || PALETTES.chrysanthemum;
+
+    const selectors = [
+      "a.AppHeader-context-item",
+      ".AppHeader-context-item-label",
+      "a.Header-link",
+      ".UnderlineNav-item",
+      ".UnderlineNav-item span",
+      ".pinned-item-list-item a.text-bold",
+      ".pinned-item-list-item span.repo",
+      "span.repo",
+      "a[data-hovercard-type='repository']"
+    ];
+
+    document.querySelectorAll(selectors.join(",")).forEach((el) => {
+      el.style.setProperty("color", palette.textHighlight, "important");
+    });
+
+    document.querySelectorAll(".UnderlineNav-item[aria-current='page'], .UnderlineNav-item.selected").forEach((el) => {
+      el.style.setProperty("border-bottom-color", palette.l3, "important");
+      el.style.setProperty("color", palette.l4, "important");
+    });
+  },
+
   injectBadge(container) {
     const header = container.parentElement?.querySelector("h2");
     if (!header || header.querySelector(".cgg-badge")) return;

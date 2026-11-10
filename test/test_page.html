@@ -59,12 +59,37 @@
   <link rel="stylesheet" href="../src/styles/gold_typography.css">
 </head>
 <body>
+  <!-- Header Bar -->
+  <header style="width: 860px; display: flex; align-items: center; gap: 12px; margin-bottom: 16px; padding: 10px 16px; background: #010409; border: 1px solid #30363d; border-radius: 6px;">
+    <span style="font-weight: 600;">GitHub</span>
+    <a href="#" class="AppHeader-context-item" style="color: #58a6ff; text-decoration: none; font-weight: 600;">mwdharmaa</a>
+  </header>
+
   <div class="profile-container" id="user-profile-frame">
-    <nav style="display: flex; gap: 16px; margin-bottom: 20px; border-bottom: 1px solid #30363d; padding-bottom: 10px;">
+    <!-- UnderlineNav Tabs -->
+    <nav class="UnderlineNav" style="display: flex; gap: 16px; margin-bottom: 20px; border-bottom: 1px solid #30363d; padding-bottom: 10px;">
       <a href="#overview" class="UnderlineNav-item selected" aria-current="page" style="font-weight: 600; text-decoration: none;">Overview</a>
-      <a href="#repos" class="UnderlineNav-item" style="color: #58a6ff; text-decoration: none;">Repositories</a>
+      <a href="#repos" class="UnderlineNav-item" style="color: #58a6ff; text-decoration: none;">Repositories <span class="Counter" style="padding: 2px 6px; border-radius: 10px; font-size: 11px;">37</span></a>
       <a href="#projects" class="UnderlineNav-item" style="color: #58a6ff; text-decoration: none;">Projects</a>
+      <a href="#packages" class="UnderlineNav-item" style="color: #58a6ff; text-decoration: none;">Packages</a>
+      <a href="#stars" class="UnderlineNav-item" style="color: #58a6ff; text-decoration: none;">Stars</a>
     </nav>
+
+    <!-- Pinned Items -->
+    <div style="margin-bottom: 24px;">
+      <h3 style="font-size: 14px; margin-bottom: 10px; color: #e6edf3;">Pinned</h3>
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+        <div class="pinned-item-list-item" style="border: 1px solid #30363d; border-radius: 6px; padding: 12px; background: #0d1117;">
+          <a href="#" class="text-bold" style="color: #58a6ff; text-decoration: none; font-size: 14px;"><span class="repo">laraportfolio</span></a>
+        </div>
+        <div class="pinned-item-list-item" style="border: 1px solid #30363d; border-radius: 6px; padding: 12px; background: #0d1117;">
+          <a href="#" class="text-bold" style="color: #58a6ff; text-decoration: none; font-size: 14px;"><span class="repo">mwdhrmaaa</span></a>
+        </div>
+        <div class="pinned-item-list-item" style="border: 1px solid #30363d; border-radius: 6px; padding: 12px; background: #0d1117;">
+          <a href="#" class="text-bold" style="color: #58a6ff; text-decoration: none; font-size: 14px;"><span class="repo">mybudget</span></a>
+        </div>
+      </div>
+    </div>
 
     <h2>
       <span>1,428 contributions in the last year</span>
