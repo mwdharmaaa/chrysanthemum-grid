@@ -1,10 +1,11 @@
 /**
- * Chrysanthemum Gold Grid - Gold Typography & Link Overrides
- * Transforms GitHub accent blue links, tabs, and pinned repo titles to royal gold.
+ * Chrysanthemum Gold Grid - Gold Typography, Icons & Link Overrides
+ * Transforms GitHub accent blue links, octocat logo, tabs, and pinned repo titles to royal gold.
  */
 
 :root,
 html,
+html[data-dark-mana="enabled"],
 html[data-color-mode],
 html[data-dark-theme],
 body {
@@ -15,9 +16,22 @@ body {
   --color-accent-subtle: rgba(221, 160, 52, 0.15) !important;
   --color-accent-muted: rgba(221, 160, 52, 0.4) !important;
   --underlineNav-borderColor-active: var(--cgg-l3, #dda034) !important;
+  --dm-link: var(--cgg-text-highlight, #ffe27a) !important;
+  --dm-link-hover: var(--cgg-l4, #ffcb47) !important;
 }
 
-/* 1. App Header Username & Context */
+/* 1. Header Octocat Brand Logo */
+svg.octicon-mark-github,
+.octicon-mark-github,
+a[aria-label*="Homepage" i] svg,
+a[aria-label*="GitHub" i] svg,
+.AppHeader-logo svg,
+.Header-link svg {
+  fill: var(--cgg-l4, #ffcb47) !important;
+  color: var(--cgg-l4, #ffcb47) !important;
+}
+
+/* 2. App Header Username & Context Link */
 a.AppHeader-context-item,
 .AppHeader-context-item,
 .AppHeader-context-item-label,
@@ -26,7 +40,7 @@ a.Header-link {
   color: var(--cgg-text-highlight, #ffe27a) !important;
 }
 
-/* 2. Navigation Tabs (Overview, Repositories, Projects, Packages, Stars) */
+/* 3. Navigation Tabs (Overview, Repositories, Projects, Packages, Stars) */
 nav.UnderlineNav a,
 .UnderlineNav-item,
 .UnderlineNav-item span,
@@ -34,12 +48,18 @@ a.UnderlineNav-item {
   color: var(--cgg-text-highlight, #ffe27a) !important;
 }
 
+.UnderlineNav-item svg,
+.UnderlineNav-item .octicon {
+  fill: var(--cgg-l3, #dda034) !important;
+  color: var(--cgg-l3, #dda034) !important;
+}
+
 .UnderlineNav-item:hover,
 .UnderlineNav-item:hover span {
   color: var(--cgg-l4, #ffcb47) !important;
 }
 
-/* Tab Active Underline Bar (e.g. under Overview) */
+/* Tab Active Underline Bar */
 .UnderlineNav-item[aria-current="page"],
 .UnderlineNav-item[aria-selected="true"],
 .UnderlineNav-item.selected {
@@ -53,7 +73,7 @@ a.UnderlineNav-item {
   background-color: var(--cgg-l3, #dda034) !important;
 }
 
-/* Tab Counter Badge (e.g. "37" in Repositories 37) */
+/* Tab Counter Badge */
 .UnderlineNav-item .Counter,
 nav.UnderlineNav .Counter {
   color: var(--cgg-text-highlight, #ffe27a) !important;
@@ -61,7 +81,7 @@ nav.UnderlineNav .Counter {
   border-color: rgba(221, 160, 52, 0.35) !important;
 }
 
-/* 3. Pinned Repositories & Repo Link Titles */
+/* 4. Pinned Repositories & Repo Link Titles */
 .pinned-item-list-item a,
 .pinned-item-list-item a.text-bold,
 .pinned-item-list-item span.repo,
@@ -85,25 +105,17 @@ a[data-hovercard-type="repository"]:hover {
   color: var(--cgg-l3, #dda034) !important;
 }
 
-/* 4. Timeline, Calendar & General Accent Overrides */
-#user-profile-frame a,
-.js-calendar-graph a,
-.profile-timeline-year-list a.js-year-link,
-.TimelineItem a,
-.activity-overview-point,
-a.Link--primary {
+/* 5. Universal Anchor Link Overrides (Surpasses Dark Mana and GitHub) */
+html[data-dark-mana="enabled"] a,
+html[data-color-mode] a,
+html a,
+a {
   color: var(--cgg-text-highlight, #ffe27a) !important;
 }
 
-.profile-timeline-year-list a.js-year-link.selected {
-  background-color: var(--cgg-l1, #6a4a1a) !important;
+html[data-dark-mana="enabled"] a:hover,
+html[data-color-mode] a:hover,
+html a:hover,
+a:hover {
   color: var(--cgg-l4, #ffcb47) !important;
-  border-left-color: var(--cgg-l4, #ffcb47) !important;
-}
-
-.color-fg-accent,
-.fgColor-accent,
-[class*="color-fg-accent"],
-[class*="fgColor-accent"] {
-  color: var(--cgg-text-highlight, #ffe27a) !important;
 }

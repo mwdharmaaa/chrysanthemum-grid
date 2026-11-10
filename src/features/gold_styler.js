@@ -69,22 +69,26 @@ const GoldStyler = {
     const paletteKey = settings.activePalette || "chrysanthemum";
     const palette = PALETTES[paletteKey] || PALETTES.chrysanthemum;
 
-    const selectors = [
-      "a.AppHeader-context-item",
-      ".AppHeader-context-item-label",
-      "a.Header-link",
-      ".UnderlineNav-item",
-      ".UnderlineNav-item span",
-      ".pinned-item-list-item a.text-bold",
-      ".pinned-item-list-item span.repo",
-      "span.repo",
-      "a[data-hovercard-type='repository']"
-    ];
-
-    document.querySelectorAll(selectors.join(",")).forEach((el) => {
-      el.style.setProperty("color", palette.textHighlight, "important");
+    // 1. Octocat Brand Logo in header
+    document.querySelectorAll("svg.octicon-mark-github, .octicon-mark-github, a[aria-label*='Homepage' i] svg").forEach((el) => {
+      el.style.setProperty("fill", palette.l4, "important");
+      el.style.setProperty("color", palette.l4, "important");
+      el.setAttribute("data-dm-text", "gold");
     });
 
+    // 2. All anchor links, username, and tab labels (exempt from dark-mana)
+    document.querySelectorAll("a, a.AppHeader-context-item, .UnderlineNav-item, .UnderlineNav-item span, span.repo").forEach((el) => {
+      el.style.setProperty("color", palette.textHighlight, "important");
+      el.setAttribute("data-dm-text", "gold");
+    });
+
+    // 3. UnderlineNav tab icons
+    document.querySelectorAll(".UnderlineNav-item svg, .UnderlineNav-item .octicon").forEach((el) => {
+      el.style.setProperty("fill", palette.l3, "important");
+      el.style.setProperty("color", palette.l3, "important");
+    });
+
+    // 4. Tab active underline indicator
     document.querySelectorAll(".UnderlineNav-item[aria-current='page'], .UnderlineNav-item.selected").forEach((el) => {
       el.style.setProperty("border-bottom-color", palette.l3, "important");
       el.style.setProperty("color", palette.l4, "important");
