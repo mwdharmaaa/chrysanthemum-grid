@@ -1,188 +1,87 @@
-/**
- * Chrysanthemum Gold Grid - Winged Tooltip Engine
- * Orchestrates royal gold winged tooltips over contribution squares.
+﻿/**
+ * Chrysanthemum Gold Grid - Winged Tooltip Engine Facade
  */
-
 const WingedTooltip = {
-  element: null,
-  content: null,
-  boundCells: new WeakSet(),
+  get element() {
+    return TooltipHost.element;
+  },
+  get content() {
+    return TooltipHost.content;
+  },
 
   resolveWingAsset(filename) {
-    if (typeof chrome !== "undefined" && chrome.runtime && chrome.runtime.getURL) {
-      return chrome.runtime.getURL(`src/assets/${filename}`);
-    }
-    return `../src/assets/${filename}`;
+    return TooltipAssetResolver.resolve(filename);
   },
 
   createHostElement() {
-    if (this.element && document.body.contains(this.element)) return this.element;
-
-    const host = document.createElement("div");
-    host.className = "cgg-winged-tooltip";
-    host.id = "cggWingedTooltip";
-    host.setAttribute("aria-hidden", "true");
-    host.innerHTML = '<span class="cgg-crimson-halo"></span>' +
-                     '<span class="cgg-winged-tooltip-wing cgg-winged-tooltip-wing-left"></span>' +
-                     '<span class="cgg-winged-tooltip-content"></span>' +
-                     '<span class="cgg-winged-tooltip-wing cgg-winged-tooltip-wing-right"></span>';
-
-    document.body.appendChild(host);
-    this.element = host;
-    this.content = host.querySelector(".cgg-winged-tooltip-content");
-    return host;
+    return TooltipHost.create();
   },
 
   formatFallbackText(dayEl) {
-    const rawDate = dayEl.getAttribute("data-date");
-    const level = parseInt(dayEl.getAttribute("data-level") || "0", 10);
-    if (!rawDate) return "Chrysanthemum Contribution Day";
-
-    const dateObj = new Date(rawDate + "T00:00:00");
-    const options = { month: "long", day: "numeric" };
-    const dateFormatted = dateObj.toLocaleDateString("en-US", options);
-
-    if (level === 0) {
-      return `No contributions on ${dateFormatted}.`;
-    }
-    const countEstimate = level === 1 ? "1 contribution" : `${level * 3} contributions`;
-    return `${countEstimate} on ${dateFormatted}.`;
+    return TooltipTextFormatter.formatFallback(dayEl);
   },
 
   resolveTooltipText(dayEl) {
-    // 1. Check linked GitHub <tool-tip> web component
-    const dayId = dayEl.getAttribute("id");
-    if (dayId) {
-      const linkedTip = document.querySelector(`tool-tip[for="${dayId}"]`);
-      if (linkedTip && linkedTip.textContent.trim()) {
-        return linkedTip.textContent.trim();
-      }
-    }
-
-    // 2. Check aria-label or title attributes
-    const aria = dayEl.getAttribute("aria-label");
-    if (aria && aria.trim()) return aria.trim();
-
-    const title = dayEl.getAttribute("title");
-    if (title && title.trim()) return title.trim();
-
-    // 3. Fallback to data-date and data-level calculation
-    return this.formatFallbackText(dayEl);
+    return TooltipTextFormatter.resolve(dayEl);
   },
 
   extractLevel(dayEl, text) {
-    const raw = dayEl.getAttribute("data-level");
-    if (raw !== null && raw !== undefined && raw !== "") {
-      const parsed = parseInt(raw, 10);
-      if (!isNaN(parsed) && parsed >= 0) {
-        return Math.min(parsed, 4);
-      }
-    }
-    if (text) {
-      const lower = text.toLowerCase().trim();
-      if (lower.startsWith("no ") || lower.includes("no contribution") || lower.startsWith("0 ")) return 0;
-      const match = lower.match(/^(\d+)\s+contribution/);
-      if (match) {
-        const count = parseInt(match[1], 10);
-        if (count === 0) return 0;
-        if (count <= 2) return 1;
-        if (count <= 5) return 2;
-        if (count <= 9) return 3;
-        return 4;
-      }
-    }
-    return 0;
+    return TooltipLevelExtractor.extract(dayEl, text);
   },
 
   hasContributions(dayEl, text) {
-    return this.extractLevel(dayEl, text) > 0;
+    return TooltipLevelExtractor.hasContributions(dayEl, text);
   },
 
   show(dayEl) {
-    this.createHostElement();
-    const text = this.resolveTooltipText(dayEl);
-    this.content.textContent = text;
+    const host = TooltipHost.create();
+    const content = TooltipHost.getContentElement();
+    const text = TooltipTextFormatter.resolve(dayEl);
+    content.textContent = text;
 
-    const level = this.extractLevel(dayEl, text);
-
-    // Reset base and assign graduated level class
-    this.element.className = `cgg-winged-tooltip cgg-level-${level}`;
+    const level = TooltipLevelExtractor.extract(dayEl, text);
+    host.className = `cgg-winged-tooltip cgg-level-${level}`;
     if (level === 3 || level === 4) {
-      this.element.classList.add("has-wings");
+      host.classList.add("has-wings");
     }
     if (level === 4) {
-      this.element.classList.add("has-halo");
+      host.classList.add("has-halo");
     }
 
-    const rect = dayEl.getBoundingClientRect();
-    const centerX = rect.left + rect.width / 2;
-    const topY = rect.top;
-
-    this.element.style.left = `${Math.round(centerX)}px`;
-    this.element.style.top = `${Math.round(topY)}px`;
-    this.element.classList.add("is-active");
+    const coords = TooltipPositioner.compute(dayEl);
+    TooltipPositioner.apply(host, coords);
+    host.classList.add("is-active");
   },
 
   hide() {
-    if (this.element) {
-      this.element.classList.remove("is-active");
+    const el = TooltipHost.element;
+    if (el) {
+      el.classList.remove("is-active");
     }
   },
 
   bindGlobalDelegation() {
-    if (this._delegated) return;
-    this._delegated = true;
-
-    const getCell = (target) => {
-      if (!target || !target.closest) return null;
-      return target.closest(".ContributionCalendar-day, [data-level], td[data-date], rect[data-date]");
-    };
-
-    document.addEventListener("mouseover", (e) => {
-      const cell = getCell(e.target);
-      if (cell) this.show(cell);
-    }, true);
-
-    document.addEventListener("mouseout", (e) => {
-      const cell = getCell(e.target);
-      if (cell && (!e.relatedTarget || !cell.contains(e.relatedTarget))) {
-        this.hide();
-      }
-    }, true);
-
-    document.addEventListener("focusin", (e) => {
-      const cell = getCell(e.target);
-      if (cell) this.show(cell);
-    }, true);
-
-    document.addEventListener("focusout", (e) => {
-      const cell = getCell(e.target);
-      if (cell) this.hide();
-    }, true);
+    TooltipEventDelegator.bindGlobal(
+      (dayEl) => this.show(dayEl),
+      () => this.hide()
+    );
   },
 
   bindDays(container) {
-    const root = container || document;
-    const days = root.querySelectorAll(".ContributionCalendar-day, [data-level]");
-
-    days.forEach((day) => {
-      if (this.boundCells.has(day)) return;
-      this.boundCells.add(day);
-
-      day.addEventListener("mouseenter", () => this.show(day));
-      day.addEventListener("mouseleave", () => this.hide());
-      day.addEventListener("focus", () => this.show(day));
-      day.addEventListener("blur", () => this.hide());
-    });
+    TooltipEventDelegator.bindElements(
+      container,
+      (dayEl) => this.show(dayEl),
+      () => this.hide()
+    );
   },
 
   init() {
-    const leftUrl = this.resolveWingAsset("wing_left.png");
-    const rightUrl = this.resolveWingAsset("wing_right.png");
+    const leftUrl = TooltipAssetResolver.resolve("wing_left.png");
+    const rightUrl = TooltipAssetResolver.resolve("wing_right.png");
     document.documentElement.style.setProperty("--cgg-wing-left", `url("${leftUrl}")`);
     document.documentElement.style.setProperty("--cgg-wing-right", `url("${rightUrl}")`);
 
-    this.createHostElement();
+    TooltipHost.create();
     this.bindGlobalDelegation();
     this.bindDays();
   }
