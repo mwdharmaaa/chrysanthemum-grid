@@ -22,7 +22,8 @@ const WingedTooltip = {
     host.className = "cgg-winged-tooltip";
     host.id = "cggWingedTooltip";
     host.setAttribute("aria-hidden", "true");
-    host.innerHTML = '<span class="cgg-winged-tooltip-wing cgg-winged-tooltip-wing-left"></span>' +
+    host.innerHTML = '<span class="cgg-crimson-halo"></span>' +
+                     '<span class="cgg-winged-tooltip-wing cgg-winged-tooltip-wing-left"></span>' +
                      '<span class="cgg-winged-tooltip-content"></span>' +
                      '<span class="cgg-winged-tooltip-wing cgg-winged-tooltip-wing-right"></span>';
 
@@ -90,10 +91,21 @@ const WingedTooltip = {
     const text = this.resolveTooltipText(dayEl);
     this.content.textContent = text;
 
-    if (this.hasContributions(dayEl, text)) {
+    let level = parseInt(dayEl.getAttribute("data-level") || "0", 10);
+    if (isNaN(level) || level < 0) level = 0;
+    if (level > 4) level = 4;
+
+    // Reset base and assign graduated level class
+    this.element.className = `cgg-winged-tooltip cgg-level-${level}`;
+
+    // Level 3 & 4 feature horizontal royal wings
+    if (level === 3 || level === 4) {
       this.element.classList.add("has-wings");
-    } else {
-      this.element.classList.remove("has-wings");
+    }
+
+    // Level 4 features the crimson avatar halo ring
+    if (level === 4) {
+      this.element.classList.add("has-halo");
     }
 
     const rect = dayEl.getBoundingClientRect();

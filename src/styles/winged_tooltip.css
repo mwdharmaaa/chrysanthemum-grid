@@ -32,26 +32,102 @@
   transform: translate(-50%, -100%) translateY(-10px) scale(1);
 }
 
-/* Tooltip Badge Body */
+/* Tooltip Badge Body Base */
 .cgg-winged-tooltip-content {
   position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   padding: 6px 14px;
-  background: linear-gradient(180deg, #16202c 0%, #0d1520 100%);
-  color: var(--cgg-text-highlight, #ffe27a);
-  border: 1px solid var(--cgg-l3, #dda034);
   border-radius: 6px;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
   font-size: 12px;
   font-weight: 600;
   letter-spacing: 0.02em;
   white-space: nowrap;
-  box-shadow: 0 0 14px var(--cgg-glow, rgba(255, 203, 71, 0.4)),
-              0 4px 16px rgba(0, 0, 0, 0.7);
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.9);
   z-index: 2;
+  transition: all 0.15s ease;
+}
+
+/* Level 0: Kosong / tanpa commit (polos) */
+.cgg-winged-tooltip.cgg-level-0 .cgg-winged-tooltip-content,
+.cgg-winged-tooltip:not([class*="cgg-level-"]) .cgg-winged-tooltip-content {
+  background: #16202c !important;
+  color: #8b949e !important;
+  border: 1px solid var(--cgg-l0-border, #243346) !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5) !important;
+  text-shadow: none !important;
+}
+
+/* Level 1: Garis pinggir merah */
+.cgg-winged-tooltip.cgg-level-1 .cgg-winged-tooltip-content {
+  background: #16202c !important;
+  color: var(--cgg-text-highlight, #ffe27a) !important;
+  border: 1px solid var(--cgg-border-crimson, #b81d42) !important;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.6) !important;
+  text-shadow: none !important;
+}
+
+/* Level 2: Garis merah + cahaya emas tipis (tanpa sayap) */
+.cgg-winged-tooltip.cgg-level-2 .cgg-winged-tooltip-content {
+  background: #16202c !important;
+  color: var(--cgg-text-highlight, #ffe27a) !important;
+  border: 1px solid var(--cgg-border-crimson, #b81d42) !important;
+  box-shadow: 0 0 10px rgba(255, 203, 71, 0.45), 0 4px 14px rgba(0, 0, 0, 0.6) !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8) !important;
+}
+
+/* Level 3: Sayap emas horizontal + gold border */
+.cgg-winged-tooltip.cgg-level-3 .cgg-winged-tooltip-content {
+  background: linear-gradient(180deg, #16202c 0%, #0d1520 100%) !important;
+  color: var(--cgg-text-highlight, #ffe27a) !important;
+  border: 1px solid var(--cgg-l3, #dda034) !important;
+  box-shadow: 0 0 14px var(--cgg-glow, rgba(255, 203, 71, 0.4)), 0 4px 16px rgba(0, 0, 0, 0.7) !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.9) !important;
+}
+
+/* Level 4: Lingkaran merah avatar + sayap emas horizontal */
+.cgg-winged-tooltip.cgg-level-4 .cgg-winged-tooltip-content {
+  background: linear-gradient(180deg, #16202c 0%, #0d1520 100%) !important;
+  color: var(--cgg-text-highlight, #ffe27a) !important;
+  border: 1px solid var(--cgg-l4, #ffcb47) !important;
+  box-shadow: 0 0 16px var(--cgg-glow, rgba(255, 203, 71, 0.5)), 0 0 8px rgba(184, 29, 66, 0.6) !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.9) !important;
+}
+
+/* Crimson Avatar Halo Ring (Level 4) */
+.cgg-crimson-halo {
+  display: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 86px;
+  height: 86px;
+  border-radius: 50%;
+  border: 2.5px solid #e6194b;
+  box-shadow: 0 0 14px #e6194b,
+              0 0 28px rgba(184, 29, 66, 0.8),
+              inset 0 0 10px rgba(230, 25, 75, 0.6);
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.95;
+  animation: cgg-halo-pulse 2.8s ease-in-out infinite alternate;
+}
+
+.cgg-winged-tooltip.has-halo .cgg-crimson-halo {
+  display: block;
+}
+
+@keyframes cgg-halo-pulse {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+    box-shadow: 0 0 12px #e6194b, 0 0 24px rgba(184, 29, 66, 0.75), inset 0 0 8px rgba(230, 25, 75, 0.5);
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1.08);
+    box-shadow: 0 0 18px #ff3366, 0 0 36px rgba(184, 29, 66, 0.95), inset 0 0 14px rgba(255, 51, 102, 0.8);
+  }
 }
 
 /* Left & Right Wing Flanks (Horizontal Span) */
@@ -69,18 +145,9 @@
   z-index: 1;
 }
 
-/* Display wings exclusively on days with active contributions */
+/* Display wings exclusively on days with level 3 or level 4 */
 .cgg-winged-tooltip.has-wings .cgg-winged-tooltip-wing {
   display: block;
-}
-
-/* Neutral subtle styling for zero-contribution days */
-.cgg-winged-tooltip:not(.has-wings) .cgg-winged-tooltip-content {
-  background: #16202c;
-  color: #8b949e;
-  border-color: var(--cgg-l0-border, #243346);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
-  text-shadow: none;
 }
 
 .cgg-winged-tooltip-wing-left {
