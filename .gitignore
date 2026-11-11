@@ -10,3 +10,4 @@ chrome-dev-profile/
 # Build artifacts
 dist/
 *.zip
+*.pdf
