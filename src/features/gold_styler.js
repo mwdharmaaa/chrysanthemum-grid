@@ -52,6 +52,7 @@ const GoldStyler = {
     root.style.setProperty("--button-primary-bgColor-hover", "#c42045");
     root.style.setProperty("--button-primary-bgColor-active", "#8a122e");
     root.style.setProperty("--button-primary-fgColor-rest", "#ffffff");
+    root.style.setProperty("--bgColor-accent-emphasis", "#b81d42");
   },
 
   styleContainer(container, settings) {
@@ -97,9 +98,9 @@ const GoldStyler = {
       el.setAttribute("data-dm-text", "gold");
     });
 
-    // 2. All anchor links, username, and tab labels (exclude buttons)
+    // 2. All anchor links, username, and tab labels (exclude buttons and selected items)
     document.querySelectorAll("a, a.AppHeader-context-item, .UnderlineNav-item, .UnderlineNav-item span, span.repo").forEach((el) => {
-      if (el.closest(".btn-primary") || el.classList.contains("btn-primary") || el.classList.contains("btn")) return;
+      if (el.closest(".btn-primary") || el.classList.contains("btn-primary") || el.classList.contains("btn") || el.classList.contains("selected")) return;
       el.style.setProperty("color", palette.textHighlight, "important");
       el.setAttribute("data-dm-text", "gold");
     });
@@ -125,6 +126,12 @@ const GoldStyler = {
         child.style.setProperty("fill", "#ffffff", "important");
         child.style.setProperty("color", "#ffffff", "important");
       });
+    });
+
+    // 6. Selected Filter Items & Year Links (Imperial Crimson)
+    document.querySelectorAll(".filter-item.selected, a.js-year-link.selected, [id^='year-link-'].selected").forEach((link) => {
+      link.style.setProperty("background-color", "#b81d42", "important");
+      link.style.setProperty("color", "#ffffff", "important");
     });
   },
 
