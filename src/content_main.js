@@ -20,6 +20,7 @@
     GoldStyler.applyPaletteTokens(currentSettings);
     GoldStyler.styleTypography(currentSettings);
     GoldStyler.styleSparklines(currentSettings);
+    GoldStyler.styleBorders(currentSettings);
     const container = CalendarObserver.findCalendarContainer();
     if (container) {
       GoldStyler.styleContainer(container, currentSettings);
