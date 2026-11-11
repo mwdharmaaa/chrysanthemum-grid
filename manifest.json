@@ -39,8 +39,13 @@
                                            "src/features/tooltip/positioner.js",
                                            "src/features/tooltip/event_delegator.js",
                                            "src/features/winged_tooltip.js",
-                                           "src/features/calendar_observer.js",
+                                           "src/features/styler/sparkline_styler.js",
+                                           "src/features/styler/border_styler.js",
+                                           "src/features/styler/navigation_styler.js",
+                                           "src/features/styler/button_styler.js",
+                                           "src/features/styler/css_injector.js",
                                            "src/features/gold_styler.js",
+                                           "src/features/calendar_observer.js",
                                            "src/content_main.js"
                                        ],
                                 "run_at":  "document_end"
