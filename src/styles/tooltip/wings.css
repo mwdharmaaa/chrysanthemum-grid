@@ -1,0 +1,19 @@
+﻿.cgg-winged-tooltip-wing {
+  display: none;
+  width: 32px;
+  height: 24px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  flex-shrink: 0;
+}
+.has-wings .cgg-winged-tooltip-wing {
+  display: inline-block;
+}
+.cgg-winged-tooltip-wing-left {
+  background-image: var(--cgg-wing-left);
+  margin-right: -4px;
+}
+.cgg-winged-tooltip-wing-right {
+  background-image: var(--cgg-wing-right);
+  margin-left: -4px;
+}
