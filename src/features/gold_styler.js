@@ -2,8 +2,20 @@
  * Chrysanthemum Gold Grid - Styler Engine Facade
  */
 const GoldStyler = {
-  styleSparklines() {
-    SparklineStyler.style();
+  applyPaletteTokens(settings = {}) {
+    PaletteTokenStyler.apply(settings);
+  },
+
+  styleContainer(container, settings = {}) {
+    ContainerStyler.style(container, settings);
+  },
+
+  styleTypography(settings = {}) {
+    TypographyStyler.style(settings);
+  },
+
+  styleSparklines(settings = {}) {
+    SparklineStyler.style(settings);
   },
 
   styleBorders() {
@@ -22,9 +34,10 @@ const GoldStyler = {
     CssInjector.injectTokens(tokens);
   },
 
-  applyAll(tokens) {
-    if (tokens) this.injectThemeTokens(tokens);
-    this.styleSparklines();
+  applyAll(settings = {}) {
+    this.applyPaletteTokens(settings);
+    this.styleTypography(settings);
+    this.styleSparklines(settings);
     this.styleBorders();
     this.styleNavigation();
     this.styleButtons();
