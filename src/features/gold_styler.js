@@ -53,6 +53,18 @@ const GoldStyler = {
     root.style.setProperty("--button-primary-bgColor-active", "#8a122e");
     root.style.setProperty("--button-primary-fgColor-rest", "#ffffff");
     root.style.setProperty("--bgColor-accent-emphasis", "#b81d42");
+
+    // Imperial Crimson border and divider tokens
+    root.style.setProperty("--cgg-border-crimson", "#b81d42");
+    root.style.setProperty("--cgg-border-crimson-muted", "#8a122e");
+    root.style.setProperty("--borderColor-default", "#b81d42");
+    root.style.setProperty("--borderColor-muted", "#b81d42");
+    root.style.setProperty("--borderColor-subtle", "#8a122e");
+    root.style.setProperty("--color-border-default", "#b81d42");
+    root.style.setProperty("--color-border-muted", "#b81d42");
+    root.style.setProperty("--color-border-subtle", "#8a122e");
+    root.style.setProperty("--dm-border", "#b81d42");
+    root.style.setProperty("--dm-border-bright", "#b81d42");
   },
 
   styleContainer(container, settings) {
@@ -149,6 +161,30 @@ const GoldStyler = {
     badge.appendChild(dot);
     badge.appendChild(document.createTextNode("Gold"));
     header.appendChild(badge);
+  },
+
+  styleBorders() {
+    const borderSelectors = [
+      ".profile-container",
+      "#user-profile-frame",
+      ".pinned-item-list-item",
+      "#user-repositories-list",
+      ".Box",
+      ".Box-row",
+      ".border",
+      ".border-top",
+      ".border-bottom",
+      ".border-left",
+      ".border-right",
+      ".UnderlineNav",
+      "nav.UnderlineNav",
+      "hr",
+      ".TimelineItem-badge",
+      "header"
+    ];
+    document.querySelectorAll(borderSelectors.join(", ")).forEach((el) => {
+      el.style.setProperty("border-color", "#b81d42", "important");
+    });
   },
 
   styleSparklines(settings) {
