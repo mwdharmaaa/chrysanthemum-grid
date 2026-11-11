@@ -1,0 +1,15 @@
+﻿.cgg-winged-tooltip {
+  position: fixed;
+  z-index: 999999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.15s ease, transform 0.15s ease;
+  transform: translate(-50%, -100%) translateY(-8px);
+}
+.cgg-winged-tooltip.is-active {
+  opacity: 1;
+  transform: translate(-50%, -100%) translateY(-12px);
+}
