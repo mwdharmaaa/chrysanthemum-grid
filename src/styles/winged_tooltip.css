@@ -102,13 +102,13 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 86px;
-  height: 86px;
+  width: 108px;
+  height: 108px;
   border-radius: 50%;
   border: 2.5px solid #e6194b;
-  box-shadow: 0 0 14px #e6194b,
-              0 0 28px rgba(184, 29, 66, 0.8),
-              inset 0 0 10px rgba(230, 25, 75, 0.6);
+  box-shadow: 0 0 16px #e6194b,
+              0 0 32px rgba(184, 29, 66, 0.85),
+              inset 0 0 12px rgba(230, 25, 75, 0.65);
   pointer-events: none;
   z-index: 0;
   opacity: 0.95;
@@ -122,11 +122,11 @@
 @keyframes cgg-halo-pulse {
   0% {
     transform: translate(-50%, -50%) scale(1);
-    box-shadow: 0 0 12px #e6194b, 0 0 24px rgba(184, 29, 66, 0.75), inset 0 0 8px rgba(230, 25, 75, 0.5);
+    box-shadow: 0 0 14px #e6194b, 0 0 28px rgba(184, 29, 66, 0.75), inset 0 0 10px rgba(230, 25, 75, 0.5);
   }
   100% {
     transform: translate(-50%, -50%) scale(1.08);
-    box-shadow: 0 0 18px #ff3366, 0 0 36px rgba(184, 29, 66, 0.95), inset 0 0 14px rgba(255, 51, 102, 0.8);
+    box-shadow: 0 0 22px #ff3366, 0 0 42px rgba(184, 29, 66, 0.95), inset 0 0 16px rgba(255, 51, 102, 0.8);
   }
 }
 
@@ -135,14 +135,22 @@
   display: none;
   position: absolute;
   top: 50%;
-  width: 72px;
-  height: 59px;
+  width: 76px;
+  height: 62px;
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
   pointer-events: none;
   filter: drop-shadow(0 0 8px rgba(255, 203, 71, 0.45));
   z-index: 1;
+}
+
+/* Level 4: Grand Majestic Wing Expansion */
+.cgg-winged-tooltip.cgg-level-4 .cgg-winged-tooltip-wing {
+  width: 124px;
+  height: 101px;
+  filter: drop-shadow(0 0 18px rgba(255, 203, 71, 0.85))
+          drop-shadow(0 0 8px rgba(230, 25, 75, 0.55));
 }
 
 /* Display wings exclusively on days with level 3 or level 4 */
@@ -157,11 +165,19 @@
   animation: cgg-wing-float-l 2.4s ease-in-out infinite alternate;
 }
 
+.cgg-winged-tooltip.cgg-level-4 .cgg-winged-tooltip-wing-left {
+  right: calc(100% - 18px);
+}
+
 .cgg-winged-tooltip-wing-right {
   left: calc(100% - 10px);
   background-image: var(--cgg-wing-right);
   transform: translateY(-50%) translate(2px, 0);
   animation: cgg-wing-float-r 2.4s ease-in-out infinite alternate;
+}
+
+.cgg-winged-tooltip.cgg-level-4 .cgg-winged-tooltip-wing-right {
+  left: calc(100% - 18px);
 }
 
 @keyframes cgg-wing-float-l {
