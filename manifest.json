@@ -27,15 +27,28 @@
       ],
       "css": [
         "src/styles/chrysanthemum.css",
-        "src/styles/gold_typography.css"
+        "src/styles/gold_typography.css",
+        "src/styles/winged_tooltip.css"
       ],
       "js": [
         "src/core/palette_config.js",
         "src/features/gold_styler.js",
+        "src/features/winged_tooltip.js",
         "src/features/calendar_observer.js",
         "src/content_main.js"
       ],
       "run_at": "document_end"
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "src/assets/*"
+      ],
+      "matches": [
+        "https://github.com/*",
+        "file:///*"
+      ]
     }
   ]
 }
