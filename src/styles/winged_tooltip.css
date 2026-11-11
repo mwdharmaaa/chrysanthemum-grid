@@ -1,0 +1,111 @@
+/**
+ * Chrysanthemum Gold Grid - Winged Tooltip Styles
+ * Renders royal gold winged adornments on contribution calendar day hover.
+ */
+
+:root {
+  --cgg-wing-left: url("../assets/wing_left.png");
+  --cgg-wing-right: url("../assets/wing_right.png");
+}
+
+/* Winged Tooltip Floating Host */
+.cgg-winged-tooltip {
+  position: fixed;
+  z-index: 2147483647;
+  pointer-events: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transform: translate(-50%, -100%) translateY(4px) scale(0.96);
+  transition: opacity 0.16s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.16s cubic-bezier(0.16, 1, 0.3, 1),
+              visibility 0.16s ease;
+  user-select: none;
+  will-change: transform, opacity;
+}
+
+.cgg-winged-tooltip.is-active {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(-50%, -100%) translateY(-10px) scale(1);
+}
+
+/* Tooltip Badge Body */
+.cgg-winged-tooltip-content {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 14px;
+  background: linear-gradient(180deg, #16202c 0%, #0d1520 100%);
+  color: var(--cgg-text-highlight, #ffe27a);
+  border: 1px solid var(--cgg-l3, #dda034);
+  border-radius: 6px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  box-shadow: 0 0 14px var(--cgg-glow, rgba(255, 203, 71, 0.4)),
+              0 4px 16px rgba(0, 0, 0, 0.7);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.9);
+  z-index: 2;
+}
+
+/* Left & Right Wing Flanks */
+.cgg-winged-tooltip-wing {
+  position: absolute;
+  top: 50%;
+  width: 44px;
+  height: 105px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  pointer-events: none;
+  filter: drop-shadow(0 0 8px rgba(255, 203, 71, 0.45));
+  z-index: 1;
+}
+
+.cgg-winged-tooltip-wing-left {
+  right: calc(100% - 6px);
+  background-image: var(--cgg-wing-left);
+  transform: translateY(-50%) translate(-2px, 0);
+  animation: cgg-wing-float-l 2.4s ease-in-out infinite alternate;
+}
+
+.cgg-winged-tooltip-wing-right {
+  left: calc(100% - 6px);
+  background-image: var(--cgg-wing-right);
+  transform: translateY(-50%) translate(2px, 0);
+  animation: cgg-wing-float-r 2.4s ease-in-out infinite alternate;
+}
+
+@keyframes cgg-wing-float-l {
+  0% {
+    transform: translateY(-50%) translate(-2px, 0) scale(1) rotate(0deg);
+  }
+  100% {
+    transform: translateY(-52%) translate(-4px, -2px) scale(1.04) rotate(-2deg);
+  }
+}
+
+@keyframes cgg-wing-float-r {
+  0% {
+    transform: translateY(-50%) translate(2px, 0) scale(1) rotate(0deg);
+  }
+  100% {
+    transform: translateY(-52%) translate(4px, -2px) scale(1.04) rotate(2deg);
+  }
+}
+
+/* Suppress redundant plain native tooltip while custom winged tooltip is active */
+.js-calendar-graph tool-tip,
+.ContributionCalendar tool-tip,
+table.ContributionCalendar-grid + tool-tip,
+[for^="contribution-day-component"] {
+  display: none !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
