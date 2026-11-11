@@ -26,6 +26,13 @@ Designed specifically to match the profile aesthetic of [@mwdharmaaa](https://gi
 │    - Transforms repo sparkline graphs into royal gold  │
 │    - Injects Level 4 radial bloom / glow               │
 │    - Attaches "Gold" status pill to summary header     │
+└───────────────────────────┬────────────────────────────┘
+                            │
+┌───────────────────────────▼────────────────────────────┐
+│      WingedTooltip (src/features/winged_tooltip)       │
+│    - Flanks daily commit hover tooltip with royal gold │
+│      wings and floating dynamics                       │
+│    - Integrates with Primer <tool-tip> and calendar    │
 └───────────────────────────▲────────────────────────────┘
                             │ Syncs Storage
 ┌───────────────────────────┴────────────────────────────┐
@@ -97,15 +104,20 @@ chrysanthemum-grid/
 │   ├── icon-48.png
 │   └── icon-128.png
 ├── src/
+│   ├── assets/                    # Tooltip ornament assets
+│   │   ├── wing_left.png
+│   │   └── wing_right.png
 │   ├── content_main.js            # Content script entry point
 │   ├── core/
 │   │   └── palette_config.js      # Palette tokens & defaults
 │   ├── features/
 │   │   ├── calendar_observer.js   # Turbo & DOM mutation watcher
-│   │   └── gold_styler.js         # Reactive CSS variable injector
+│   │   ├── gold_styler.js         # Reactive CSS variable injector
+│   │   └── winged_tooltip.js      # Royal gold winged tooltip engine
 │   ├── styles/
 │   │   ├── chrysanthemum.css      # Scoped styling & glow rules
-│   │   └── gold_typography.css    # Blue links & accent text to gold
+│   │   ├── gold_typography.css    # Blue links & accent text to gold
+│   │   └── winged_tooltip.css     # Royal gold wings & hover floating animations
 │   └── popup/
 │       ├── popup.html             # Extension controller UI
 │       ├── popup.css              # Linear-grade dark UI styling
