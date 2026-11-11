@@ -54,12 +54,12 @@
   z-index: 2;
 }
 
-/* Left & Right Wing Flanks */
+/* Left & Right Wing Flanks (Horizontal Span) */
 .cgg-winged-tooltip-wing {
   position: absolute;
   top: 50%;
-  width: 44px;
-  height: 105px;
+  width: 72px;
+  height: 59px;
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
@@ -69,14 +69,14 @@
 }
 
 .cgg-winged-tooltip-wing-left {
-  right: calc(100% - 6px);
+  right: calc(100% - 10px);
   background-image: var(--cgg-wing-left);
   transform: translateY(-50%) translate(-2px, 0);
   animation: cgg-wing-float-l 2.4s ease-in-out infinite alternate;
 }
 
 .cgg-winged-tooltip-wing-right {
-  left: calc(100% - 6px);
+  left: calc(100% - 10px);
   background-image: var(--cgg-wing-right);
   transform: translateY(-50%) translate(2px, 0);
   animation: cgg-wing-float-r 2.4s ease-in-out infinite alternate;
@@ -84,19 +84,19 @@
 
 @keyframes cgg-wing-float-l {
   0% {
-    transform: translateY(-50%) translate(-2px, 0) scale(1) rotate(0deg);
+    transform: translateY(-50%) translate(-2px, 0) rotate(0deg);
   }
   100% {
-    transform: translateY(-52%) translate(-4px, -2px) scale(1.04) rotate(-2deg);
+    transform: translateY(-54%) translate(-5px, -2px) rotate(-3deg);
   }
 }
 
 @keyframes cgg-wing-float-r {
   0% {
-    transform: translateY(-50%) translate(2px, 0) scale(1) rotate(0deg);
+    transform: translateY(-50%) translate(2px, 0) rotate(0deg);
   }
   100% {
-    transform: translateY(-52%) translate(4px, -2px) scale(1.04) rotate(2deg);
+    transform: translateY(-54%) translate(5px, -2px) rotate(3deg);
   }
 }
 
