@@ -36,6 +36,7 @@ body {
   --color-btn-primary-hover-bg: var(--cgg-crimson-hover) !important;
   --color-btn-primary-border: var(--cgg-crimson-border) !important;
   --color-btn-primary-text: #ffffff !important;
+  --bgColor-accent-emphasis: var(--cgg-crimson) !important;
 
   /* Contribution & Activity Sparkline tokens */
   --contribution-default-bgColor-0: var(--cgg-l0, #16202c) !important;
@@ -136,17 +137,17 @@ a[data-hovercard-type="repository"]:hover {
 }
 
 /* 5. Universal Anchor Link Overrides (Surpasses Dark Mana and GitHub) */
-html[data-dark-mana="enabled"] a:not(.btn-primary):not(.btn),
-html[data-color-mode] a:not(.btn-primary):not(.btn),
-html a:not(.btn-primary):not(.btn),
-a:not(.btn-primary):not(.btn) {
+html[data-dark-mana="enabled"] a:not(.btn-primary):not(.btn):not(.filter-item.selected),
+html[data-color-mode] a:not(.btn-primary):not(.btn):not(.filter-item.selected),
+html a:not(.btn-primary):not(.btn):not(.filter-item.selected),
+a:not(.btn-primary):not(.btn):not(.filter-item.selected) {
   color: var(--cgg-text-highlight, #ffe27a) !important;
 }
 
-html[data-dark-mana="enabled"] a:not(.btn-primary):not(.btn):hover,
-html[data-color-mode] a:not(.btn-primary):not(.btn):hover,
-html a:not(.btn-primary):not(.btn):hover,
-a:not(.btn-primary):not(.btn):hover {
+html[data-dark-mana="enabled"] a:not(.btn-primary):not(.btn):not(.filter-item.selected):hover,
+html[data-color-mode] a:not(.btn-primary):not(.btn):not(.filter-item.selected):hover,
+html a:not(.btn-primary):not(.btn):not(.filter-item.selected):hover,
+a:not(.btn-primary):not(.btn):not(.filter-item.selected):hover {
   color: var(--cgg-l4, #ffcb47) !important;
 }
 
@@ -183,5 +184,23 @@ button.btn.btn-primary:active {
 .btn-primary .octicon,
 .btn-primary span {
   fill: #ffffff !important;
+  color: #ffffff !important;
+}
+
+/* 7. Active Year Links & Selected Filter Items (Imperial Crimson Halo) */
+.filter-item.selected,
+.filter-item[aria-current="page"],
+a.js-year-link.selected,
+a.filter-item.selected,
+[id^="year-link-"].selected {
+  background-color: var(--cgg-crimson, #b81d42) !important;
+  color: #ffffff !important;
+  box-shadow: 0 0 8px var(--cgg-crimson-glow, rgba(184, 29, 66, 0.45)) !important;
+}
+
+.filter-item.selected:hover,
+a.js-year-link.selected:hover,
+[id^="year-link-"].selected:hover {
+  background-color: var(--cgg-crimson-hover, #c42045) !important;
   color: #ffffff !important;
 }
