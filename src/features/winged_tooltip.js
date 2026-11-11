@@ -70,20 +70,32 @@ const WingedTooltip = {
     return this.formatFallbackText(dayEl);
   },
 
-  hasContributions(dayEl, text) {
-    const level = parseInt(dayEl.getAttribute("data-level") || "0", 10);
-    if (level > 0) return true;
-
+  extractLevel(dayEl, text) {
+    const raw = dayEl.getAttribute("data-level");
+    if (raw !== null && raw !== undefined && raw !== "") {
+      const parsed = parseInt(raw, 10);
+      if (!isNaN(parsed) && parsed >= 0) {
+        return Math.min(parsed, 4);
+      }
+    }
     if (text) {
       const lower = text.toLowerCase().trim();
-      if (lower.startsWith("no ") || lower.includes("no contribution") || lower.startsWith("0 ")) {
-        return false;
-      }
+      if (lower.startsWith("no ") || lower.includes("no contribution") || lower.startsWith("0 ")) return 0;
       const match = lower.match(/^(\d+)\s+contribution/);
-      if (match && parseInt(match[1], 10) > 0) return true;
+      if (match) {
+        const count = parseInt(match[1], 10);
+        if (count === 0) return 0;
+        if (count <= 2) return 1;
+        if (count <= 5) return 2;
+        if (count <= 9) return 3;
+        return 4;
+      }
     }
+    return 0;
+  },
 
-    return false;
+  hasContributions(dayEl, text) {
+    return this.extractLevel(dayEl, text) > 0;
   },
 
   show(dayEl) {
@@ -91,19 +103,13 @@ const WingedTooltip = {
     const text = this.resolveTooltipText(dayEl);
     this.content.textContent = text;
 
-    let level = parseInt(dayEl.getAttribute("data-level") || "0", 10);
-    if (isNaN(level) || level < 0) level = 0;
-    if (level > 4) level = 4;
+    const level = this.extractLevel(dayEl, text);
 
     // Reset base and assign graduated level class
     this.element.className = `cgg-winged-tooltip cgg-level-${level}`;
-
-    // Level 3 & 4 feature horizontal royal wings
     if (level === 3 || level === 4) {
       this.element.classList.add("has-wings");
     }
-
-    // Level 4 features the crimson avatar halo ring
     if (level === 4) {
       this.element.classList.add("has-halo");
     }
@@ -121,6 +127,38 @@ const WingedTooltip = {
     if (this.element) {
       this.element.classList.remove("is-active");
     }
+  },
+
+  bindGlobalDelegation() {
+    if (this._delegated) return;
+    this._delegated = true;
+
+    const getCell = (target) => {
+      if (!target || !target.closest) return null;
+      return target.closest(".ContributionCalendar-day, [data-level], td[data-date], rect[data-date]");
+    };
+
+    document.addEventListener("mouseover", (e) => {
+      const cell = getCell(e.target);
+      if (cell) this.show(cell);
+    }, true);
+
+    document.addEventListener("mouseout", (e) => {
+      const cell = getCell(e.target);
+      if (cell && (!e.relatedTarget || !cell.contains(e.relatedTarget))) {
+        this.hide();
+      }
+    }, true);
+
+    document.addEventListener("focusin", (e) => {
+      const cell = getCell(e.target);
+      if (cell) this.show(cell);
+    }, true);
+
+    document.addEventListener("focusout", (e) => {
+      const cell = getCell(e.target);
+      if (cell) this.hide();
+    }, true);
   },
 
   bindDays(container) {
@@ -145,6 +183,7 @@ const WingedTooltip = {
     document.documentElement.style.setProperty("--cgg-wing-right", `url("${rightUrl}")`);
 
     this.createHostElement();
+    this.bindGlobalDelegation();
     this.bindDays();
   }
 };

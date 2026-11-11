@@ -186,8 +186,11 @@
 .js-calendar-graph tool-tip,
 .ContributionCalendar tool-tip,
 table.ContributionCalendar-grid + tool-tip,
-[for^="contribution-day-component"] {
+[for^="contribution-day-component"],
+tool-tip[for^="contribution-day"],
+tool-tip[for*="contribution"] {
   display: none !important;
   opacity: 0 !important;
+  visibility: hidden !important;
   pointer-events: none !important;
 }
