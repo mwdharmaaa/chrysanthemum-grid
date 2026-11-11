@@ -38,6 +38,19 @@ body {
   --color-btn-primary-text: #ffffff !important;
   --bgColor-accent-emphasis: var(--cgg-crimson) !important;
 
+  /* Imperial Crimson Border & Divider Tokens */
+  --cgg-border-crimson: #b81d42;
+  --cgg-border-crimson-muted: #8a122e;
+  --cgg-border-crimson-subtle: rgba(184, 29, 66, 0.4);
+  --borderColor-default: var(--cgg-border-crimson, #b81d42) !important;
+  --borderColor-muted: var(--cgg-border-crimson, #b81d42) !important;
+  --borderColor-subtle: var(--cgg-border-crimson-muted, #8a122e) !important;
+  --color-border-default: var(--cgg-border-crimson, #b81d42) !important;
+  --color-border-muted: var(--cgg-border-crimson, #b81d42) !important;
+  --color-border-subtle: var(--cgg-border-crimson-muted, #8a122e) !important;
+  --dm-border: var(--cgg-border-crimson, #b81d42) !important;
+  --dm-border-bright: var(--cgg-border-crimson, #b81d42) !important;
+
   /* Contribution & Activity Sparkline tokens */
   --contribution-default-bgColor-0: var(--cgg-l0, #16202c) !important;
   --contribution-default-borderColor-0: var(--cgg-l0-border, #243346) !important;
@@ -203,4 +216,41 @@ a.js-year-link.selected:hover,
 [id^="year-link-"].selected:hover {
   background-color: var(--cgg-crimson-hover, #c42045) !important;
   color: #ffffff !important;
+}
+
+/* 8. Imperial Crimson Borders, Dividers & Outlines (Avatar Halo Aesthetic) */
+.profile-container,
+#user-profile-frame,
+.pinned-item-list-item,
+#user-repositories-list,
+.Box,
+.Box-header,
+.Box-body,
+.Box-row,
+.border,
+.border-top,
+.border-bottom,
+.border-left,
+.border-right,
+.color-border-default,
+.color-border-muted,
+.color-border-subtle,
+.UnderlineNav,
+nav.UnderlineNav,
+hr,
+.TimelineItem-badge,
+.timeline-comment,
+.timeline-comment-group,
+.js-yearly-contributions .border,
+.graph-before-activity-overview,
+header.AppHeader,
+.AppHeader,
+header[style*="border"],
+div[style*="border: 1px solid #30363d"],
+div[style*="border: 1px solid rgb(48, 54, 61)"] {
+  border-color: var(--cgg-border-crimson, #b81d42) !important;
+}
+
+.TimelineItem::before {
+  background-color: var(--cgg-border-crimson-muted, #8a122e) !important;
 }
