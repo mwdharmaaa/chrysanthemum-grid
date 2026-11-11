@@ -1,0 +1,7 @@
+﻿@keyframes cggWingFlutter {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-2px) rotate(1.5deg); }
+}
+.cgg-anim-flutter {
+  animation: cggWingFlutter 2s ease-in-out infinite;
+}
