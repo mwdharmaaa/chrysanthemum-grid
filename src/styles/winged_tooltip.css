@@ -56,6 +56,7 @@
 
 /* Left & Right Wing Flanks (Horizontal Span) */
 .cgg-winged-tooltip-wing {
+  display: none;
   position: absolute;
   top: 50%;
   width: 72px;
@@ -66,6 +67,20 @@
   pointer-events: none;
   filter: drop-shadow(0 0 8px rgba(255, 203, 71, 0.45));
   z-index: 1;
+}
+
+/* Display wings exclusively on days with active contributions */
+.cgg-winged-tooltip.has-wings .cgg-winged-tooltip-wing {
+  display: block;
+}
+
+/* Neutral subtle styling for zero-contribution days */
+.cgg-winged-tooltip:not(.has-wings) .cgg-winged-tooltip-content {
+  background: #16202c;
+  color: #8b949e;
+  border-color: var(--cgg-l0-border, #243346);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+  text-shadow: none;
 }
 
 .cgg-winged-tooltip-wing-left {

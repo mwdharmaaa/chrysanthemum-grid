@@ -22,24 +22,13 @@ const WingedTooltip = {
     host.className = "cgg-winged-tooltip";
     host.id = "cggWingedTooltip";
     host.setAttribute("aria-hidden", "true");
-
-    const leftWing = document.createElement("span");
-    leftWing.className = "cgg-winged-tooltip-wing cgg-winged-tooltip-wing-left";
-
-    const content = document.createElement("span");
-    content.className = "cgg-winged-tooltip-content";
-
-    const rightWing = document.createElement("span");
-    rightWing.className = "cgg-winged-tooltip-wing cgg-winged-tooltip-wing-right";
-
-    host.appendChild(leftWing);
-    host.appendChild(content);
-    host.appendChild(rightWing);
+    host.innerHTML = '<span class="cgg-winged-tooltip-wing cgg-winged-tooltip-wing-left"></span>' +
+                     '<span class="cgg-winged-tooltip-content"></span>' +
+                     '<span class="cgg-winged-tooltip-wing cgg-winged-tooltip-wing-right"></span>';
 
     document.body.appendChild(host);
     this.element = host;
-    this.content = content;
-
+    this.content = host.querySelector(".cgg-winged-tooltip-content");
     return host;
   },
 
@@ -80,10 +69,32 @@ const WingedTooltip = {
     return this.formatFallbackText(dayEl);
   },
 
+  hasContributions(dayEl, text) {
+    const level = parseInt(dayEl.getAttribute("data-level") || "0", 10);
+    if (level > 0) return true;
+
+    if (text) {
+      const lower = text.toLowerCase().trim();
+      if (lower.startsWith("no ") || lower.includes("no contribution") || lower.startsWith("0 ")) {
+        return false;
+      }
+      const match = lower.match(/^(\d+)\s+contribution/);
+      if (match && parseInt(match[1], 10) > 0) return true;
+    }
+
+    return false;
+  },
+
   show(dayEl) {
     this.createHostElement();
     const text = this.resolveTooltipText(dayEl);
     this.content.textContent = text;
+
+    if (this.hasContributions(dayEl, text)) {
+      this.element.classList.add("has-wings");
+    } else {
+      this.element.classList.remove("has-wings");
+    }
 
     const rect = dayEl.getBoundingClientRect();
     const centerX = rect.left + rect.width / 2;
