@@ -57,6 +57,18 @@ Designed specifically to match the profile aesthetic of [@mwdharmaaa](https://gi
 
 ---
 
+## Tooltip Tier Hierarchy (Daily Commit Hover)
+
+| Level | Contribution Band | Tooltip Visual Styling |
+| :--- | :--- | :--- |
+| Kotak 0 | 0 contributions | Slate neutral pill (`#16202c`), no wings or borders |
+| Kotak 1 | Low | Crimson red border (`#b81d42`) |
+| Kotak 2 | Medium | Crimson red border with subtle gold aura glow (`rgba(255, 203, 71, 0.45)`) |
+| Kotak 3 | High | Horizontal royal gold wings + gold border (`#dda034`) + gold glow |
+| Kotak 4 | Peak | Horizontal royal gold wings + pulsing crimson avatar halo ring + gold glow |
+
+---
+
 ## Quickstart & Development
 
 ### 1. Launch in Isolated Dev Profile (One-Enter)
