@@ -1,10 +1,19 @@
 ﻿.cgg-winged-tooltip-wing {
   display: none;
-  width: 32px;
-  height: 24px;
+  width: 76px;
+  height: 62px;
   background-size: contain;
   background-repeat: no-repeat;
   flex-shrink: 0;
+  filter: drop-shadow(0 0 10px rgba(255, 120, 0, 0.75))
+          drop-shadow(0 0 20px rgba(255, 60, 0, 0.45));
+}
+.cgg-winged-tooltip.cgg-level-4 .cgg-winged-tooltip-wing {
+  width: 124px;
+  height: 101px;
+  filter: drop-shadow(0 0 18px rgba(255, 140, 0, 0.9))
+          drop-shadow(0 0 32px rgba(255, 70, 0, 0.75))
+          drop-shadow(0 0 12px rgba(230, 25, 75, 0.65));
 }
 .has-wings .cgg-winged-tooltip-wing {
   display: inline-block;
