@@ -1,54 +1,60 @@
-{
-  "manifest_version": 3,
-  "name": "Chrysanthemum Gold Grid",
-  "version": "1.0.0",
-  "description": "Transforms GitHub contribution squares from green into Chrysanthemum Prince royal gold palette.",
-  "permissions": [
-    "storage"
-  ],
-  "action": {
-    "default_popup": "src/popup/popup.html",
-    "default_icon": {
-      "16": "icons/icon-16.png",
-      "48": "icons/icon-48.png",
-      "128": "icons/icon-128.png"
-    }
-  },
-  "icons": {
-    "16": "icons/icon-16.png",
-    "48": "icons/icon-48.png",
-    "128": "icons/icon-128.png"
-  },
-  "content_scripts": [
-    {
-      "matches": [
-        "https://github.com/*",
-        "file:///*"
-      ],
-      "css": [
-        "src/styles/chrysanthemum.css",
-        "src/styles/gold_typography.css",
-        "src/styles/winged_tooltip.css"
-      ],
-      "js": [
-        "src/core/palette_config.js",
-        "src/features/gold_styler.js",
-        "src/features/winged_tooltip.js",
-        "src/features/calendar_observer.js",
-        "src/content_main.js"
-      ],
-      "run_at": "document_end"
-    }
-  ],
-  "web_accessible_resources": [
-    {
-      "resources": [
-        "src/assets/*"
-      ],
-      "matches": [
-        "https://github.com/*",
-        "file:///*"
-      ]
-    }
-  ]
+﻿{
+    "manifest_version":  3,
+    "name":  "Chrysanthemum Gold Grid",
+    "version":  "1.0.0",
+    "description":  "Transforms GitHub contribution squares from green into Chrysanthemum Prince royal gold palette.",
+    "permissions":  [
+                        "storage"
+                    ],
+    "action":  {
+                   "default_popup":  "src/popup/popup.html",
+                   "default_icon":  {
+                                        "16":  "icons/icon-16.png",
+                                        "48":  "icons/icon-48.png",
+                                        "128":  "icons/icon-128.png"
+                                    }
+               },
+    "icons":  {
+                  "16":  "icons/icon-16.png",
+                  "48":  "icons/icon-48.png",
+                  "128":  "icons/icon-128.png"
+              },
+    "content_scripts":  [
+                            {
+                                "matches":  [
+                                                "https://github.com/*",
+                                                "file:///*"
+                                            ],
+                                "css":  [
+                                            "src/styles/chrysanthemum.css",
+                                            "src/styles/gold_typography.css",
+                                            "src/styles/winged_tooltip.css"
+                                        ],
+                                "js":  [
+                                           "src/core/palette_config.js",
+                                           "src/features/tooltip/asset_resolver.js",
+                                           "src/features/tooltip/host_element.js",
+                                           "src/features/tooltip/text_formatter.js",
+                                           "src/features/tooltip/level_extractor.js",
+                                           "src/features/tooltip/positioner.js",
+                                           "src/features/tooltip/event_delegator.js",
+                                           "src/features/winged_tooltip.js",
+                                           "src/features/calendar_observer.js",
+                                           "src/features/gold_styler.js",
+                                           "src/content_main.js"
+                                       ],
+                                "run_at":  "document_end"
+                            }
+                        ],
+    "web_accessible_resources":  [
+                                     {
+                                         "resources":  [
+                                                           "src/assets/*"
+                                                       ],
+                                         "matches":  [
+                                                         "https://github.com/*",
+                                                         "file:///*"
+                                                     ]
+                                     }
+                                 ]
 }
