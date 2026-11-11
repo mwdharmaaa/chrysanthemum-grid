@@ -21,9 +21,15 @@
     GoldStyler.styleTypography(currentSettings);
     GoldStyler.styleSparklines(currentSettings);
     GoldStyler.styleBorders(currentSettings);
+    if (typeof WingedTooltip !== "undefined") {
+      WingedTooltip.init();
+    }
     const container = CalendarObserver.findCalendarContainer();
     if (container) {
       GoldStyler.styleContainer(container, currentSettings);
+      if (typeof WingedTooltip !== "undefined") {
+        WingedTooltip.bindDays(container);
+      }
     }
   }
 
