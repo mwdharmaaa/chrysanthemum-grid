@@ -56,28 +56,35 @@ const PaletteTokenStyler = {
     const enableButtons = settings.enableCrimsonButtons !== false;
     const enableWings = settings.enableWingedTooltip !== false;
     const enableHover = settings.enableHoverAnimation !== false;
+    const isYinYang = paletteKey === "yinYang";
 
     root.setAttribute("data-cgg-borders", enableBorders ? "true" : "false");
     root.setAttribute("data-cgg-buttons", enableButtons ? "true" : "false");
     root.setAttribute("data-cgg-wings", enableWings ? "true" : "false");
     root.setAttribute("data-cgg-hover", enableHover ? "true" : "false");
+    root.setAttribute("data-cgg-theme", paletteKey);
 
-    // Primary action button crimson overrides
-    const btnBg = enableButtons ? "#b81d42" : "#238636";
-    const btnHover = enableButtons ? "#c42045" : "#2ea043";
-    const btnActive = enableButtons ? "#8a122e" : "#1f7a31";
+    // Primary action button overrides (Monochrome for Yin Yang, Crimson/primer otherwise)
+    const btnBg = isYinYang ? "#ffffff" : (enableButtons ? "#b81d42" : "#238636");
+    const btnFg = isYinYang ? "#000000" : "#ffffff";
+    const btnHover = isYinYang ? "#e6e6e6" : (enableButtons ? "#c42045" : "#2ea043");
+    const btnActive = isYinYang ? "#cccccc" : (enableButtons ? "#8a122e" : "#1f7a31");
+    const btnBorder = isYinYang ? "#ffffff" : (enableButtons ? "#c92a38" : "rgba(240, 246, 252, 0.1)");
+
     root.style.setProperty("--cgg-crimson", btnBg);
     root.style.setProperty("--cgg-crimson-hover", btnHover);
     root.style.setProperty("--cgg-crimson-active", btnActive);
+    root.style.setProperty("--cgg-crimson-base", btnBg);
+    root.style.setProperty("--cgg-crimson-bright", btnBorder);
     root.style.setProperty("--button-primary-bgColor-rest", btnBg);
     root.style.setProperty("--button-primary-bgColor-hover", btnHover);
     root.style.setProperty("--button-primary-bgColor-active", btnActive);
-    root.style.setProperty("--button-primary-fgColor-rest", "#ffffff");
+    root.style.setProperty("--button-primary-fgColor-rest", btnFg);
     root.style.setProperty("--bgColor-accent-emphasis", btnBg);
 
-    // Imperial Crimson border and divider tokens
-    const borderColor = enableBorders ? "#b81d42" : "#30363d";
-    const borderMuted = enableBorders ? "#8a122e" : "#21262d";
+    // Border and divider tokens (Monochrome for Yin Yang, Crimson/muted otherwise)
+    const borderColor = isYinYang ? "#383838" : (enableBorders ? "#b81d42" : "#30363d");
+    const borderMuted = isYinYang ? "#222222" : (enableBorders ? "#8a122e" : "#21262d");
     root.style.setProperty("--cgg-border-crimson", borderColor);
     root.style.setProperty("--cgg-border-crimson-muted", borderMuted);
     root.style.setProperty("--borderColor-default", borderColor);
@@ -88,6 +95,12 @@ const PaletteTokenStyler = {
     root.style.setProperty("--color-border-subtle", borderMuted);
     root.style.setProperty("--dm-border", borderColor);
     root.style.setProperty("--dm-border-bright", borderColor);
+
+    // Accent line, sparkline, and badge tokens
+    root.style.setProperty("--cgg-accent-primary", palette.l4);
+    root.style.setProperty("--cgg-accent-glow", palette.glowColor);
+    root.style.setProperty("--cgg-badge-bg", isYinYang ? "rgba(255, 255, 255, 0.1)" : "rgba(221, 160, 52, 0.12)");
+    root.style.setProperty("--cgg-badge-border", isYinYang ? "rgba(255, 255, 255, 0.35)" : "rgba(221, 160, 52, 0.35)");
   }
 };
 

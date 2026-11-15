@@ -10,18 +10,20 @@ const TypographyStyler = {
       textHighlight: "#ffe27a"
     };
 
+    const isYinYang = paletteKey === "yinYang";
+
     // 1. Octocat Brand Logo in header
     document.querySelectorAll("svg.octicon-mark-github, .octicon-mark-github, a[aria-label*='Homepage' i] svg").forEach((el) => {
       el.style.setProperty("fill", palette.l4, "important");
       el.style.setProperty("color", palette.l4, "important");
-      el.setAttribute("data-dm-text", "gold");
+      el.setAttribute("data-dm-text", isYinYang ? "yinyang" : "gold");
     });
 
     // 2. All anchor links, username, and tab labels (exclude buttons and selected items)
     document.querySelectorAll("a, a.AppHeader-context-item, .UnderlineNav-item, .UnderlineNav-item span, span.repo").forEach((el) => {
       if (el.closest(".btn-primary") || el.classList.contains("btn-primary") || el.classList.contains("btn") || el.classList.contains("selected")) return;
       el.style.setProperty("color", palette.textHighlight, "important");
-      el.setAttribute("data-dm-text", "gold");
+      el.setAttribute("data-dm-text", isYinYang ? "yinyang" : "gold");
     });
 
     // 3. UnderlineNav tab icons
@@ -37,22 +39,27 @@ const TypographyStyler = {
     });
 
     const enableButtons = settings.enableCrimsonButtons !== false;
+    const btnBg = isYinYang ? "#ffffff" : (enableButtons ? "#b81d42" : "#238636");
+    const btnFg = isYinYang ? "#000000" : "#ffffff";
+    const btnBorder = isYinYang ? "#ffffff" : "rgba(240, 246, 252, 0.1)";
 
-    // 5. Imperial Crimson Primary Buttons
+    // 5. Primary Buttons (White on Black for Yin Yang, Imperial Crimson otherwise)
     document.querySelectorAll(".btn-primary, a.btn-primary, button.btn-primary").forEach((btn) => {
-      btn.style.setProperty("background-color", enableButtons ? "#b81d42" : "#238636", "important");
-      btn.style.setProperty("color", "#ffffff", "important");
-      btn.style.setProperty("border-color", "rgba(240, 246, 252, 0.1)", "important");
+      btn.style.setProperty("background-color", btnBg, "important");
+      btn.style.setProperty("color", btnFg, "important");
+      btn.style.setProperty("border-color", btnBorder, "important");
       btn.querySelectorAll("svg, .octicon, span").forEach((child) => {
-        child.style.setProperty("fill", "#ffffff", "important");
-        child.style.setProperty("color", "#ffffff", "important");
+        child.style.setProperty("fill", btnFg, "important");
+        child.style.setProperty("color", btnFg, "important");
       });
     });
 
     // 6. Selected Filter Items & Year Links
+    const filterBg = isYinYang ? "#ffffff" : (enableButtons ? "#b81d42" : "#1f6feb");
+    const filterFg = isYinYang ? "#000000" : "#ffffff";
     document.querySelectorAll(".filter-item.selected, a.js-year-link.selected, [id^='year-link-'].selected").forEach((link) => {
-      link.style.setProperty("background-color", enableButtons ? "#b81d42" : "#1f6feb", "important");
-      link.style.setProperty("color", "#ffffff", "important");
+      link.style.setProperty("background-color", filterBg, "important");
+      link.style.setProperty("color", filterFg, "important");
     });
 
     // 7. Repository Commit Counters (Grand 1K+ Commits)

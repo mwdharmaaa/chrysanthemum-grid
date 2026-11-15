@@ -177,23 +177,30 @@ const ContainerStyler = {
         wrap.replaceWith(span);
       }
 
-      this.injectPlainBadge(header);
+      this.injectPlainBadge(header, settings);
     }
   },
 
-  injectPlainBadge(header) {
-    if (!header || header.querySelector(".cgg-badge")) return;
-
-    const badge = document.createElement("span");
-    badge.className = "cgg-badge";
-    badge.title = "Chrysanthemum Gold Theme Active";
-
-    const dot = document.createElement("span");
-    dot.className = "cgg-badge-dot";
-
-    badge.appendChild(dot);
-    badge.appendChild(document.createTextNode("Gold"));
-    header.appendChild(badge);
+  injectPlainBadge(header, settings = {}) {
+    if (!header) return;
+    const isYinYang = (settings.activePalette || "") === "yinYang";
+    let badge = header.querySelector(".cgg-badge:not(.cgg-badge-grand-1k)");
+    if (!badge) {
+      badge = document.createElement("span");
+      badge.className = "cgg-badge";
+      const dot = document.createElement("span");
+      dot.className = "cgg-badge-dot";
+      badge.appendChild(dot);
+      badge.appendChild(document.createTextNode(isYinYang ? "Yin Yang" : "Gold"));
+      header.appendChild(badge);
+    } else {
+      badge.childNodes.forEach((n) => {
+        if (n.nodeType === Node.TEXT_NODE) {
+          n.textContent = isYinYang ? "Yin Yang" : "Gold";
+        }
+      });
+    }
+    badge.title = isYinYang ? "Yin Yang Theme Active" : "Chrysanthemum Gold Theme Active";
   }
 };
 
