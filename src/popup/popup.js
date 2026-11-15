@@ -9,6 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const bordersToggle = document.getElementById("bordersToggle");
   const wingsToggle = document.getElementById("wingsToggle");
   const buttonsToggle = document.getElementById("buttonsToggle");
+  const grand1kToggle = document.getElementById("grand1kToggle");
   const swatchStrip = document.getElementById("swatchStrip");
   const statusMsg = document.getElementById("statusMsg");
 
@@ -49,6 +50,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (bordersToggle) bordersToggle.checked = settings.enableCrimsonBorders !== false;
         if (wingsToggle) wingsToggle.checked = settings.enableWingedTooltip !== false;
         if (buttonsToggle) buttonsToggle.checked = settings.enableCrimsonButtons !== false;
+        if (grand1kToggle) grand1kToggle.checked = settings.enableGrand1kMilestone !== false;
         updateSwatches(settings.activePalette, settings.enableGlow);
       });
     } else {
@@ -57,6 +59,7 @@ document.addEventListener("DOMContentLoaded", () => {
       if (bordersToggle) bordersToggle.checked = DEFAULT_SETTINGS.enableCrimsonBorders !== false;
       if (wingsToggle) wingsToggle.checked = DEFAULT_SETTINGS.enableWingedTooltip !== false;
       if (buttonsToggle) buttonsToggle.checked = DEFAULT_SETTINGS.enableCrimsonButtons !== false;
+      if (grand1kToggle) grand1kToggle.checked = DEFAULT_SETTINGS.enableGrand1kMilestone !== false;
       updateSwatches(DEFAULT_SETTINGS.activePalette, DEFAULT_SETTINGS.enableGlow);
     }
   }
@@ -68,7 +71,8 @@ document.addEventListener("DOMContentLoaded", () => {
       enableHoverAnimation: hoverToggle.checked,
       enableCrimsonBorders: bordersToggle ? bordersToggle.checked : true,
       enableWingedTooltip: wingsToggle ? wingsToggle.checked : true,
-      enableCrimsonButtons: buttonsToggle ? buttonsToggle.checked : true
+      enableCrimsonButtons: buttonsToggle ? buttonsToggle.checked : true,
+      enableGrand1kMilestone: grand1kToggle ? grand1kToggle.checked : true
     };
 
     updateSwatches(newSettings.activePalette, newSettings.enableGlow);
@@ -86,6 +90,7 @@ document.addEventListener("DOMContentLoaded", () => {
   if (bordersToggle) bordersToggle.addEventListener("change", saveSettings);
   if (wingsToggle) wingsToggle.addEventListener("change", saveSettings);
   if (buttonsToggle) buttonsToggle.addEventListener("change", saveSettings);
+  if (grand1kToggle) grand1kToggle.addEventListener("change", saveSettings);
 
   loadSettings();
 });

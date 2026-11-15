@@ -13,14 +13,25 @@ const TooltipLevelExtractor = {
     if (text) {
       const lower = text.toLowerCase().trim();
       if (lower.startsWith("no ") || lower.includes("no contribution") || lower.startsWith("0 ")) return 0;
-      const match = lower.match(/^(\d+)\s+contribution/);
+      const match = lower.match(/^([\d,.]+)\s+contribution/);
       if (match) {
-        const count = parseInt(match[1], 10);
+        const clean = match[1].replace(/[,.]/g, "");
+        const count = parseInt(clean, 10);
         if (count === 0) return 0;
         if (count <= 2) return 1;
         if (count <= 5) return 2;
         if (count <= 9) return 3;
         return 4;
+      }
+    }
+    return 0;
+  },
+
+  extractCount(dayEl, text) {
+    if (text) {
+      const match = text.match(/([\d,.]+)\s+contribution/i);
+      if (match) {
+        return parseInt(match[1].replace(/[,.]/g, ""), 10) || 0;
       }
     }
     return 0;

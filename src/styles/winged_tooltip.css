@@ -217,3 +217,25 @@ html[data-cgg-wings="false"] .cgg-winged-tooltip-wing,
 html[data-cgg-wings="false"] .cgg-avatar-halo {
   display: none !important;
 }
+
+/* Grand 1K+ Commits Tooltip */
+.cgg-winged-tooltip.cgg-grand-1k-tooltip .cgg-winged-tooltip-content {
+  background: linear-gradient(135deg, #16202c 0%, #29181c 50%, #16202c 100%) !important;
+  color: #fff2a3 !important;
+  border: 1.5px solid #ffcb47 !important;
+  box-shadow: 0 0 20px rgba(255, 203, 71, 0.7), 0 0 10px rgba(184, 29, 66, 0.8), 0 6px 20px rgba(0, 0, 0, 0.8) !important;
+  text-shadow: 0 0 8px rgba(255, 203, 71, 0.6) !important;
+  font-weight: 700 !important;
+}
+
+.cgg-winged-tooltip.cgg-grand-1k-tooltip .cgg-winged-tooltip-wing {
+  width: 136px !important;
+  height: 110px !important;
+  filter: drop-shadow(0 0 8px rgba(255, 203, 71, 0.8)) drop-shadow(0 4px 8px rgba(0, 0, 0, 0.6)) !important;
+}
+
+.cgg-tooltip-crown {
+  font-size: 14px;
+  filter: drop-shadow(0 0 4px #ffcb47);
+  margin-right: 4px;
+}

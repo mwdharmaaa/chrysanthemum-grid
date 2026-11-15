@@ -50,6 +50,7 @@ const DEFAULT_SETTINGS = {
   enableCrimsonBorders: true,
   enableWingedTooltip: true,
   enableCrimsonButtons: true,
+  enableGrand1kMilestone: true,
   enableSound: false
 };
 

@@ -220,7 +220,10 @@
         const rand = ((row * 13 + col * 7) % 100);
         let level = 0;
         let count = 0;
-        if (rand > 85) { level = 4; count = 12 + (col % 5); }
+        if (row === 3 && col === 25) {
+          level = 4;
+          count = 1024; // Test 1K+ daily commit tooltip
+        } else if (rand > 85) { level = 4; count = 12 + (col % 5); }
         else if (rand > 65) { level = 3; count = 6 + (col % 4); }
         else if (rand > 45) { level = 2; count = 3 + (col % 3); }
         else if (rand > 25) { level = 1; count = 1; }
@@ -239,12 +242,54 @@
         tip.setAttribute("data-direction", "n");
         tip.className = "sr-only position-absolute";
         tip.textContent = count > 0
-          ? `${count} contributions on November ${dayNum}th.`
+          ? `${count.toLocaleString()} contributions on November ${dayNum}th.`
           : `No contributions on November ${dayNum}th.`;
         container.appendChild(tip);
       }
       tbody.appendChild(tr);
     }
-  </script>
+
+    // Dynamic Year Swapping simulation
+    const yearData = {
+      "2026": "1,428 contributions in the last year",
+      "2025": "840 contributions in 2025",
+      "2024": "2,130 contributions in 2024"
+    };
+
+    document.querySelectorAll(".js-year-link").forEach((link) => {
+      link.addEventListener("click", (e) => {
+        e.preventDefault();
+        const year = link.textContent.trim();
+        document.querySelectorAll(".js-year-link").forEach((l) => l.classList.remove("selected"));
+        link.classList.add("selected");
+
+        const header = ContainerStyler.findHeader(container);
+        if (header) {
+          const wrap = header.querySelector(".cgg-grand-count-wrap");
+          const target = wrap || header.querySelector("span:not([style*='margin-left'])");
+          if (target) {
+            target.textContent = yearData[year] || `${yearData["2026"]}`;
+          }
+          ContainerStyler.style(container);
+          TypographyStyler.style();
+        }
+      });
+    });
+
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get("year") === "2025") {
+      document.getElementById("year-link-2025").click();
+    } else if (urlParams.get("year") === "2024") {
+      document.getElementById("year-link-2024").click();
+    }
+  
+    if (urlParams.get("hover") === "1k") {
+      const cell = document.getElementById("contribution-day-component-3-25");
+      if (cell) {
+        WingedTooltip.show(cell);
+      }
+    }
+
+</script>
 </body>
 </html>
