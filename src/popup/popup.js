@@ -6,6 +6,9 @@ document.addEventListener("DOMContentLoaded", () => {
   const paletteSelect = document.getElementById("paletteSelect");
   const glowToggle = document.getElementById("glowToggle");
   const hoverToggle = document.getElementById("hoverToggle");
+  const bordersToggle = document.getElementById("bordersToggle");
+  const wingsToggle = document.getElementById("wingsToggle");
+  const buttonsToggle = document.getElementById("buttonsToggle");
   const swatchStrip = document.getElementById("swatchStrip");
   const statusMsg = document.getElementById("statusMsg");
 
@@ -41,11 +44,19 @@ document.addEventListener("DOMContentLoaded", () => {
       chrome.storage.local.get(DEFAULT_SETTINGS, (stored) => {
         const settings = { ...DEFAULT_SETTINGS, ...stored };
         paletteSelect.value = settings.activePalette;
-        glowToggle.checked = settings.enableGlow;
-        hoverToggle.checked = settings.enableHoverAnimation;
+        glowToggle.checked = settings.enableGlow !== false;
+        hoverToggle.checked = settings.enableHoverAnimation !== false;
+        if (bordersToggle) bordersToggle.checked = settings.enableCrimsonBorders !== false;
+        if (wingsToggle) wingsToggle.checked = settings.enableWingedTooltip !== false;
+        if (buttonsToggle) buttonsToggle.checked = settings.enableCrimsonButtons !== false;
         updateSwatches(settings.activePalette, settings.enableGlow);
       });
     } else {
+      glowToggle.checked = DEFAULT_SETTINGS.enableGlow !== false;
+      hoverToggle.checked = DEFAULT_SETTINGS.enableHoverAnimation !== false;
+      if (bordersToggle) bordersToggle.checked = DEFAULT_SETTINGS.enableCrimsonBorders !== false;
+      if (wingsToggle) wingsToggle.checked = DEFAULT_SETTINGS.enableWingedTooltip !== false;
+      if (buttonsToggle) buttonsToggle.checked = DEFAULT_SETTINGS.enableCrimsonButtons !== false;
       updateSwatches(DEFAULT_SETTINGS.activePalette, DEFAULT_SETTINGS.enableGlow);
     }
   }
@@ -54,7 +65,10 @@ document.addEventListener("DOMContentLoaded", () => {
     const newSettings = {
       activePalette: paletteSelect.value,
       enableGlow: glowToggle.checked,
-      enableHoverAnimation: hoverToggle.checked
+      enableHoverAnimation: hoverToggle.checked,
+      enableCrimsonBorders: bordersToggle ? bordersToggle.checked : true,
+      enableWingedTooltip: wingsToggle ? wingsToggle.checked : true,
+      enableCrimsonButtons: buttonsToggle ? buttonsToggle.checked : true
     };
 
     updateSwatches(newSettings.activePalette, newSettings.enableGlow);
@@ -69,6 +83,9 @@ document.addEventListener("DOMContentLoaded", () => {
   paletteSelect.addEventListener("change", saveSettings);
   glowToggle.addEventListener("change", saveSettings);
   hoverToggle.addEventListener("change", saveSettings);
+  if (bordersToggle) bordersToggle.addEventListener("change", saveSettings);
+  if (wingsToggle) wingsToggle.addEventListener("change", saveSettings);
+  if (buttonsToggle) buttonsToggle.addEventListener("change", saveSettings);
 
   loadSettings();
 });

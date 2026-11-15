@@ -21,8 +21,10 @@
     GoldStyler.styleTypography(currentSettings);
     GoldStyler.styleSparklines(currentSettings);
     GoldStyler.styleBorders(currentSettings);
+    GoldStyler.styleButtons(currentSettings);
+    GoldStyler.styleNavigation(currentSettings);
     if (typeof WingedTooltip !== "undefined") {
-      WingedTooltip.init();
+      WingedTooltip.init(currentSettings);
     }
     const container = CalendarObserver.findCalendarContainer();
     if (container) {

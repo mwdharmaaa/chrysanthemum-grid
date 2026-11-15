@@ -36,9 +36,11 @@ const TypographyStyler = {
       el.style.setProperty("color", palette.l4, "important");
     });
 
+    const enableButtons = settings.enableCrimsonButtons !== false;
+
     // 5. Imperial Crimson Primary Buttons
     document.querySelectorAll(".btn-primary, a.btn-primary, button.btn-primary").forEach((btn) => {
-      btn.style.setProperty("background-color", "#b81d42", "important");
+      btn.style.setProperty("background-color", enableButtons ? "#b81d42" : "#238636", "important");
       btn.style.setProperty("color", "#ffffff", "important");
       btn.style.setProperty("border-color", "rgba(240, 246, 252, 0.1)", "important");
       btn.querySelectorAll("svg, .octicon, span").forEach((child) => {
@@ -49,7 +51,7 @@ const TypographyStyler = {
 
     // 6. Selected Filter Items & Year Links
     document.querySelectorAll(".filter-item.selected, a.js-year-link.selected, [id^='year-link-'].selected").forEach((link) => {
-      link.style.setProperty("background-color", "#b81d42", "important");
+      link.style.setProperty("background-color", enableButtons ? "#b81d42" : "#1f6feb", "important");
       link.style.setProperty("color", "#ffffff", "important");
     });
   }

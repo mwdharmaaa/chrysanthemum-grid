@@ -209,3 +209,11 @@ tool-tip[for*="contribution"] {
   visibility: hidden !important;
   pointer-events: none !important;
 }
+
+/* Winged tooltip toggle override */
+html[data-cgg-wings="false"] .cgg-winged-tooltip.has-wings::before,
+html[data-cgg-wings="false"] .cgg-winged-tooltip.has-wings::after,
+html[data-cgg-wings="false"] .cgg-winged-tooltip-wing,
+html[data-cgg-wings="false"] .cgg-avatar-halo {
+  display: none !important;
+}

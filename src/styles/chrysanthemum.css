@@ -102,6 +102,15 @@
   position: relative;
 }
 
+html[data-cgg-hover="false"] .ContributionCalendar-day {
+  transition: none !important;
+}
+
+html[data-cgg-hover="false"] .ContributionCalendar-day:hover {
+  transform: none !important;
+  filter: none !important;
+}
+
 /* Header badge indicator */
 .cgg-badge {
   display: inline-flex;

@@ -18,29 +18,37 @@ const GoldStyler = {
     SparklineStyler.style(settings);
   },
 
-  styleBorders() {
-    BorderStyler.style();
+  styleBorders(settings = {}) {
+    if (typeof BorderStyler !== "undefined") {
+      BorderStyler.style(settings);
+    }
   },
 
-  styleNavigation() {
-    NavigationStyler.style();
+  styleNavigation(settings = {}) {
+    if (typeof NavigationStyler !== "undefined") {
+      NavigationStyler.style(settings);
+    }
   },
 
-  styleButtons() {
-    ButtonStyler.style();
+  styleButtons(settings = {}) {
+    if (typeof ButtonStyler !== "undefined") {
+      ButtonStyler.style(settings);
+    }
   },
 
   injectThemeTokens(tokens) {
-    CssInjector.injectTokens(tokens);
+    if (typeof CssInjector !== "undefined") {
+      CssInjector.injectTokens(tokens);
+    }
   },
 
   applyAll(settings = {}) {
     this.applyPaletteTokens(settings);
     this.styleTypography(settings);
     this.styleSparklines(settings);
-    this.styleBorders();
-    this.styleNavigation();
-    this.styleButtons();
+    this.styleBorders(settings);
+    this.styleNavigation(settings);
+    this.styleButtons(settings);
   }
 };
 

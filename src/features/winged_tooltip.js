@@ -33,6 +33,8 @@ const WingedTooltip = {
     return TooltipLevelExtractor.hasContributions(dayEl, text);
   },
 
+  settings: {},
+
   show(dayEl) {
     const host = TooltipHost.create();
     const content = TooltipHost.getContentElement();
@@ -41,10 +43,11 @@ const WingedTooltip = {
 
     const level = TooltipLevelExtractor.extract(dayEl, text);
     host.className = `cgg-winged-tooltip cgg-level-${level}`;
-    if (level === 3 || level === 4) {
+    const enableWings = this.settings.enableWingedTooltip !== false;
+    if (enableWings && (level === 3 || level === 4)) {
       host.classList.add("has-wings");
     }
-    if (level === 4) {
+    if (enableWings && level === 4) {
       host.classList.add("has-halo");
     }
 
@@ -75,7 +78,8 @@ const WingedTooltip = {
     );
   },
 
-  init() {
+  init(settings = {}) {
+    this.settings = settings;
     const leftUrl = TooltipAssetResolver.resolve("wing_left.png");
     const rightUrl = TooltipAssetResolver.resolve("wing_right.png");
     document.documentElement.style.setProperty("--cgg-wing-left", `url("${leftUrl}")`);

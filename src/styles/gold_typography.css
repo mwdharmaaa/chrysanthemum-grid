@@ -165,9 +165,9 @@ a:not(.btn-primary):not(.btn):not(.filter-item.selected):hover {
 }
 
 /* 6. Imperial Crimson Primary Buttons (Avatar Halo Aesthetic) */
-.btn-primary,
-a.btn.btn-primary,
-button.btn.btn-primary {
+html:not([data-cgg-buttons="false"]) .btn-primary,
+html:not([data-cgg-buttons="false"]) a.btn.btn-primary,
+html:not([data-cgg-buttons="false"]) button.btn.btn-primary {
   background-color: var(--cgg-crimson, #b81d42) !important;
   border-color: var(--cgg-crimson-border, rgba(240, 246, 252, 0.1)) !important;
   color: #ffffff !important;
@@ -175,18 +175,18 @@ button.btn.btn-primary {
   transition: background-color 0.15s ease, box-shadow 0.15s ease, transform 0.08s ease !important;
 }
 
-.btn-primary:hover,
-a.btn.btn-primary:hover,
-button.btn.btn-primary:hover {
+html:not([data-cgg-buttons="false"]) .btn-primary:hover,
+html:not([data-cgg-buttons="false"]) a.btn.btn-primary:hover,
+html:not([data-cgg-buttons="false"]) button.btn.btn-primary:hover {
   background-color: var(--cgg-crimson-hover, #c42045) !important;
   border-color: var(--cgg-crimson-hover, #c42045) !important;
   color: #ffffff !important;
   box-shadow: 0 0 14px var(--cgg-crimson-glow, rgba(184, 29, 66, 0.65)) !important;
 }
 
-.btn-primary:active,
-a.btn.btn-primary:active,
-button.btn.btn-primary:active {
+html:not([data-cgg-buttons="false"]) .btn-primary:active,
+html:not([data-cgg-buttons="false"]) a.btn.btn-primary:active,
+html:not([data-cgg-buttons="false"]) button.btn.btn-primary:active {
   background-color: var(--cgg-crimson-active, #8a122e) !important;
   border-color: var(--cgg-crimson-active, #8a122e) !important;
   color: #ffffff !important;
@@ -201,56 +201,120 @@ button.btn.btn-primary:active {
 }
 
 /* 7. Active Year Links & Selected Filter Items (Imperial Crimson Halo) */
-.filter-item.selected,
-.filter-item[aria-current="page"],
-a.js-year-link.selected,
-a.filter-item.selected,
-[id^="year-link-"].selected {
+html:not([data-cgg-buttons="false"]) .filter-item.selected,
+html:not([data-cgg-buttons="false"]) .filter-item[aria-current="page"],
+html:not([data-cgg-buttons="false"]) a.js-year-link.selected,
+html:not([data-cgg-buttons="false"]) a.filter-item.selected,
+html:not([data-cgg-buttons="false"]) [id^="year-link-"].selected {
   background-color: var(--cgg-crimson, #b81d42) !important;
   color: #ffffff !important;
   box-shadow: 0 0 8px var(--cgg-crimson-glow, rgba(184, 29, 66, 0.45)) !important;
 }
 
-.filter-item.selected:hover,
-a.js-year-link.selected:hover,
-[id^="year-link-"].selected:hover {
+html:not([data-cgg-buttons="false"]) .filter-item.selected:hover,
+html:not([data-cgg-buttons="false"]) a.js-year-link.selected:hover,
+html:not([data-cgg-buttons="false"]) [id^="year-link-"].selected:hover {
   background-color: var(--cgg-crimson-hover, #c42045) !important;
   color: #ffffff !important;
 }
 
 /* 8. Imperial Crimson Borders, Dividers & Outlines (Avatar Halo Aesthetic) */
-.profile-container,
-#user-profile-frame,
-.pinned-item-list-item,
-#user-repositories-list,
-.Box,
-.Box-header,
-.Box-body,
-.Box-row,
-.border,
-.border-top,
-.border-bottom,
-.border-left,
-.border-right,
-.color-border-default,
-.color-border-muted,
-.color-border-subtle,
-.UnderlineNav,
-nav.UnderlineNav,
-hr,
-.TimelineItem-badge,
-.timeline-comment,
-.timeline-comment-group,
-.js-yearly-contributions .border,
-.graph-before-activity-overview,
-header.AppHeader,
-.AppHeader,
-header[style*="border"],
-div[style*="border: 1px solid #30363d"],
-div[style*="border: 1px solid rgb(48, 54, 61)"] {
+html:not([data-cgg-borders="false"]) .profile-container,
+html:not([data-cgg-borders="false"]) #user-profile-frame,
+html:not([data-cgg-borders="false"]) .pinned-item-list-item,
+html:not([data-cgg-borders="false"]) #user-repositories-list,
+html:not([data-cgg-borders="false"]) .Box,
+html:not([data-cgg-borders="false"]) .Box-header,
+html:not([data-cgg-borders="false"]) .Box-body,
+html:not([data-cgg-borders="false"]) .Box-row,
+html:not([data-cgg-borders="false"]) .border,
+html:not([data-cgg-borders="false"]) .border-top,
+html:not([data-cgg-borders="false"]) .border-bottom,
+html:not([data-cgg-borders="false"]) .border-left,
+html:not([data-cgg-borders="false"]) .border-right,
+html:not([data-cgg-borders="false"]) .color-border-default,
+html:not([data-cgg-borders="false"]) .color-border-muted,
+html:not([data-cgg-borders="false"]) .color-border-subtle,
+html:not([data-cgg-borders="false"]) .UnderlineNav,
+html:not([data-cgg-borders="false"]) nav.UnderlineNav,
+html:not([data-cgg-borders="false"]) hr,
+html:not([data-cgg-borders="false"]) .TimelineItem-badge,
+html:not([data-cgg-borders="false"]) .timeline-comment,
+html:not([data-cgg-borders="false"]) .timeline-comment-group,
+html:not([data-cgg-borders="false"]) .js-yearly-contributions .border,
+html:not([data-cgg-borders="false"]) .graph-before-activity-overview,
+html:not([data-cgg-borders="false"]) header.AppHeader,
+html:not([data-cgg-borders="false"]) .AppHeader,
+html:not([data-cgg-borders="false"]) header[style*="border"],
+html:not([data-cgg-borders="false"]) div[style*="border: 1px solid #30363d"],
+html:not([data-cgg-borders="false"]) div[style*="border: 1px solid rgb(48, 54, 61)"] {
   border-color: var(--cgg-border-crimson, #b81d42) !important;
+}
+
+/* Fallback card border removal mode */
+html[data-cgg-borders="false"],
+html[data-cgg-borders="false"] body {
+  --cgg-border-crimson: #30363d !important;
+  --cgg-border-crimson-muted: #21262d !important;
+  --cgg-border-crimson-subtle: rgba(240, 246, 252, 0.1) !important;
+  --borderColor-default: #30363d !important;
+  --borderColor-muted: #30363d !important;
+  --borderColor-subtle: #21262d !important;
+  --color-border-default: #30363d !important;
+  --color-border-muted: #30363d !important;
+  --color-border-subtle: #21262d !important;
+  --dm-border: #30363d !important;
+  --dm-border-bright: #30363d !important;
+}
+
+html[data-cgg-borders="false"] .pinned-item-list-item,
+html[data-cgg-borders="false"] #user-repositories-list,
+html[data-cgg-borders="false"] .Box,
+html[data-cgg-borders="false"] .Box-header,
+html[data-cgg-borders="false"] .Box-body,
+html[data-cgg-borders="false"] .Box-row,
+html[data-cgg-borders="false"] .profile-container,
+html[data-cgg-borders="false"] #user-profile-frame,
+html[data-cgg-borders="false"] .border,
+html[data-cgg-borders="false"] .border-top,
+html[data-cgg-borders="false"] .border-bottom,
+html[data-cgg-borders="false"] .border-left,
+html[data-cgg-borders="false"] .border-right,
+html[data-cgg-borders="false"] .color-border-default,
+html[data-cgg-borders="false"] .color-border-muted,
+html[data-cgg-borders="false"] .color-border-subtle,
+html[data-cgg-borders="false"] .UnderlineNav,
+html[data-cgg-borders="false"] nav.UnderlineNav,
+html[data-cgg-borders="false"] header.AppHeader,
+html[data-cgg-borders="false"] .AppHeader,
+html[data-cgg-borders="false"] header[style*="border"],
+html[data-cgg-borders="false"] div[style*="border: 1px solid #30363d"],
+html[data-cgg-borders="false"] div[style*="border: 1px solid rgb(48, 54, 61)"] {
+  border-color: #30363d !important;
 }
 
 .TimelineItem::before {
   background-color: var(--cgg-border-crimson-muted, #8a122e) !important;
+}
+
+html[data-cgg-borders="false"] .TimelineItem::before {
+  background-color: #21262d !important;
+}
+
+/* Optional overrides when crimson buttons or hover dynamics are toggled */
+html[data-cgg-buttons="false"] .btn-primary,
+html[data-cgg-buttons="false"] a.btn.btn-primary,
+html[data-cgg-buttons="false"] button.btn.btn-primary {
+  background-color: #238636 !important;
+  border-color: rgba(240, 246, 252, 0.1) !important;
+  color: #ffffff !important;
+  box-shadow: none !important;
+}
+
+html[data-cgg-buttons="false"] .filter-item.selected,
+html[data-cgg-buttons="false"] a.js-year-link.selected,
+html[data-cgg-buttons="false"] [id^="year-link-"].selected {
+  background-color: #1f6feb !important;
+  color: #ffffff !important;
+  box-shadow: none !important;
 }

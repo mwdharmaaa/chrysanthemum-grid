@@ -47,6 +47,9 @@ const DEFAULT_SETTINGS = {
   enableGlow: true,
   glowIntensity: "medium",
   enableHoverAnimation: true,
+  enableCrimsonBorders: true,
+  enableWingedTooltip: true,
+  enableCrimsonButtons: true,
   enableSound: false
 };
 
