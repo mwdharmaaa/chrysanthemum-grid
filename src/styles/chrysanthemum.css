@@ -119,8 +119,8 @@ html[data-cgg-hover="false"] .ContributionCalendar-day:hover {
   font-size: 11px;
   font-weight: 600;
   color: var(--cgg-text-highlight);
-  background: rgba(221, 160, 52, 0.12);
-  border: 1px solid rgba(221, 160, 52, 0.35);
+  background: var(--cgg-badge-bg, rgba(221, 160, 52, 0.12));
+  border: 1px solid var(--cgg-badge-border, rgba(221, 160, 52, 0.35));
   border-radius: 999px;
   padding: 2px 8px;
   margin-left: 8px;
@@ -136,8 +136,24 @@ html[data-cgg-hover="false"] .ContributionCalendar-day:hover {
   box-shadow: 0 0 6px var(--cgg-l4);
 }
 
-/* Grand Imperial 1K+ Milestone Display */
-.cgg-grand-milestone-header {
+/* Scoped Yin Yang Badge: Pure Monochrome */
+html[data-cgg-theme="yinYang"] .cgg-badge,
+.cgg-badge.cgg-badge-yinyang {
+  color: #ffffff !important;
+  background: rgba(255, 255, 255, 0.12) !important;
+  border-color: rgba(255, 255, 255, 0.35) !important;
+}
+
+html[data-cgg-theme="yinYang"] .cgg-badge-dot,
+.cgg-badge.cgg-badge-yinyang .cgg-badge-dot {
+  background: #ffffff !important;
+  box-shadow: 0 0 6px rgba(255, 255, 255, 0.8) !important;
+}
+
+/* ==========================================================================
+   Grand Imperial 1K+ Milestone Display (Chrysanthemum Gold Exclusive)
+   ========================================================================== */
+html:not([data-cgg-theme="yinYang"]) .cgg-grand-milestone-header {
   display: flex !important;
   align-items: center !important;
   flex-wrap: wrap !important;
@@ -151,14 +167,14 @@ html[data-cgg-hover="false"] .ContributionCalendar-day:hover {
   position: relative !important;
 }
 
-.cgg-grand-count-wrap {
+html:not([data-cgg-theme="yinYang"]) .cgg-grand-count-wrap {
   display: inline-flex !important;
   align-items: center !important;
   gap: 6px !important;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif !important;
 }
 
-.cgg-grand-crown {
+html:not([data-cgg-theme="yinYang"]) .cgg-grand-crown {
   display: inline-flex !important;
   align-items: center !important;
   justify-content: center !important;
@@ -181,7 +197,7 @@ html[data-cgg-hover="false"] .ContributionCalendar-day:hover {
   }
 }
 
-.cgg-grand-count {
+html:not([data-cgg-theme="yinYang"]) .cgg-grand-count {
   font-size: 20px !important;
   font-weight: 800 !important;
   letter-spacing: 0.03em !important;
@@ -204,7 +220,7 @@ html[data-cgg-hover="false"] .ContributionCalendar-day:hover {
   }
 }
 
-.cgg-grand-label {
+html:not([data-cgg-theme="yinYang"]) .cgg-grand-label {
   font-size: 14px !important;
   font-weight: 600 !important;
   color: #edd287 !important;
@@ -212,8 +228,8 @@ html[data-cgg-hover="false"] .ContributionCalendar-day:hover {
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.9) !important;
 }
 
-/* Imperial 1K+ Grand Badge */
-.cgg-badge-grand-1k {
+/* Imperial 1K+ Grand Badge (Chrysanthemum Gold Exclusive) */
+html:not([data-cgg-theme="yinYang"]) .cgg-badge-grand-1k {
   display: inline-flex !important;
   align-items: center !important;
   gap: 5px !important;
@@ -243,7 +259,7 @@ html[data-cgg-hover="false"] .ContributionCalendar-day:hover {
   }
 }
 
-.cgg-badge-grand-sparkle {
+html:not([data-cgg-theme="yinYang"]) .cgg-badge-grand-sparkle {
   color: #ffcb47 !important;
   font-size: 12px !important;
   filter: drop-shadow(0 0 4px #ffcb47) !important;
@@ -256,7 +272,7 @@ html[data-cgg-hover="false"] .ContributionCalendar-day:hover {
   100% { transform: rotate(360deg) scale(1); }
 }
 
-.cgg-badge-grand-dot {
+html:not([data-cgg-theme="yinYang"]) .cgg-badge-grand-dot {
   width: 6px !important;
   height: 6px !important;
   border-radius: 50% !important;
@@ -264,22 +280,37 @@ html[data-cgg-hover="false"] .ContributionCalendar-day:hover {
   box-shadow: 0 0 6px #ffcb47, 0 0 10px rgba(230, 25, 75, 0.8) !important;
 }
 
-/* 1K+ Milestone Frame Aura */
-[data-cgg-milestone="1k-plus"] .ContributionCalendar,
-.profile-container[data-cgg-milestone="1k-plus"],
-#user-profile-frame[data-cgg-milestone="1k-plus"],
-.js-yearly-contributions[data-cgg-milestone="1k-plus"] .border {
+/* 1K+ Milestone Frame Aura (Chrysanthemum Gold Exclusive) */
+html[data-cgg-theme="chrysanthemum"] [data-cgg-milestone="1k-plus"] .ContributionCalendar,
+html[data-cgg-theme="chrysanthemum"] .profile-container[data-cgg-milestone="1k-plus"],
+html[data-cgg-theme="chrysanthemum"] #user-profile-frame[data-cgg-milestone="1k-plus"],
+html[data-cgg-theme="chrysanthemum"] .js-yearly-contributions[data-cgg-milestone="1k-plus"] .border {
   border-color: rgba(255, 203, 71, 0.45) !important;
   box-shadow: 0 0 24px rgba(255, 203, 71, 0.16), 0 0 44px rgba(184, 29, 66, 0.1) !important;
 }
 
-/* Repository Commits 1K+ Pill */
-.cgg-commit-grand-1k {
+/* Yin Yang Explicit Aura Suppression */
+html[data-cgg-theme="yinYang"] .cgg-grand-milestone-header,
+html[data-cgg-theme="yinYang"] .cgg-badge-grand-1k,
+html[data-cgg-theme="yinYang"] .cgg-grand-crown {
+  display: none !important;
+}
+
+html[data-cgg-theme="yinYang"] [data-cgg-milestone="1k-plus"] .ContributionCalendar,
+html[data-cgg-theme="yinYang"] .profile-container[data-cgg-milestone="1k-plus"],
+html[data-cgg-theme="yinYang"] #user-profile-frame[data-cgg-milestone="1k-plus"],
+html[data-cgg-theme="yinYang"] .js-yearly-contributions[data-cgg-milestone="1k-plus"] .border {
+  border-color: #30363d !important;
+  box-shadow: none !important;
+}
+
+/* Repository Commits 1K+ Pill (Chrysanthemum Gold Exclusive) */
+html:not([data-cgg-theme="yinYang"]) .cgg-commit-grand-1k {
   color: #ffe27a !important;
   text-shadow: 0 0 8px rgba(255, 203, 71, 0.5) !important;
 }
 
-.cgg-repo-1k-commit-pill {
+html:not([data-cgg-theme="yinYang"]) .cgg-repo-1k-commit-pill {
   display: inline-flex !important;
   align-items: center !important;
   gap: 4px !important;
@@ -295,11 +326,11 @@ html[data-cgg-hover="false"] .ContributionCalendar-day:hover {
   box-shadow: 0 0 8px rgba(255, 203, 71, 0.35) !important;
 }
 
-.cgg-repo-crown {
+html:not([data-cgg-theme="yinYang"]) .cgg-repo-crown {
   font-size: 11px;
 }
 
-/* Repository Activity Sparklines (Chrysanthemum Gold) */
+/* Repository Activity Sparklines */
 .text-right svg,
 svg[width="155"],
 poll-include-fragment svg {

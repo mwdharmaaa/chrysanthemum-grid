@@ -36,6 +36,9 @@ const WingedTooltip = {
   settings: {},
 
   show(dayEl) {
+    const isYinYang = (this.settings.activePalette || "") === "yinYang";
+    const isChrysanthemum = !isYinYang;
+
     const host = TooltipHost.create();
     const content = TooltipHost.getContentElement();
     const text = TooltipTextFormatter.resolve(dayEl);
@@ -43,22 +46,28 @@ const WingedTooltip = {
 
     const level = TooltipLevelExtractor.extract(dayEl, text);
     const count = typeof TooltipLevelExtractor.extractCount === "function" ? TooltipLevelExtractor.extractCount(dayEl, text) : 0;
-    const isGrand1k = (this.settings.enableGrand1kMilestone !== false) && count >= 1000;
+    const isGrand1k = isChrysanthemum && (this.settings.enableGrand1kMilestone !== false) && count >= 1000;
+    const enableWings = isChrysanthemum && (this.settings.enableWingedTooltip !== false);
 
+    // Reset old classes
     host.className = `cgg-winged-tooltip cgg-level-${level}`;
-    const enableWings = this.settings.enableWingedTooltip !== false;
-    if (enableWings && (level === 3 || level === 4 || isGrand1k)) {
-      host.classList.add("has-wings");
-    }
-    if (enableWings && (level === 4 || isGrand1k)) {
-      host.classList.add("has-halo");
-    }
-    if (isGrand1k) {
-      host.classList.add("cgg-grand-1k-tooltip");
-      const crown = document.createElement("span");
-      crown.className = "cgg-tooltip-crown";
-      crown.textContent = "👑 ";
-      content.prepend(crown);
+
+    if (isYinYang) {
+      host.classList.add("cgg-tooltip-yinyang");
+    } else {
+      if (enableWings && (level === 3 || level === 4 || isGrand1k)) {
+        host.classList.add("has-wings");
+      }
+      if (enableWings && (level === 4 || isGrand1k)) {
+        host.classList.add("has-halo");
+      }
+      if (isGrand1k) {
+        host.classList.add("cgg-grand-1k-tooltip");
+        const crown = document.createElement("span");
+        crown.className = "cgg-tooltip-crown";
+        crown.textContent = "👑 ";
+        content.prepend(crown);
+      }
     }
 
     const coords = TooltipPositioner.compute(dayEl);

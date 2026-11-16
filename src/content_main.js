@@ -12,6 +12,19 @@
         callback(currentSettings);
       });
     } else {
+      // Offline harness or local testing: support URL parameter ?theme=... or window.__CGG_SETTINGS__
+      try {
+        const urlParams = (typeof window !== "undefined" && window.location) ? new URLSearchParams(window.location.search) : null;
+        const themeParam = urlParams ? urlParams.get("theme") : null;
+        if (themeParam && typeof PALETTES !== "undefined" && PALETTES[themeParam]) {
+          currentSettings.activePalette = themeParam;
+        }
+        if (typeof window !== "undefined" && window.__CGG_SETTINGS__) {
+          currentSettings = { ...currentSettings, ...window.__CGG_SETTINGS__ };
+        }
+      } catch (e) {
+        // Fallback to default
+      }
       callback(currentSettings);
     }
   }

@@ -11,6 +11,7 @@ const TypographyStyler = {
     };
 
     const isYinYang = paletteKey === "yinYang";
+    const isChrysanthemum = !isYinYang;
 
     // 1. Octocat Brand Logo in header
     document.querySelectorAll("svg.octicon-mark-github, .octicon-mark-github, a[aria-label*='Homepage' i] svg").forEach((el) => {
@@ -38,12 +39,12 @@ const TypographyStyler = {
       el.style.setProperty("color", palette.l4, "important");
     });
 
-    const enableButtons = settings.enableCrimsonButtons !== false;
+    // 5. Primary Buttons (White on Black for Yin Yang; Imperial Crimson for Gold if enabled)
+    const enableButtons = isChrysanthemum && settings.enableCrimsonButtons !== false;
     const btnBg = isYinYang ? "#ffffff" : (enableButtons ? "#b81d42" : "#238636");
     const btnFg = isYinYang ? "#000000" : "#ffffff";
-    const btnBorder = isYinYang ? "#ffffff" : "rgba(240, 246, 252, 0.1)";
+    const btnBorder = isYinYang ? "#ffffff" : (enableButtons ? "rgba(240, 246, 252, 0.1)" : "rgba(240, 246, 252, 0.1)");
 
-    // 5. Primary Buttons (White on Black for Yin Yang, Imperial Crimson otherwise)
     document.querySelectorAll(".btn-primary, a.btn-primary, button.btn-primary").forEach((btn) => {
       btn.style.setProperty("background-color", btnBg, "important");
       btn.style.setProperty("color", btnFg, "important");
@@ -62,9 +63,42 @@ const TypographyStyler = {
       link.style.setProperty("color", filterFg, "important");
     });
 
-    // Clean up any repository commit pills (1K+ milestone is strictly for daily commits in tooltip)
-    document.querySelectorAll(".cgg-repo-1k-commit-pill").forEach((pill) => pill.remove());
-    document.querySelectorAll(".cgg-commit-grand-1k").forEach((el) => el.classList.remove("cgg-commit-grand-1k"));
+    // 7. Repository Commit Counters (Grand 1K+ Commits - Chrysanthemum Gold Exclusive)
+    this.styleRepoCommits(settings);
+  },
+
+  styleRepoCommits(settings = {}) {
+    const isYinYang = (settings.activePalette || "") === "yinYang";
+    const isChrysanthemum = !isYinYang;
+    const enableGrand = isChrysanthemum && settings.enableGrand1kMilestone !== false;
+
+    document.querySelectorAll("a[href*='/commits'], .commits a").forEach((el) => {
+      const pill = el.querySelector(".cgg-repo-1k-commit-pill");
+      if (isYinYang) {
+        el.classList.remove("cgg-commit-grand-1k");
+        if (pill) pill.remove();
+        return;
+      }
+
+      const text = el.textContent || "";
+      const match = text.match(/([\d,.]+)\s+commits?/i);
+      if (match) {
+        const cleanNum = match[1].replace(/[,.]/g, "");
+        const count = parseInt(cleanNum, 10) || 0;
+        if (count >= 1000 && enableGrand) {
+          el.classList.add("cgg-commit-grand-1k");
+          if (!pill) {
+            const newPill = document.createElement("span");
+            newPill.className = "cgg-repo-1k-commit-pill";
+            newPill.innerHTML = `<span class="cgg-repo-crown">👑</span> 1K+`;
+            el.appendChild(newPill);
+          }
+        } else {
+          el.classList.remove("cgg-commit-grand-1k");
+          if (pill) pill.remove();
+        }
+      }
+    });
   }
 };
 

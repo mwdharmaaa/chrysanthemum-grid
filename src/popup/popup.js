@@ -13,6 +13,43 @@ document.addEventListener("DOMContentLoaded", () => {
   const swatchStrip = document.getElementById("swatchStrip");
   const statusMsg = document.getElementById("statusMsg");
 
+  const rowBorders = document.getElementById("rowBorders");
+  const rowWings = document.getElementById("rowWings");
+  const rowButtons = document.getElementById("rowButtons");
+  const rowGrand1k = document.getElementById("rowGrand1k");
+
+  const descBorders = document.getElementById("descBorders");
+  const descWings = document.getElementById("descWings");
+  const descButtons = document.getElementById("descButtons");
+  const descGrand1k = document.getElementById("descGrand1k");
+
+  function updateThemeUI(paletteKey) {
+    const isYinYang = paletteKey === "yinYang";
+    if (isYinYang) {
+      document.body.setAttribute("data-theme", "yinYang");
+      if (rowBorders) rowBorders.classList.add("theme-disabled");
+      if (rowWings) rowWings.classList.add("theme-disabled");
+      if (rowButtons) rowButtons.classList.add("theme-disabled");
+      if (rowGrand1k) rowGrand1k.classList.add("theme-disabled");
+
+      if (descBorders) descBorders.textContent = "Disabled in Yin Yang (Chrysanthemum Gold exclusive)";
+      if (descWings) descWings.textContent = "Disabled in Yin Yang (Chrysanthemum Gold exclusive)";
+      if (descButtons) descButtons.textContent = "Disabled in Yin Yang (Chrysanthemum Gold exclusive)";
+      if (descGrand1k) descGrand1k.textContent = "Disabled in Yin Yang (Chrysanthemum Gold exclusive)";
+    } else {
+      document.body.removeAttribute("data-theme");
+      if (rowBorders) rowBorders.classList.remove("theme-disabled");
+      if (rowWings) rowWings.classList.remove("theme-disabled");
+      if (rowButtons) rowButtons.classList.remove("theme-disabled");
+      if (rowGrand1k) rowGrand1k.classList.remove("theme-disabled");
+
+      if (descBorders) descBorders.textContent = "Imperial crimson outlines on cards & boxes";
+      if (descWings) descWings.textContent = "Royal gold mecha wings on commit hover";
+      if (descButtons) descButtons.textContent = "Vibrant crimson style on primary action buttons";
+      if (descGrand1k) descGrand1k.textContent = "Regal gold aura & imperial crown on 1,000+ commits";
+    }
+  }
+
   function updateSwatches(paletteKey, isGlow) {
     const palette = PALETTES[paletteKey] || PALETTES.chrysanthemum;
     const swatches = swatchStrip.querySelectorAll(".swatch");
@@ -52,6 +89,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (buttonsToggle) buttonsToggle.checked = settings.enableCrimsonButtons !== false;
         if (grand1kToggle) grand1kToggle.checked = settings.enableGrand1kMilestone !== false;
         updateSwatches(settings.activePalette, settings.enableGlow);
+        updateThemeUI(settings.activePalette);
       });
     } else {
       glowToggle.checked = DEFAULT_SETTINGS.enableGlow !== false;
@@ -61,6 +99,7 @@ document.addEventListener("DOMContentLoaded", () => {
       if (buttonsToggle) buttonsToggle.checked = DEFAULT_SETTINGS.enableCrimsonButtons !== false;
       if (grand1kToggle) grand1kToggle.checked = DEFAULT_SETTINGS.enableGrand1kMilestone !== false;
       updateSwatches(DEFAULT_SETTINGS.activePalette, DEFAULT_SETTINGS.enableGlow);
+      updateThemeUI(DEFAULT_SETTINGS.activePalette);
     }
   }
 
@@ -76,6 +115,7 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     updateSwatches(newSettings.activePalette, newSettings.enableGlow);
+    updateThemeUI(newSettings.activePalette);
 
     if (typeof chrome !== "undefined" && chrome.storage && chrome.storage.local) {
       chrome.storage.local.set(newSettings, () => {

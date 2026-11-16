@@ -1,6 +1,7 @@
 /**
  * Chrysanthemum Gold Grid - Winged Tooltip Styles
- * Renders royal gold winged adornments on contribution calendar day hover.
+ * Renders royal gold winged adornments on contribution calendar day hover for Chrysanthemum Gold.
+ * Pure monochrome tooltip styles for Yin Yang theme.
  */
 
 :root {
@@ -49,9 +50,12 @@
   transition: all 0.15s ease;
 }
 
+/* ==========================================================================
+   Chrysanthemum Gold Tooltip Levels
+   ========================================================================== */
 /* Level 0: Kosong / tanpa commit (polos) */
-.cgg-winged-tooltip.cgg-level-0 .cgg-winged-tooltip-content,
-.cgg-winged-tooltip:not([class*="cgg-level-"]) .cgg-winged-tooltip-content {
+.cgg-winged-tooltip:not(.cgg-tooltip-yinyang).cgg-level-0 .cgg-winged-tooltip-content,
+.cgg-winged-tooltip:not(.cgg-tooltip-yinyang):not([class*="cgg-level-"]) .cgg-winged-tooltip-content {
   background: #16202c !important;
   color: #8b949e !important;
   border: 1px solid var(--cgg-l0-border, #243346) !important;
@@ -60,7 +64,7 @@
 }
 
 /* Level 1: Garis pinggir merah */
-.cgg-winged-tooltip.cgg-level-1 .cgg-winged-tooltip-content {
+.cgg-winged-tooltip:not(.cgg-tooltip-yinyang).cgg-level-1 .cgg-winged-tooltip-content {
   background: #16202c !important;
   color: var(--cgg-text-highlight, #ffe27a) !important;
   border: 1px solid var(--cgg-border-crimson, #b81d42) !important;
@@ -69,7 +73,7 @@
 }
 
 /* Level 2: Garis merah + cahaya emas tipis (tanpa sayap) */
-.cgg-winged-tooltip.cgg-level-2 .cgg-winged-tooltip-content {
+.cgg-winged-tooltip:not(.cgg-tooltip-yinyang).cgg-level-2 .cgg-winged-tooltip-content {
   background: #16202c !important;
   color: var(--cgg-text-highlight, #ffe27a) !important;
   border: 1px solid var(--cgg-border-crimson, #b81d42) !important;
@@ -78,7 +82,7 @@
 }
 
 /* Level 3: Sayap emas horizontal + gold border */
-.cgg-winged-tooltip.cgg-level-3 .cgg-winged-tooltip-content {
+.cgg-winged-tooltip:not(.cgg-tooltip-yinyang).cgg-level-3 .cgg-winged-tooltip-content {
   background: linear-gradient(180deg, #16202c 0%, #0d1520 100%) !important;
   color: var(--cgg-text-highlight, #ffe27a) !important;
   border: 1px solid var(--cgg-l3, #dda034) !important;
@@ -87,7 +91,7 @@
 }
 
 /* Level 4: Lingkaran merah avatar + sayap emas horizontal */
-.cgg-winged-tooltip.cgg-level-4 .cgg-winged-tooltip-content {
+.cgg-winged-tooltip:not(.cgg-tooltip-yinyang).cgg-level-4 .cgg-winged-tooltip-content {
   background: linear-gradient(180deg, #16202c 0%, #0d1520 100%) !important;
   color: var(--cgg-text-highlight, #ffe27a) !important;
   border: 1px solid var(--cgg-l4, #ffcb47) !important;
@@ -95,7 +99,7 @@
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.9) !important;
 }
 
-/* Crimson Avatar Halo Ring (Level 4) */
+/* Crimson Avatar Halo Ring (Level 4 - Chrysanthemum Gold Exclusive) */
 .cgg-crimson-halo {
   display: none;
   position: absolute;
@@ -115,7 +119,7 @@
   animation: cgg-halo-pulse 2.8s ease-in-out infinite alternate;
 }
 
-.cgg-winged-tooltip.has-halo .cgg-crimson-halo {
+.cgg-winged-tooltip.has-halo:not(.cgg-tooltip-yinyang) .cgg-crimson-halo {
   display: block;
 }
 
@@ -130,7 +134,7 @@
   }
 }
 
-/* Left & Right Wing Flanks (Horizontal Span) */
+/* Left & Right Wing Flanks (Chrysanthemum Gold Exclusive) */
 .cgg-winged-tooltip-wing {
   display: none;
   position: absolute;
@@ -145,15 +149,13 @@
   z-index: 1;
 }
 
-/* Level 4: Grand Majestic Wing Expansion */
-.cgg-winged-tooltip.cgg-level-4 .cgg-winged-tooltip-wing {
+.cgg-winged-tooltip.cgg-level-4:not(.cgg-tooltip-yinyang) .cgg-winged-tooltip-wing {
   width: 124px;
   height: 101px;
   filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.5));
 }
 
-/* Display wings exclusively on days with level 3 or level 4 */
-.cgg-winged-tooltip.has-wings .cgg-winged-tooltip-wing {
+.cgg-winged-tooltip.has-wings:not(.cgg-tooltip-yinyang) .cgg-winged-tooltip-wing {
   display: block;
 }
 
@@ -164,7 +166,7 @@
   animation: cgg-wing-float-l 2.4s ease-in-out infinite alternate;
 }
 
-.cgg-winged-tooltip.cgg-level-4 .cgg-winged-tooltip-wing-left {
+.cgg-winged-tooltip.cgg-level-4:not(.cgg-tooltip-yinyang) .cgg-winged-tooltip-wing-left {
   right: calc(100% - 18px);
 }
 
@@ -175,29 +177,104 @@
   animation: cgg-wing-float-r 2.4s ease-in-out infinite alternate;
 }
 
-.cgg-winged-tooltip.cgg-level-4 .cgg-winged-tooltip-wing-right {
+.cgg-winged-tooltip.cgg-level-4:not(.cgg-tooltip-yinyang) .cgg-winged-tooltip-wing-right {
   left: calc(100% - 18px);
 }
 
 @keyframes cgg-wing-float-l {
-  0% {
-    transform: translateY(-50%) translate(-2px, 0) rotate(0deg);
-  }
-  100% {
-    transform: translateY(-54%) translate(-5px, -2px) rotate(-3deg);
-  }
+  0% { transform: translateY(-50%) translate(-2px, 0) rotate(0deg); }
+  100% { transform: translateY(-54%) translate(-5px, -2px) rotate(-3deg); }
 }
 
 @keyframes cgg-wing-float-r {
-  0% {
-    transform: translateY(-50%) translate(2px, 0) rotate(0deg);
-  }
-  100% {
-    transform: translateY(-54%) translate(5px, -2px) rotate(3deg);
-  }
+  0% { transform: translateY(-50%) translate(2px, 0) rotate(0deg); }
+  100% { transform: translateY(-54%) translate(5px, -2px) rotate(3deg); }
 }
 
-/* Suppress redundant plain native tooltip while custom winged tooltip is active */
+/* Grand 1K+ Commits Tooltip (Chrysanthemum Gold Exclusive) */
+.cgg-winged-tooltip.cgg-grand-1k-tooltip:not(.cgg-tooltip-yinyang) .cgg-winged-tooltip-content {
+  background: linear-gradient(135deg, #16202c 0%, #29181c 50%, #16202c 100%) !important;
+  color: #fff2a3 !important;
+  border: 1.5px solid #ffcb47 !important;
+  box-shadow: 0 0 20px rgba(255, 203, 71, 0.7), 0 0 10px rgba(184, 29, 66, 0.8), 0 6px 20px rgba(0, 0, 0, 0.8) !important;
+  text-shadow: 0 0 8px rgba(255, 203, 71, 0.6) !important;
+  font-weight: 700 !important;
+}
+
+.cgg-winged-tooltip.cgg-grand-1k-tooltip:not(.cgg-tooltip-yinyang) .cgg-winged-tooltip-wing {
+  width: 136px !important;
+  height: 110px !important;
+  filter: drop-shadow(0 0 8px rgba(255, 203, 71, 0.8)) drop-shadow(0 4px 8px rgba(0, 0, 0, 0.6)) !important;
+}
+
+.cgg-tooltip-crown {
+  font-size: 14px;
+  filter: drop-shadow(0 0 4px #ffcb47);
+  margin-right: 4px;
+}
+
+
+/* ==========================================================================
+   YIN YANG TOOLTIP: Pure Monochrome (Strictly Zero Wings, Halo, Crown, Red)
+   ========================================================================== */
+.cgg-winged-tooltip.cgg-tooltip-yinyang .cgg-winged-tooltip-content,
+html[data-cgg-theme="yinYang"] .cgg-winged-tooltip .cgg-winged-tooltip-content {
+  background: #0a0a0a !important;
+  color: #ffffff !important;
+  border: 1px solid #383838 !important;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.7) !important;
+  text-shadow: none !important;
+}
+
+.cgg-winged-tooltip.cgg-tooltip-yinyang.cgg-level-0 .cgg-winged-tooltip-content,
+html[data-cgg-theme="yinYang"] .cgg-winged-tooltip.cgg-level-0 .cgg-winged-tooltip-content {
+  background: #0a0a0a !important;
+  color: #8b949e !important;
+  border: 1px solid #262626 !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5) !important;
+}
+
+.cgg-winged-tooltip.cgg-tooltip-yinyang.cgg-level-1 .cgg-winged-tooltip-content,
+html[data-cgg-theme="yinYang"] .cgg-winged-tooltip.cgg-level-1 .cgg-winged-tooltip-content {
+  background: #0a0a0a !important;
+  color: #ffffff !important;
+  border: 1px solid #383838 !important;
+}
+
+.cgg-winged-tooltip.cgg-tooltip-yinyang.cgg-level-2 .cgg-winged-tooltip-content,
+html[data-cgg-theme="yinYang"] .cgg-winged-tooltip.cgg-level-2 .cgg-winged-tooltip-content {
+  background: #0a0a0a !important;
+  color: #ffffff !important;
+  border: 1px solid #6e6e6e !important;
+}
+
+.cgg-winged-tooltip.cgg-tooltip-yinyang.cgg-level-3 .cgg-winged-tooltip-content,
+html[data-cgg-theme="yinYang"] .cgg-winged-tooltip.cgg-level-3 .cgg-winged-tooltip-content {
+  background: #141414 !important;
+  color: #ffffff !important;
+  border: 1px solid #aaaaaa !important;
+}
+
+.cgg-winged-tooltip.cgg-tooltip-yinyang.cgg-level-4 .cgg-winged-tooltip-content,
+html[data-cgg-theme="yinYang"] .cgg-winged-tooltip.cgg-level-4 .cgg-winged-tooltip-content {
+  background: #1f1f1f !important;
+  color: #ffffff !important;
+  border: 1px solid #ffffff !important;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.4), 0 4px 14px rgba(0, 0, 0, 0.8) !important;
+}
+
+/* Suppress all wings, halos, and crowns in Yin Yang */
+.cgg-winged-tooltip.cgg-tooltip-yinyang .cgg-winged-tooltip-wing,
+.cgg-winged-tooltip.cgg-tooltip-yinyang .cgg-crimson-halo,
+.cgg-winged-tooltip.cgg-tooltip-yinyang .cgg-tooltip-crown,
+html[data-cgg-theme="yinYang"] .cgg-winged-tooltip .cgg-winged-tooltip-wing,
+html[data-cgg-theme="yinYang"] .cgg-winged-tooltip .cgg-crimson-halo,
+html[data-cgg-theme="yinYang"] .cgg-winged-tooltip .cgg-tooltip-crown {
+  display: none !important;
+  visibility: hidden !important;
+}
+
+/* Suppress redundant plain native tooltip while custom tooltip is active */
 .js-calendar-graph tool-tip,
 .ContributionCalendar tool-tip,
 table.ContributionCalendar-grid + tool-tip,
@@ -211,31 +288,7 @@ tool-tip[for*="contribution"] {
 }
 
 /* Winged tooltip toggle override */
-html[data-cgg-wings="false"] .cgg-winged-tooltip.has-wings::before,
-html[data-cgg-wings="false"] .cgg-winged-tooltip.has-wings::after,
 html[data-cgg-wings="false"] .cgg-winged-tooltip-wing,
-html[data-cgg-wings="false"] .cgg-avatar-halo {
+html[data-cgg-wings="false"] .cgg-crimson-halo {
   display: none !important;
-}
-
-/* Grand 1K+ Commits Tooltip */
-.cgg-winged-tooltip.cgg-grand-1k-tooltip .cgg-winged-tooltip-content {
-  background: linear-gradient(135deg, #16202c 0%, #29181c 50%, #16202c 100%) !important;
-  color: #fff2a3 !important;
-  border: 1.5px solid #ffcb47 !important;
-  box-shadow: 0 0 20px rgba(255, 203, 71, 0.7), 0 0 10px rgba(184, 29, 66, 0.8), 0 6px 20px rgba(0, 0, 0, 0.8) !important;
-  text-shadow: 0 0 8px rgba(255, 203, 71, 0.6) !important;
-  font-weight: 700 !important;
-}
-
-.cgg-winged-tooltip.cgg-grand-1k-tooltip .cgg-winged-tooltip-wing {
-  width: 136px !important;
-  height: 110px !important;
-  filter: drop-shadow(0 0 8px rgba(255, 203, 71, 0.8)) drop-shadow(0 4px 8px rgba(0, 0, 0, 0.6)) !important;
-}
-
-.cgg-tooltip-crown {
-  font-size: 14px;
-  filter: drop-shadow(0 0 4px #ffcb47);
-  margin-right: 4px;
 }

@@ -265,17 +265,32 @@
 
         const header = ContainerStyler.findHeader(container);
         if (header) {
-          const target = header.querySelector("span:not([style*='margin-left']):not(.cgg-badge)") || header.querySelector("span");
+          const wrap = header.querySelector(".cgg-grand-count-wrap");
+          const target = wrap || header.querySelector("span:not([style*='margin-left']):not(.cgg-badge)") || header.querySelector("span");
           if (target) {
             target.textContent = yearData[year] || `${yearData["2026"]}`;
           }
-          ContainerStyler.style(container);
-          TypographyStyler.style();
+          const theme = new URLSearchParams(window.location.search).get("theme") || "chrysanthemum";
+          const currentSet = { ...DEFAULT_SETTINGS, activePalette: theme };
+          ContainerStyler.style(container, currentSet);
+          TypographyStyler.style(currentSet);
         }
       });
     });
 
     const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get("theme") === "yinYang") {
+      const settings = { ...DEFAULT_SETTINGS, activePalette: "yinYang" };
+      GoldStyler.applyPaletteTokens(settings);
+      GoldStyler.styleTypography(settings);
+      GoldStyler.styleSparklines(settings);
+      GoldStyler.styleBorders(settings);
+      GoldStyler.styleButtons(settings);
+      GoldStyler.styleNavigation(settings);
+      ContainerStyler.style(container, settings);
+      WingedTooltip.init(settings);
+    }
+
     if (urlParams.get("year") === "2025") {
       document.getElementById("year-link-2025").click();
     } else if (urlParams.get("year") === "2024") {

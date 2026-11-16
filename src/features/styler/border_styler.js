@@ -4,11 +4,13 @@
 const BorderStyler = {
   style(settings = {}) {
     const isYinYang = (settings.activePalette || "") === "yinYang";
-    const enabled = settings.enableCrimsonBorders !== false;
-    const borderCol = isYinYang ? "#383838" : (enabled ? "var(--cgg-border-crimson, rgba(163, 29, 39, 0.45))" : "#30363d");
-    const borders = document.querySelectorAll(".BorderGrid-cell, .border-bottom, .timeline-comment, .discussion-timeline-actions");
+    const isChrysanthemum = !isYinYang;
+    const enabled = isChrysanthemum && settings.enableCrimsonBorders !== false;
+    const borderCol = isYinYang ? "#30363d" : (enabled ? "var(--cgg-border-crimson, #b81d42)" : "#30363d");
+
+    const borders = document.querySelectorAll(".BorderGrid-cell, .border-bottom, .border-top, .timeline-comment, .discussion-timeline-actions, hr");
     borders.forEach((el) => {
-      el.style.borderColor = borderCol;
+      el.style.setProperty("border-color", borderCol, "important");
     });
 
     const cardSelectors = [
@@ -21,9 +23,10 @@ const BorderStyler = {
       ".profile-container",
       "#user-profile-frame",
       "header[style*='border']",
-      "div[style*='border: 1px solid #30363d']"
+      "div[style*='border: 1px solid #30363d']",
+      ".js-yearly-contributions .border"
     ];
-    const cardBorderCol = isYinYang ? "#383838" : (enabled ? "var(--cgg-border-crimson, #b81d42)" : "#30363d");
+    const cardBorderCol = isYinYang ? "#30363d" : (enabled ? "var(--cgg-border-crimson, #b81d42)" : "#30363d");
     document.querySelectorAll(cardSelectors.join(", ")).forEach((el) => {
       el.style.setProperty("border-color", cardBorderCol, "important");
     });
