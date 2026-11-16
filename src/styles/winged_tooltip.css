@@ -272,7 +272,7 @@ html[data-cgg-theme="yinYang"] .cgg-winged-tooltip .cgg-winged-tooltip-content {
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.75) !important;
   text-shadow: none !important;
   white-space: nowrap !important;
-  z-index: 2 !important;
+  z-index: 5 !important;
 }
 
 .cgg-winged-tooltip.cgg-tooltip-yinyang.cgg-level-0 .cgg-winged-tooltip-content,
@@ -450,10 +450,10 @@ html[data-cgg-theme="yinYang"] .cgg-winged-tooltip.cgg-level-4 .cgg-winged-toolt
 }
 
 /* ==========================================================================
-   YIN YANG TWIN DRAGONS FLANKING ENGINE
-   Left: Black Dragon (Naga Hitam) with dynamic moving black ink smoke aura.
-   Right: White Dragon (Naga Putih) with dynamic moving white mist aura.
-   Living moving aura - NOT static box-shadow glow!
+   YIN YANG TWIN DRAGONS FLANKING ENGINE (Arched Bust Edition)
+   Positioned BEHIND the card layer (z-index: 2, below card z-index: 5)
+   Body arches outward, head curves inward toward the card
+   90% of glowing haze removed -> clean crisp sumi-e ink with subtle smoke
    ========================================================================== */
 .cgg-dragon-flank {
   display: none;
@@ -461,7 +461,7 @@ html[data-cgg-theme="yinYang"] .cgg-winged-tooltip.cgg-level-4 .cgg-winged-toolt
   top: 50%;
   transform: translateY(-50%);
   pointer-events: none;
-  z-index: 3;
+  z-index: 2 !important; /* BEHIND the card layer */
   align-items: center;
   justify-content: center;
 }
@@ -470,20 +470,20 @@ html[data-cgg-theme="yinYang"] .cgg-winged-tooltip.cgg-level-4 .cgg-winged-toolt
   display: flex;
 }
 
-/* Flanking positions relative to the content card */
+/* Flanking positions: body emerging gracefully from behind the card */
 .cgg-dragon-left {
-  right: calc(100% - 12px);
+  right: calc(100% - 25px);
 }
 
 .cgg-dragon-right {
-  left: calc(100% - 12px);
+  left: calc(100% - 25px);
 }
 
-/* Dragon Body Artwork */
+/* Dragon Body Artwork (Upper Half Bust from front claws to head) */
 .cgg-dragon-body {
   position: relative;
-  width: 105px;
-  height: 49px;
+  width: 145px;
+  height: 140px;
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
@@ -492,18 +492,20 @@ html[data-cgg-theme="yinYang"] .cgg-winged-tooltip.cgg-level-4 .cgg-winged-toolt
   will-change: transform;
 }
 
-/* Left: Black Dragon Artwork (facing toward card) */
+/* Left: Black Dragon Bust (Body arches outward to left, head curves inward) */
 .cgg-dragon-left .cgg-dragon-body {
   background-image: var(--cgg-dragon-black-left) !important;
-  animation: cgg-dragon-left-hover 3.2s ease-in-out infinite alternate !important;
-  filter: drop-shadow(0 0 1.5px rgba(255, 255, 255, 0.45)) drop-shadow(0 3px 6px rgba(0, 0, 0, 0.95)) !important;
+  animation: cgg-dragon-left-hover 3.4s ease-in-out infinite alternate !important;
+  /* 90% glow removed: clean drop-shadow for depth without neon blur */
+  filter: drop-shadow(0 0 1px rgba(255, 255, 255, 0.35)) drop-shadow(0 3px 6px rgba(0, 0, 0, 0.85)) !important;
 }
 
-/* Right: White Dragon Artwork (facing toward card) */
+/* Right: White Dragon Bust (Body arches outward to right, head curves inward) */
 .cgg-dragon-right .cgg-dragon-body {
   background-image: var(--cgg-dragon-white-right) !important;
-  animation: cgg-dragon-right-hover 3.2s ease-in-out infinite alternate !important;
-  filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.85)) drop-shadow(0 3px 6px rgba(0, 0, 0, 0.95)) !important;
+  animation: cgg-dragon-right-hover 3.4s ease-in-out infinite alternate !important;
+  /* 90% glow removed: crisp white silhouette */
+  filter: drop-shadow(0 0 1px rgba(255, 255, 255, 0.6)) drop-shadow(0 3px 6px rgba(0, 0, 0, 0.85)) !important;
 }
 
 @keyframes cgg-dragon-left-hover {
@@ -519,36 +521,34 @@ html[data-cgg-theme="yinYang"] .cgg-winged-tooltip.cgg-level-4 .cgg-winged-toolt
 }
 
 /* ==========================================================================
-   DYNAMIC MOVING DRAGON AURA (Living Ink Smoke / Mist - NOT GLOW)
-   Organic morphing, undulating vapor plumes moving around the dragon bodies
+   FAINT SUBTLE SMOKE AURA (90% Glow Removed)
+   Faint, organic, undulating wisps of smoke vapor behind the dragon bust
    ========================================================================== */
 .cgg-dragon-aura-smoke {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 95px;
-  height: 44px;
+  width: 130px;
+  height: 125px;
   pointer-events: none;
   z-index: 1;
-  border-radius: 42% 58% 65% 35% / 45% 55% 45% 55%;
-  will-change: transform, border-radius, opacity;
+  border-radius: 45% 55% 60% 40% / 40% 50% 50% 60%;
+  will-change: transform, border-radius;
+  filter: blur(4px) !important;
+  opacity: 0.22 !important; /* 90% reduction from heavy neon glow */
 }
 
-/* Black Dragon Moving Aura: dark ink smoke vapor */
+/* Black Dragon: faint dark smoke wisp */
 .cgg-dragon-left .cgg-dragon-aura-smoke {
-  background: radial-gradient(ellipse at 50% 50%, rgba(0, 0, 0, 0.96) 0%, rgba(15, 18, 24, 0.85) 45%, rgba(0, 0, 0, 0.4) 75%, transparent 100%) !important;
-  box-shadow: 0 0 16px 6px rgba(0, 0, 0, 0.95), inset 0 0 10px rgba(0, 0, 0, 1) !important;
-  animation: cgg-black-smoke-drift 3.8s ease-in-out infinite alternate !important;
-  filter: blur(3px) !important;
+  background: radial-gradient(ellipse at 50% 50%, rgba(0, 0, 0, 0.85) 0%, rgba(12, 14, 18, 0.4) 60%, transparent 100%) !important;
+  animation: cgg-black-smoke-drift 4.2s ease-in-out infinite alternate !important;
 }
 
-/* White Dragon Moving Aura: ethereal white mist vapor */
+/* White Dragon: faint white mist wisp */
 .cgg-dragon-right .cgg-dragon-aura-smoke {
-  background: radial-gradient(ellipse at 50% 50%, rgba(255, 255, 255, 0.85) 0%, rgba(220, 228, 238, 0.6) 45%, rgba(180, 190, 205, 0.25) 75%, transparent 100%) !important;
-  box-shadow: 0 0 14px 5px rgba(255, 255, 255, 0.6), inset 0 0 10px rgba(255, 255, 255, 0.9) !important;
-  animation: cgg-white-smoke-drift 3.8s ease-in-out infinite alternate !important;
-  filter: blur(3px) !important;
+  background: radial-gradient(ellipse at 50% 50%, rgba(255, 255, 255, 0.6) 0%, rgba(220, 225, 235, 0.2) 60%, transparent 100%) !important;
+  animation: cgg-white-smoke-drift 4.2s ease-in-out infinite alternate !important;
 }
 
 /* Secondary outer billowing tendril layer */
@@ -557,43 +557,38 @@ html[data-cgg-theme="yinYang"] .cgg-winged-tooltip.cgg-level-4 .cgg-winged-toolt
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 110px;
-  height: 52px;
+  width: 150px;
+  height: 145px;
   pointer-events: none;
   z-index: 0;
   border-radius: 58% 42% 35% 65% / 55% 45% 55% 45%;
-  will-change: transform, border-radius, opacity;
+  will-change: transform, border-radius;
+  filter: blur(6px) !important;
+  opacity: 0.15 !important; /* 90% reduction */
 }
 
 .cgg-dragon-left .cgg-dragon-aura-tendrils {
-  background: radial-gradient(ellipse at 55% 45%, rgba(0, 0, 0, 0.9) 10%, rgba(10, 12, 16, 0.65) 55%, transparent 85%) !important;
-  box-shadow: 0 0 20px 8px rgba(0, 0, 0, 0.92) !important;
-  animation: cgg-black-tendrils 5.2s ease-in-out infinite !important;
-  filter: blur(5px) !important;
+  background: radial-gradient(ellipse at 55% 45%, rgba(0, 0, 0, 0.75) 10%, rgba(10, 12, 16, 0.3) 55%, transparent 85%) !important;
+  animation: cgg-black-tendrils 5.8s ease-in-out infinite !important;
 }
 
 .cgg-dragon-right .cgg-dragon-aura-tendrils {
-  background: radial-gradient(ellipse at 45% 45%, rgba(255, 255, 255, 0.55) 10%, rgba(210, 220, 235, 0.35) 55%, transparent 85%) !important;
-  box-shadow: 0 0 18px 7px rgba(255, 255, 255, 0.4) !important;
-  animation: cgg-white-tendrils 5.2s ease-in-out infinite !important;
-  filter: blur(5px) !important;
+  background: radial-gradient(ellipse at 45% 45%, rgba(255, 255, 255, 0.4) 10%, rgba(210, 220, 235, 0.15) 55%, transparent 85%) !important;
+  animation: cgg-white-tendrils 5.8s ease-in-out infinite !important;
 }
 
 @keyframes cgg-black-smoke-drift {
   0% {
     transform: translate(-50%, -50%) scale(0.95) rotate(0deg);
     border-radius: 42% 58% 65% 35% / 45% 55% 45% 55%;
-    opacity: 0.85;
   }
   50% {
-    transform: translate(-53%, -52%) scale(1.08) rotate(-2.5deg);
+    transform: translate(-53%, -52%) scale(1.06) rotate(-2deg);
     border-radius: 54% 46% 40% 60% / 58% 42% 56% 44%;
-    opacity: 0.98;
   }
   100% {
-    transform: translate(-48%, -48%) scale(0.98) rotate(2deg);
+    transform: translate(-48%, -48%) scale(0.98) rotate(1.5deg);
     border-radius: 46% 54% 58% 42% / 42% 58% 46% 54%;
-    opacity: 0.88;
   }
 }
 
@@ -601,47 +596,50 @@ html[data-cgg-theme="yinYang"] .cgg-winged-tooltip.cgg-level-4 .cgg-winged-toolt
   0% {
     transform: translate(-50%, -50%) scale(0.95) rotate(0deg);
     border-radius: 42% 58% 65% 35% / 45% 55% 45% 55%;
-    opacity: 0.75;
   }
   50% {
-    transform: translate(-47%, -52%) scale(1.08) rotate(2.5deg);
+    transform: translate(-47%, -52%) scale(1.06) rotate(2deg);
     border-radius: 54% 46% 40% 60% / 58% 42% 56% 44%;
-    opacity: 0.92;
   }
   100% {
-    transform: translate(-52%, -48%) scale(0.98) rotate(-2deg);
+    transform: translate(-52%, -48%) scale(0.98) rotate(-1.5deg);
     border-radius: 46% 54% 58% 42% / 42% 58% 46% 54%;
-    opacity: 0.8;
   }
 }
 
 @keyframes cgg-black-tendrils {
-  0% { transform: translate(-50%, -50%) rotate(0deg) scale(0.92); opacity: 0.8; }
-  50% { transform: translate(-52%, -54%) rotate(-4deg) scale(1.12); opacity: 0.98; }
-  100% { transform: translate(-50%, -50%) rotate(0deg) scale(0.92); opacity: 0.8; }
+  0% { transform: translate(-50%, -50%) rotate(0deg) scale(0.94); }
+  50% { transform: translate(-52%, -54%) rotate(-3deg) scale(1.08); }
+  100% { transform: translate(-50%, -50%) rotate(0deg) scale(0.94); }
 }
 
 @keyframes cgg-white-tendrils {
-  0% { transform: translate(-50%, -50%) rotate(0deg) scale(0.92); opacity: 0.65; }
-  50% { transform: translate(-48%, -54%) rotate(4deg) scale(1.12); opacity: 0.88; }
-  100% { transform: translate(-50%, -50%) rotate(0deg) scale(0.92); opacity: 0.65; }
+  0% { transform: translate(-50%, -50%) rotate(0deg) scale(0.94); }
+  50% { transform: translate(-48%, -54%) rotate(3deg) scale(1.08); }
+  100% { transform: translate(-50%, -50%) rotate(0deg) scale(0.94); }
 }
 
 /* ==========================================================================
-   Level-Specific Dragon Scaling & Escalating Visual Effects
+   Level-Specific Dragon Scaling & Escalating Visual Effects (Enlarged)
    ========================================================================== */
 /* Level 1: Slumbering Spirits */
 .cgg-dragon-level-1 {
   opacity: 0.42 !important;
 }
+.cgg-dragon-level-1.cgg-dragon-left {
+  right: calc(100% - 15px) !important;
+}
+.cgg-dragon-level-1.cgg-dragon-right {
+  left: calc(100% - 15px) !important;
+}
 .cgg-dragon-level-1 .cgg-dragon-body {
-  width: 72px !important;
-  height: 34px !important;
+  width: 90px !important;
+  height: 87px !important;
 }
 .cgg-dragon-level-1 .cgg-dragon-aura-smoke {
-  width: 66px !important;
-  height: 30px !important;
-  opacity: 0.55 !important;
+  width: 80px !important;
+  height: 77px !important;
+  opacity: 0.1 !important;
 }
 .cgg-dragon-level-1 .cgg-dragon-aura-tendrils {
   display: none !important;
@@ -651,38 +649,50 @@ html[data-cgg-theme="yinYang"] .cgg-winged-tooltip.cgg-level-4 .cgg-winged-toolt
 .cgg-dragon-level-2 {
   opacity: 0.72 !important;
 }
+.cgg-dragon-level-2.cgg-dragon-left {
+  right: calc(100% - 20px) !important;
+}
+.cgg-dragon-level-2.cgg-dragon-right {
+  left: calc(100% - 20px) !important;
+}
 .cgg-dragon-level-2 .cgg-dragon-body {
-  width: 88px !important;
-  height: 41px !important;
+  width: 115px !important;
+  height: 111px !important;
 }
 .cgg-dragon-level-2 .cgg-dragon-aura-smoke {
-  width: 82px !important;
-  height: 38px !important;
-  opacity: 0.78 !important;
+  width: 105px !important;
+  height: 100px !important;
+  opacity: 0.16 !important;
 }
 .cgg-dragon-level-2 .cgg-dragon-aura-tendrils {
-  width: 94px !important;
-  height: 44px !important;
-  opacity: 0.65 !important;
+  width: 125px !important;
+  height: 120px !important;
+  opacity: 0.12 !important;
 }
 
 /* Level 3: Awakened Twin Dragons */
 .cgg-dragon-level-3 {
   opacity: 0.96 !important;
 }
+.cgg-dragon-level-3.cgg-dragon-left {
+  right: calc(100% - 25px) !important;
+}
+.cgg-dragon-level-3.cgg-dragon-right {
+  left: calc(100% - 25px) !important;
+}
 .cgg-dragon-level-3 .cgg-dragon-body {
-  width: 108px !important;
-  height: 50px !important;
+  width: 145px !important;
+  height: 140px !important;
 }
 .cgg-dragon-level-3 .cgg-dragon-aura-smoke {
-  width: 102px !important;
-  height: 48px !important;
-  opacity: 0.9 !important;
+  width: 130px !important;
+  height: 125px !important;
+  opacity: 0.22 !important;
 }
 .cgg-dragon-level-3 .cgg-dragon-aura-tendrils {
-  width: 116px !important;
-  height: 54px !important;
-  opacity: 0.85 !important;
+  width: 150px !important;
+  height: 145px !important;
+  opacity: 0.15 !important;
 }
 
 /* Level 4: Villain Calamity Roar */
@@ -690,30 +700,30 @@ html[data-cgg-theme="yinYang"] .cgg-winged-tooltip.cgg-level-4 .cgg-winged-toolt
   opacity: 1 !important;
 }
 .cgg-dragon-level-4.cgg-dragon-left {
-  right: calc(100% - 16px) !important;
+  right: calc(100% - 32px) !important;
 }
 .cgg-dragon-level-4.cgg-dragon-right {
-  left: calc(100% - 16px) !important;
+  left: calc(100% - 32px) !important;
 }
 .cgg-dragon-level-4 .cgg-dragon-body {
-  width: 126px !important;
-  height: 59px !important;
+  width: 175px !important;
+  height: 169px !important;
 }
 .cgg-dragon-level-4.cgg-dragon-left .cgg-dragon-body {
-  filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.6)) drop-shadow(0 4px 10px rgba(0, 0, 0, 1)) contrast(1.2) !important;
+  filter: drop-shadow(0 0 1px rgba(255, 255, 255, 0.4)) drop-shadow(0 4px 8px rgba(0, 0, 0, 0.9)) !important;
 }
 .cgg-dragon-level-4.cgg-dragon-right .cgg-dragon-body {
-  filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.95)) drop-shadow(0 4px 10px rgba(0, 0, 0, 1)) contrast(1.2) !important;
+  filter: drop-shadow(0 0 1px rgba(255, 255, 255, 0.7)) drop-shadow(0 4px 8px rgba(0, 0, 0, 0.9)) !important;
 }
 .cgg-dragon-level-4 .cgg-dragon-aura-smoke {
-  width: 120px !important;
-  height: 56px !important;
-  opacity: 1 !important;
+  width: 160px !important;
+  height: 155px !important;
+  opacity: 0.26 !important;
 }
 .cgg-dragon-level-4 .cgg-dragon-aura-tendrils {
-  width: 136px !important;
-  height: 64px !important;
-  opacity: 0.95 !important;
+  width: 180px !important;
+  height: 175px !important;
+  opacity: 0.18 !important;
 }
 
 /* Level 1K+: Transcendent Primordial Sovereigns */
@@ -721,30 +731,30 @@ html[data-cgg-theme="yinYang"] .cgg-winged-tooltip.cgg-level-4 .cgg-winged-toolt
   opacity: 1 !important;
 }
 .cgg-dragon-level-1k.cgg-dragon-left {
-  right: calc(100% - 18px) !important;
+  right: calc(100% - 36px) !important;
 }
 .cgg-dragon-level-1k.cgg-dragon-right {
-  left: calc(100% - 18px) !important;
+  left: calc(100% - 36px) !important;
 }
 .cgg-dragon-level-1k .cgg-dragon-body {
-  width: 138px !important;
-  height: 64px !important;
+  width: 200px !important;
+  height: 193px !important;
 }
 .cgg-dragon-level-1k.cgg-dragon-left .cgg-dragon-body {
-  filter: drop-shadow(0 0 2.5px rgba(255, 255, 255, 0.75)) drop-shadow(0 5px 12px rgba(0, 0, 0, 1)) contrast(1.25) !important;
+  filter: drop-shadow(0 0 1.5px rgba(255, 255, 255, 0.5)) drop-shadow(0 5px 10px rgba(0, 0, 0, 0.95)) !important;
 }
 .cgg-dragon-level-1k.cgg-dragon-right .cgg-dragon-body {
-  filter: drop-shadow(0 0 4px rgba(255, 255, 255, 1)) drop-shadow(0 5px 12px rgba(0, 0, 0, 1)) contrast(1.25) !important;
+  filter: drop-shadow(0 0 1.5px rgba(255, 255, 255, 0.8)) drop-shadow(0 5px 10px rgba(0, 0, 0, 0.95)) !important;
 }
 .cgg-dragon-level-1k .cgg-dragon-aura-smoke {
-  width: 132px !important;
-  height: 62px !important;
-  opacity: 1 !important;
+  width: 185px !important;
+  height: 180px !important;
+  opacity: 0.3 !important;
 }
 .cgg-dragon-level-1k .cgg-dragon-aura-tendrils {
-  width: 152px !important;
-  height: 70px !important;
-  opacity: 1 !important;
+  width: 210px !important;
+  height: 200px !important;
+  opacity: 0.2 !important;
 }
 
 /* Transcendent 1K+ Badge in Tooltip */
