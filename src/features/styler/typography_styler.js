@@ -62,29 +62,9 @@ const TypographyStyler = {
       link.style.setProperty("color", filterFg, "important");
     });
 
-    // 7. Repository Commit Counters (Grand 1K+ Commits)
-    this.styleRepoCommits(settings);
-  },
-
-  styleRepoCommits(settings = {}) {
-    const enableGrand = settings.enableGrand1kMilestone !== false;
-    document.querySelectorAll("a[href*='/commits'], .commits a").forEach((el) => {
-      const text = el.textContent || "";
-      const match = text.match(/([\d,.]+)\s+commits?/i);
-      if (match) {
-        const cleanNum = match[1].replace(/[,.]/g, "");
-        const count = parseInt(cleanNum, 10) || 0;
-        if (count >= 1000 && enableGrand) {
-          el.classList.add("cgg-commit-grand-1k");
-          if (!el.querySelector(".cgg-repo-1k-commit-pill")) {
-            const pill = document.createElement("span");
-            pill.className = "cgg-repo-1k-commit-pill";
-            pill.innerHTML = `<span class="cgg-repo-crown">👑</span> 1K+`;
-            el.appendChild(pill);
-          }
-        }
-      }
-    });
+    // Clean up any repository commit pills (1K+ milestone is strictly for daily commits in tooltip)
+    document.querySelectorAll(".cgg-repo-1k-commit-pill").forEach((pill) => pill.remove());
+    document.querySelectorAll(".cgg-commit-grand-1k").forEach((el) => el.classList.remove("cgg-commit-grand-1k"));
   }
 };
 

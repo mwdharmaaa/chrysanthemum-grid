@@ -59,126 +59,38 @@ const ContainerStyler = {
            document.querySelector(".js-yearly-contributions h2, #user-profile-frame h2, .profile-container h2");
   },
 
-  parseContributionCount(header) {
-    if (!header) return { count: 0, countStr: "", labelStr: "" };
-    const grandCountEl = header.querySelector(".cgg-grand-count");
-    if (grandCountEl) {
-      const countStr = grandCountEl.textContent.trim();
-      const labelEl = header.querySelector(".cgg-grand-label");
-      const labelStr = labelEl ? labelEl.textContent.trim() : "contributions in the last year";
-      const cleanNum = countStr.replace(/[,.]/g, "");
-      const count = parseInt(cleanNum, 10) || 0;
-      return { count, countStr, labelStr };
+  cleanGrandMilestone(header, container) {
+    if (!header) return;
+    header.classList.remove("cgg-grand-milestone-header");
+    header.removeAttribute("data-cgg-milestone");
+
+    const frame = container?.closest?.(".profile-container, #user-profile-frame, .js-yearly-contributions") || container?.parentElement;
+    if (frame) {
+      frame.removeAttribute("data-cgg-milestone");
     }
-    const text = header.textContent || "";
-    const match = text.match(/([\d,.]+)\+?\s+(contributions?.*)/i);
-    if (match) {
-      const countStr = match[1];
-      const cleanNum = countStr.replace(/[,.]/g, "");
-      const count = parseInt(cleanNum, 10) || 0;
-      let labelStr = match[2].trim();
-      labelStr = labelStr.replace(/Contribution settings.*$/i, "").trim();
-      return { count, countStr, labelStr };
+
+    const grandBadge = header.querySelector(".cgg-badge-grand-1k");
+    if (grandBadge) grandBadge.remove();
+
+    const wrap = header.querySelector(".cgg-grand-count-wrap");
+    if (wrap) {
+      const countSpan = wrap.querySelector(".cgg-grand-count");
+      const labelSpan = wrap.querySelector(".cgg-grand-label");
+      const simpleText = `${countSpan ? countSpan.textContent : ""} ${labelSpan ? labelSpan.textContent : ""}`.trim();
+      const span = document.createElement("span");
+      span.textContent = simpleText;
+      wrap.replaceWith(span);
     }
-    return { count: 0, countStr: "", labelStr: "" };
   },
 
   styleHeader(container, settings = {}) {
     const header = this.findHeader(container);
     if (!header) return;
 
-    const { count, countStr, labelStr } = this.parseContributionCount(header);
-    const enableGrand = settings.enableGrand1kMilestone !== false;
-    const isGrand1k = enableGrand && count >= 1000;
+    // Clean up any 1K milestone display from the header (1K+ milestone is strictly for daily commits in tooltip)
+    this.cleanGrandMilestone(header, container);
 
-    const frame = container.closest(".profile-container, #user-profile-frame, .js-yearly-contributions") || container.parentElement;
-
-    if (isGrand1k) {
-      header.classList.add("cgg-grand-milestone-header");
-      header.setAttribute("data-cgg-milestone", "1k-plus");
-      if (frame) {
-        frame.setAttribute("data-cgg-milestone", "1k-plus");
-      }
-
-      let wrap = header.querySelector(".cgg-grand-count-wrap");
-      if (!wrap) {
-        let targetNode = null;
-        for (const child of header.children) {
-          if (!child.classList.contains("cgg-badge") &&
-              !child.querySelector("a[href*='settings']") &&
-              child.textContent.match(/contributions?/i)) {
-            targetNode = child;
-            break;
-          }
-        }
-
-        wrap = document.createElement("span");
-        wrap.className = "cgg-grand-count-wrap";
-        wrap.innerHTML = `
-          <span class="cgg-grand-crown" title="Imperial 1K+ Milestone">👑</span>
-          <span class="cgg-grand-count">${countStr}</span>
-          <span class="cgg-grand-label">${labelStr}</span>
-        `;
-
-        if (targetNode) {
-          targetNode.replaceWith(wrap);
-        } else {
-          let replaced = false;
-          header.childNodes.forEach((node) => {
-            if (node.nodeType === Node.TEXT_NODE && node.textContent.match(/contributions?/i)) {
-              node.textContent = "";
-              header.insertBefore(wrap, node);
-              replaced = true;
-            }
-          });
-          if (!replaced) {
-            header.prepend(wrap);
-          }
-        }
-      } else {
-        const countEl = wrap.querySelector(".cgg-grand-count");
-        const labelEl = wrap.querySelector(".cgg-grand-label");
-        if (countEl && countStr) countEl.textContent = countStr;
-        if (labelEl && labelStr) labelEl.textContent = labelStr;
-      }
-
-      const oldPlainBadge = header.querySelector(".cgg-badge:not(.cgg-badge-grand-1k)");
-      if (oldPlainBadge) oldPlainBadge.remove();
-
-      let badge = header.querySelector(".cgg-badge-grand-1k");
-      if (!badge) {
-        badge = document.createElement("span");
-        badge.className = "cgg-badge cgg-badge-grand-1k";
-        badge.title = `Chrysanthemum Imperial Milestone: ${count.toLocaleString()} Contributions`;
-        badge.innerHTML = `
-          <span class="cgg-badge-grand-sparkle">✦</span>
-          <span class="cgg-badge-grand-text">Imperial 1K+</span>
-          <span class="cgg-badge-grand-dot"></span>
-        `;
-        wrap.after(badge);
-      }
-    } else {
-      header.classList.remove("cgg-grand-milestone-header");
-      header.removeAttribute("data-cgg-milestone");
-      if (frame) {
-        frame.removeAttribute("data-cgg-milestone");
-      }
-
-      const grandBadge = header.querySelector(".cgg-badge-grand-1k");
-      if (grandBadge) grandBadge.remove();
-
-      const wrap = header.querySelector(".cgg-grand-count-wrap");
-      if (wrap) {
-        const countSpan = wrap.querySelector(".cgg-grand-count");
-        const labelSpan = wrap.querySelector(".cgg-grand-label");
-        const simpleText = `${countSpan ? countSpan.textContent : countStr} ${labelSpan ? labelSpan.textContent : labelStr}`.trim();
-        const span = document.createElement("span");
-        span.textContent = simpleText;
-        wrap.replaceWith(span);
-      }
-
-      this.injectPlainBadge(header, settings);
-    }
+    this.injectPlainBadge(header, settings);
   },
 
   injectPlainBadge(header, settings = {}) {

@@ -265,8 +265,7 @@
 
         const header = ContainerStyler.findHeader(container);
         if (header) {
-          const wrap = header.querySelector(".cgg-grand-count-wrap");
-          const target = wrap || header.querySelector("span:not([style*='margin-left'])");
+          const target = header.querySelector("span:not([style*='margin-left']):not(.cgg-badge)") || header.querySelector("span");
           if (target) {
             target.textContent = yearData[year] || `${yearData["2026"]}`;
           }
