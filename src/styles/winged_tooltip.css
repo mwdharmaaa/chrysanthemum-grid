@@ -31,7 +31,8 @@
 .cgg-winged-tooltip.is-active {
   opacity: 1 !important;
   visibility: visible !important;
-  transform: translate(-50%, -100%) translateY(-10px) scale(1);
+  transform: translate(-50%, -100%) translateY(-10px) scale(1) !important;
+  transition: none !important;
 }
 
 /* Tooltip Badge Body Base */
@@ -283,37 +284,37 @@ html[data-cgg-theme="yinYang"] .cgg-winged-tooltip.cgg-level-0 .cgg-winged-toolt
 .cgg-winged-tooltip.cgg-tooltip-yinyang.cgg-level-1 .cgg-winged-tooltip-content,
 html[data-cgg-theme="yinYang"] .cgg-winged-tooltip.cgg-level-1 .cgg-winged-tooltip-content {
   border-color: #4a4a4a !important;
-  box-shadow: 0 0 6px rgba(255, 255, 255, 0.15), 0 4px 14px rgba(0, 0, 0, 0.75) !important;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.85) !important;
 }
 
 .cgg-winged-tooltip.cgg-tooltip-yinyang.cgg-level-2 .cgg-winged-tooltip-content,
 html[data-cgg-theme="yinYang"] .cgg-winged-tooltip.cgg-level-2 .cgg-winged-tooltip-content {
   border-color: #6e6e6e !important;
-  box-shadow: 0 0 10px rgba(255, 255, 255, 0.25), 0 4px 16px rgba(0, 0, 0, 0.8) !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.9) !important;
 }
 
 .cgg-winged-tooltip.cgg-tooltip-yinyang.cgg-level-3 .cgg-winged-tooltip-content,
 html[data-cgg-theme="yinYang"] .cgg-winged-tooltip.cgg-level-3 .cgg-winged-tooltip-content {
   border-color: #9e9e9e !important;
-  box-shadow: 0 0 14px rgba(255, 255, 255, 0.4), 0 4px 18px rgba(0, 0, 0, 0.85) !important;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.92) !important;
 }
 
 .cgg-winged-tooltip.cgg-tooltip-yinyang.cgg-level-4 .cgg-winged-tooltip-content,
 html[data-cgg-theme="yinYang"] .cgg-winged-tooltip.cgg-level-4 .cgg-winged-tooltip-content {
   border-color: #ffffff !important;
-  box-shadow: 0 0 18px rgba(255, 255, 255, 0.6), 0 0 3px #ffffff, 0 4px 20px rgba(0, 0, 0, 0.9) !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.95), 0 0 1px #ffffff !important;
 }
 
 /* Transcendent 1K+ Commits Tooltip (Yin Yang Exclusive) */
 .cgg-winged-tooltip.cgg-tooltip-yinyang.cgg-yinyang-1k-tooltip .cgg-winged-tooltip-content {
   border: 1.5px solid #ffffff !important;
-  box-shadow: 0 0 24px rgba(255, 255, 255, 0.8), 0 0 6px #ffffff, 0 6px 24px rgba(0, 0, 0, 0.95) !important;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.98), 0 0 2px #ffffff !important;
 }
 
 /* ==========================================================================
-   Centered Yin Yang Vortex Engine (Villain Aura Edition)
+   Centered Yin Yang Vortex Engine (Expansive Black & White Swirl Edition)
    Spinning COUNTER-CLOCKWISE: 1 full rotation per 5 minutes (300s)
-   Natural jagged ink & brush tendrils (no cookie-cutter circular boundary)
+   Expansive sweeping black ink & white paint tendrils extending outward
    ========================================================================== */
 .cgg-yinyang-vortex {
   display: none;
@@ -339,48 +340,48 @@ html[data-cgg-theme="yinYang"] .cgg-winged-tooltip.cgg-level-4 .cgg-winged-toolt
 .cgg-yinyang-vortex.cgg-yinyang-vortex-level-0 {
   width: 36px !important;
   height: 36px !important;
-  opacity: 0.35 !important;
+  opacity: 0.4 !important;
   filter: grayscale(1) !important;
 }
 
-/* Level 1: 58px */
+/* Level 1: 100px */
 .cgg-yinyang-vortex.cgg-yinyang-vortex-level-1 {
-  width: 58px !important;
-  height: 58px !important;
-  opacity: 0.88 !important;
-  filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.95)) drop-shadow(0 0 4px rgba(255, 255, 255, 0.35)) contrast(1.15) brightness(1.05) !important;
+  width: 100px !important;
+  height: 100px !important;
+  opacity: 0.92 !important;
+  filter: drop-shadow(0 0 12px rgba(0, 0, 0, 0.95)) contrast(1.18) !important;
 }
 
-/* Level 2: 78px */
+/* Level 2: 150px */
 .cgg-yinyang-vortex.cgg-yinyang-vortex-level-2 {
-  width: 78px !important;
-  height: 78px !important;
+  width: 150px !important;
+  height: 150px !important;
   opacity: 0.95 !important;
-  filter: drop-shadow(0 0 14px rgba(0, 0, 0, 0.95)) drop-shadow(0 0 6px rgba(255, 255, 255, 0.45)) contrast(1.18) brightness(1.05) !important;
+  filter: drop-shadow(0 0 16px rgba(0, 0, 0, 0.95)) contrast(1.22) !important;
 }
 
-/* Level 3: 98px */
+/* Level 3: 200px */
 .cgg-yinyang-vortex.cgg-yinyang-vortex-level-3 {
-  width: 98px !important;
-  height: 98px !important;
+  width: 200px !important;
+  height: 200px !important;
   opacity: 1 !important;
-  filter: drop-shadow(0 0 18px rgba(0, 0, 0, 1)) drop-shadow(0 0 8px rgba(255, 255, 255, 0.6)) contrast(1.22) brightness(1.06) !important;
+  filter: drop-shadow(0 0 20px rgba(0, 0, 0, 1)) contrast(1.25) !important;
 }
 
-/* Level 4: 120px - Raw villain brush tendrils & dark miasma */
+/* Level 4: 250px - Expansive black and white swirling tendrils */
 .cgg-yinyang-vortex.cgg-yinyang-vortex-level-4 {
-  width: 120px !important;
-  height: 120px !important;
+  width: 250px !important;
+  height: 250px !important;
   opacity: 1 !important;
-  filter: drop-shadow(0 0 24px rgba(0, 0, 0, 1)) drop-shadow(0 0 12px rgba(255, 255, 255, 0.75)) drop-shadow(0 0 2px #ffffff) contrast(1.25) brightness(1.08) !important;
+  filter: drop-shadow(0 0 28px rgba(0, 0, 0, 1)) contrast(1.28) !important;
 }
 
-/* 1K+ Transcendent Calamity: 142px */
+/* 1K+ Transcendent Calamity: 290px */
 .cgg-yinyang-vortex.cgg-yinyang-vortex-level-1k {
-  width: 142px !important;
-  height: 142px !important;
+  width: 290px !important;
+  height: 290px !important;
   opacity: 1 !important;
-  filter: drop-shadow(0 0 32px rgba(0, 0, 0, 1)) drop-shadow(0 0 18px rgba(255, 255, 255, 0.9)) drop-shadow(0 0 4px #ffffff) contrast(1.3) brightness(1.1) !important;
+  filter: drop-shadow(0 0 36px rgba(0, 0, 0, 1)) contrast(1.3) !important;
 }
 
 @keyframes cgg-vortex-spin-counter {
@@ -393,8 +394,8 @@ html[data-cgg-theme="yinYang"] .cgg-winged-tooltip.cgg-level-4 .cgg-winged-toolt
 }
 
 /* ==========================================================================
-   Yin Yang Villain Cursed Aura (Dark Smoky Miasma Layer)
-   Organic morphing shadow layer pulsating behind the vortex
+   Yin Yang Villain Cursed Aura (Dark Smoky Abyss Layer)
+   Organic morphing shadow layer pulsating behind the black-and-white vortex
    ========================================================================== */
 .cgg-yinyang-aura {
   display: none;
@@ -406,8 +407,8 @@ html[data-cgg-theme="yinYang"] .cgg-winged-tooltip.cgg-level-4 .cgg-winged-toolt
   pointer-events: none;
   z-index: 0;
   will-change: transform, border-radius;
-  background: radial-gradient(circle at 50% 50%, rgba(0, 0, 0, 0.8) 0%, rgba(15, 15, 15, 0.55) 45%, rgba(255, 255, 255, 0.1) 75%, transparent 100%) !important;
-  box-shadow: 0 0 16px 4px rgba(0, 0, 0, 0.95), 0 0 32px 8px rgba(0, 0, 0, 0.8), 0 0 18px 2px rgba(255, 255, 255, 0.18), inset 0 0 14px rgba(0, 0, 0, 0.9) !important;
+  background: radial-gradient(circle at 50% 50%, rgba(0, 0, 0, 0.85) 0%, rgba(13, 17, 23, 0.6) 55%, transparent 100%) !important;
+  box-shadow: 0 0 20px 6px rgba(0, 0, 0, 0.95), 0 0 40px 10px rgba(0, 0, 0, 0.85), inset 0 0 16px rgba(0, 0, 0, 0.9) !important;
   animation: cgg-villain-aura-pulse 5.5s ease-in-out infinite alternate !important;
 }
 
@@ -416,35 +417,35 @@ html[data-cgg-theme="yinYang"] .cgg-winged-tooltip.cgg-level-4 .cgg-winged-toolt
 }
 
 .cgg-yinyang-aura.cgg-yinyang-aura-level-1 {
-  width: 70px !important;
-  height: 70px !important;
-  opacity: 0.6 !important;
+  width: 110px !important;
+  height: 110px !important;
+  opacity: 0.7 !important;
 }
 
 .cgg-yinyang-aura.cgg-yinyang-aura-level-2 {
-  width: 92px !important;
-  height: 92px !important;
-  opacity: 0.75 !important;
+  width: 160px !important;
+  height: 160px !important;
+  opacity: 0.8 !important;
 }
 
 .cgg-yinyang-aura.cgg-yinyang-aura-level-3 {
-  width: 114px !important;
-  height: 114px !important;
-  opacity: 0.88 !important;
+  width: 210px !important;
+  height: 210px !important;
+  opacity: 0.9 !important;
 }
 
 .cgg-yinyang-aura.cgg-yinyang-aura-level-4 {
-  width: 138px !important;
-  height: 138px !important;
+  width: 260px !important;
+  height: 260px !important;
   opacity: 0.95 !important;
-  box-shadow: 0 0 24px 6px rgba(0, 0, 0, 1), 0 0 44px 12px rgba(0, 0, 0, 0.9), 0 0 24px 4px rgba(255, 255, 255, 0.28), inset 0 0 18px rgba(0, 0, 0, 0.95) !important;
+  box-shadow: 0 0 28px 8px rgba(0, 0, 0, 1), 0 0 50px 14px rgba(0, 0, 0, 0.92), inset 0 0 20px rgba(0, 0, 0, 0.95) !important;
 }
 
 .cgg-yinyang-aura.cgg-yinyang-aura-level-1k {
-  width: 162px !important;
-  height: 162px !important;
+  width: 300px !important;
+  height: 300px !important;
   opacity: 1 !important;
-  box-shadow: 0 0 32px 8px rgba(0, 0, 0, 1), 0 0 56px 16px rgba(0, 0, 0, 0.95), 0 0 32px 6px rgba(255, 255, 255, 0.38), inset 0 0 24px rgba(0, 0, 0, 1) !important;
+  box-shadow: 0 0 36px 10px rgba(0, 0, 0, 1), 0 0 64px 18px rgba(0, 0, 0, 0.95), inset 0 0 24px rgba(0, 0, 0, 1) !important;
 }
 
 @keyframes cgg-villain-aura-pulse {
