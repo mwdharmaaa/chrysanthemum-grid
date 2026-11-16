@@ -308,3 +308,45 @@ svg.js-activity-overview-graph path,
 svg.js-activity-overview-graph polyline {
   stroke: var(--cgg-l4) !important;
 }
+
+/* Yin Yang Sparklines & Activity Graph: Pure White */
+html[data-cgg-theme="yinYang"] .text-right svg rect,
+html[data-cgg-theme="yinYang"] svg[width="155"] rect,
+html[data-cgg-theme="yinYang"] .sparkline-test rect {
+  fill: #ffffff !important;
+}
+
+html[data-cgg-theme="yinYang"] .text-right linearGradient stop,
+html[data-cgg-theme="yinYang"] svg[width="155"] linearGradient stop,
+html[data-cgg-theme="yinYang"] svg.js-activity-overview-graph linearGradient stop,
+html[data-cgg-theme="yinYang"] defs linearGradient[id*="gradient"] stop,
+html[data-cgg-theme="yinYang"] .sparkline-test linearGradient stop {
+  stop-color: #ffffff !important;
+}
+
+html[data-cgg-theme="yinYang"] mask polyline,
+html[data-cgg-theme="yinYang"] mask path,
+html[data-cgg-theme="yinYang"] mask[id*="sparkline"] polyline,
+html[data-cgg-theme="yinYang"] mask[id*="sparkline"] path,
+html[data-cgg-theme="yinYang"] .text-right mask polyline,
+html[data-cgg-theme="yinYang"] .text-right mask path {
+  stroke: #ffffff !important;
+}
+
+html[data-cgg-theme="yinYang"] .text-right svg polyline,
+html[data-cgg-theme="yinYang"] .text-right svg path,
+html[data-cgg-theme="yinYang"] svg.js-activity-overview-graph path,
+html[data-cgg-theme="yinYang"] svg.js-activity-overview-graph polyline,
+html[data-cgg-theme="yinYang"] svg.js-highlight-blob,
+html[data-cgg-theme="yinYang"] path.js-highlight-blob,
+html[data-cgg-theme="yinYang"] .activity-overview-point {
+  stroke: #ffffff !important;
+  color: #ffffff !important;
+}
+
+html[data-cgg-theme="yinYang"] .text-right svg,
+html[data-cgg-theme="yinYang"] svg[width="155"],
+html[data-cgg-theme="yinYang"] poll-include-fragment svg {
+  filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.75)) !important;
+}
+

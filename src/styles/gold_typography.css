@@ -498,3 +498,59 @@ html[data-cgg-theme="yinYang"] div[style*="border: 1px solid rgb(48, 54, 61)"] {
 html[data-cgg-theme="yinYang"] .TimelineItem::before {
   background-color: #21262d !important;
 }
+
+/* Chrysanthemum Gold Starred Repository Button Icon */
+html[data-cgg-theme="chrysanthemum"] .starred .octicon-star,
+html[data-cgg-theme="chrysanthemum"] .starred .octicon-star-fill,
+html[data-cgg-theme="chrysanthemum"] .starred svg.octicon,
+html[data-cgg-theme="chrysanthemum"] .starred .color-fg-yellow {
+  color: #eac54f !important;
+  fill: #eac54f !important;
+}
+
+/* Yin Yang Starred Repository Button Icon: Pure White */
+html[data-cgg-theme="yinYang"] .starred .octicon-star,
+html[data-cgg-theme="yinYang"] .starred .octicon-star-fill,
+html[data-cgg-theme="yinYang"] .starred svg.octicon,
+html[data-cgg-theme="yinYang"] .starred svg.octicon path,
+html[data-cgg-theme="yinYang"] .starred .color-fg-yellow,
+html[data-cgg-theme="yinYang"] .starred .color-fg-yellow path,
+html[data-cgg-theme="yinYang"] .js-toggler-container.starred .octicon,
+html[data-cgg-theme="yinYang"] .js-toggler-container.starred svg path,
+html[data-cgg-theme="yinYang"] .js-social-container.starred .octicon,
+html[data-cgg-theme="yinYang"] .js-social-container.starred svg path,
+html[data-cgg-theme="yinYang"] [data-status="starred"] .octicon,
+html[data-cgg-theme="yinYang"] [data-status="starred"] svg path,
+html[data-cgg-theme="yinYang"] button[aria-label*="Unstar"] .octicon,
+html[data-cgg-theme="yinYang"] button[aria-label*="Unstar"] svg path,
+html[data-cgg-theme="yinYang"] [aria-label*="Starred"] .octicon,
+html[data-cgg-theme="yinYang"] [aria-label*="Starred"] svg path,
+html[data-cgg-theme="yinYang"] form.starred .octicon-star,
+html[data-cgg-theme="yinYang"] form.starred svg path,
+html[data-cgg-theme="yinYang"] .starred-button-icon,
+html[data-cgg-theme="yinYang"] .btn.starred .octicon,
+html[data-cgg-theme="yinYang"] .btn.starred svg path {
+  color: #ffffff !important;
+  fill: #ffffff !important;
+}
+
+/* Yin Yang Repository & Profile Statistics */
+html[data-cgg-theme="yinYang"] #user-repositories-list a.Link--muted,
+html[data-cgg-theme="yinYang"] #user-repositories-list .color-fg-muted,
+html[data-cgg-theme="yinYang"] #user-repositories-list .octicon,
+html[data-cgg-theme="yinYang"] .pinned-item-list-item a.Link--muted,
+html[data-cgg-theme="yinYang"] .pinned-item-list-item .color-fg-muted,
+html[data-cgg-theme="yinYang"] .pinned-item-list-item .pinned-item-meta,
+html[data-cgg-theme="yinYang"] .pinned-item-list-item .octicon,
+html[data-cgg-theme="yinYang"] a[href*="/stargazers"],
+html[data-cgg-theme="yinYang"] a[href*="/stargazers"] *,
+html[data-cgg-theme="yinYang"] a[href*="/network/members"],
+html[data-cgg-theme="yinYang"] a[href*="/network/members"] *,
+html[data-cgg-theme="yinYang"] .vcard-stats a,
+html[data-cgg-theme="yinYang"] .vcard-stats a *,
+html[data-cgg-theme="yinYang"] .vcard-stats span,
+html[data-cgg-theme="yinYang"] .user-profile-nav .Counter {
+  color: #ffffff !important;
+  fill: #ffffff !important;
+}
+
