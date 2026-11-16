@@ -8,6 +8,8 @@
   --cgg-wing-left: url("../assets/wing_left.png");
   --cgg-wing-right: url("../assets/wing_right.png");
   --cgg-yinyang-vortex: url("../assets/yinyang_vortex.png");
+  --cgg-dragon-black-left: url("../assets/dragon_black_left.png");
+  --cgg-dragon-white-right: url("../assets/dragon_white_right.png");
 }
 
 /* Winged Tooltip Floating Host */
@@ -312,9 +314,9 @@ html[data-cgg-theme="yinYang"] .cgg-winged-tooltip.cgg-level-4 .cgg-winged-toolt
 }
 
 /* ==========================================================================
-   Centered Yin Yang Vortex Engine (Expansive Black & White Swirl Edition)
+   Centered Yin Yang Vortex (Compact Core Edition)
    Spinning COUNTER-CLOCKWISE: 1 full rotation per 5 minutes (300s)
-   Expansive sweeping black ink & white paint tendrils extending outward
+   Strictly smaller than the tooltip card at all levels!
    ========================================================================== */
 .cgg-yinyang-vortex {
   display: none;
@@ -336,52 +338,47 @@ html[data-cgg-theme="yinYang"] .cgg-winged-tooltip.cgg-level-4 .cgg-winged-toolt
   display: block;
 }
 
-/* Level 0: subtle resting (36px) */
+/* Strictly compact vortex sizes (smaller than card height of ~32px and card width of ~160px) */
 .cgg-yinyang-vortex.cgg-yinyang-vortex-level-0 {
-  width: 36px !important;
-  height: 36px !important;
-  opacity: 0.4 !important;
+  width: 16px !important;
+  height: 16px !important;
+  opacity: 0.35 !important;
   filter: grayscale(1) !important;
 }
 
-/* Level 1: 100px */
 .cgg-yinyang-vortex.cgg-yinyang-vortex-level-1 {
-  width: 100px !important;
-  height: 100px !important;
-  opacity: 0.92 !important;
-  filter: drop-shadow(0 0 12px rgba(0, 0, 0, 0.95)) contrast(1.18) !important;
+  width: 20px !important;
+  height: 20px !important;
+  opacity: 0.7 !important;
+  filter: drop-shadow(0 0 4px rgba(0, 0, 0, 0.9)) contrast(1.15) !important;
 }
 
-/* Level 2: 150px */
 .cgg-yinyang-vortex.cgg-yinyang-vortex-level-2 {
-  width: 150px !important;
-  height: 150px !important;
-  opacity: 0.95 !important;
-  filter: drop-shadow(0 0 16px rgba(0, 0, 0, 0.95)) contrast(1.22) !important;
+  width: 24px !important;
+  height: 24px !important;
+  opacity: 0.85 !important;
+  filter: drop-shadow(0 0 6px rgba(0, 0, 0, 0.95)) contrast(1.2) !important;
 }
 
-/* Level 3: 200px */
 .cgg-yinyang-vortex.cgg-yinyang-vortex-level-3 {
-  width: 200px !important;
-  height: 200px !important;
-  opacity: 1 !important;
-  filter: drop-shadow(0 0 20px rgba(0, 0, 0, 1)) contrast(1.25) !important;
+  width: 28px !important;
+  height: 28px !important;
+  opacity: 0.95 !important;
+  filter: drop-shadow(0 0 8px rgba(0, 0, 0, 1)) contrast(1.25) !important;
 }
 
-/* Level 4: 250px - Expansive black and white swirling tendrils */
 .cgg-yinyang-vortex.cgg-yinyang-vortex-level-4 {
-  width: 250px !important;
-  height: 250px !important;
+  width: 30px !important;
+  height: 30px !important;
   opacity: 1 !important;
-  filter: drop-shadow(0 0 28px rgba(0, 0, 0, 1)) contrast(1.28) !important;
+  filter: drop-shadow(0 0 10px rgba(0, 0, 0, 1)) contrast(1.28) !important;
 }
 
-/* 1K+ Transcendent Calamity: 290px */
 .cgg-yinyang-vortex.cgg-yinyang-vortex-level-1k {
-  width: 290px !important;
-  height: 290px !important;
+  width: 32px !important;
+  height: 32px !important;
   opacity: 1 !important;
-  filter: drop-shadow(0 0 36px rgba(0, 0, 0, 1)) contrast(1.3) !important;
+  filter: drop-shadow(0 0 12px rgba(0, 0, 0, 1)) contrast(1.3) !important;
 }
 
 @keyframes cgg-vortex-spin-counter {
@@ -394,8 +391,7 @@ html[data-cgg-theme="yinYang"] .cgg-winged-tooltip.cgg-level-4 .cgg-winged-toolt
 }
 
 /* ==========================================================================
-   Yin Yang Villain Cursed Aura (Dark Smoky Abyss Layer)
-   Organic morphing shadow layer pulsating behind the black-and-white vortex
+   Yin Yang Central Micro-Aura (Compact Depth Core)
    ========================================================================== */
 .cgg-yinyang-aura {
   display: none;
@@ -403,12 +399,11 @@ html[data-cgg-theme="yinYang"] .cgg-winged-tooltip.cgg-level-4 .cgg-winged-toolt
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  border-radius: 46% 54% 58% 42% / 44% 48% 52% 56%;
+  border-radius: 50%;
   pointer-events: none;
   z-index: 0;
-  will-change: transform, border-radius;
-  background: radial-gradient(circle at 50% 50%, rgba(0, 0, 0, 0.85) 0%, rgba(13, 17, 23, 0.6) 55%, transparent 100%) !important;
-  box-shadow: 0 0 20px 6px rgba(0, 0, 0, 0.95), 0 0 40px 10px rgba(0, 0, 0, 0.85), inset 0 0 16px rgba(0, 0, 0, 0.9) !important;
+  will-change: transform;
+  background: radial-gradient(circle at 50% 50%, rgba(0, 0, 0, 0.85) 0%, rgba(13, 17, 23, 0.5) 65%, transparent 100%) !important;
   animation: cgg-villain-aura-pulse 5.5s ease-in-out infinite alternate !important;
 }
 
@@ -417,53 +412,357 @@ html[data-cgg-theme="yinYang"] .cgg-winged-tooltip.cgg-level-4 .cgg-winged-toolt
 }
 
 .cgg-yinyang-aura.cgg-yinyang-aura-level-1 {
-  width: 110px !important;
-  height: 110px !important;
-  opacity: 0.7 !important;
+  width: 24px !important;
+  height: 24px !important;
+  opacity: 0.5 !important;
 }
 
 .cgg-yinyang-aura.cgg-yinyang-aura-level-2 {
-  width: 160px !important;
-  height: 160px !important;
-  opacity: 0.8 !important;
+  width: 28px !important;
+  height: 28px !important;
+  opacity: 0.65 !important;
 }
 
 .cgg-yinyang-aura.cgg-yinyang-aura-level-3 {
-  width: 210px !important;
-  height: 210px !important;
-  opacity: 0.9 !important;
+  width: 32px !important;
+  height: 32px !important;
+  opacity: 0.8 !important;
 }
 
 .cgg-yinyang-aura.cgg-yinyang-aura-level-4 {
-  width: 260px !important;
-  height: 260px !important;
-  opacity: 0.95 !important;
-  box-shadow: 0 0 28px 8px rgba(0, 0, 0, 1), 0 0 50px 14px rgba(0, 0, 0, 0.92), inset 0 0 20px rgba(0, 0, 0, 0.95) !important;
+  width: 34px !important;
+  height: 34px !important;
+  opacity: 0.9 !important;
+  box-shadow: 0 0 12px 3px rgba(0, 0, 0, 0.95) !important;
 }
 
 .cgg-yinyang-aura.cgg-yinyang-aura-level-1k {
-  width: 300px !important;
-  height: 300px !important;
+  width: 36px !important;
+  height: 36px !important;
   opacity: 1 !important;
-  box-shadow: 0 0 36px 10px rgba(0, 0, 0, 1), 0 0 64px 18px rgba(0, 0, 0, 0.95), inset 0 0 24px rgba(0, 0, 0, 1) !important;
+  box-shadow: 0 0 14px 4px rgba(0, 0, 0, 1) !important;
 }
 
 @keyframes cgg-villain-aura-pulse {
+  0% { transform: translate(-50%, -50%) scale(0.95); opacity: 0.7; }
+  50% { transform: translate(-50%, -50%) scale(1.08); opacity: 0.95; }
+  100% { transform: translate(-50%, -50%) scale(0.98); opacity: 0.8; }
+}
+
+/* ==========================================================================
+   YIN YANG TWIN DRAGONS FLANKING ENGINE
+   Left: Black Dragon (Naga Hitam) with dynamic moving black ink smoke aura.
+   Right: White Dragon (Naga Putih) with dynamic moving white mist aura.
+   Living moving aura - NOT static box-shadow glow!
+   ========================================================================== */
+.cgg-dragon-flank {
+  display: none;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  z-index: 3;
+  align-items: center;
+  justify-content: center;
+}
+
+.cgg-winged-tooltip.cgg-tooltip-yinyang .cgg-dragon-flank {
+  display: flex;
+}
+
+/* Flanking positions relative to the content card */
+.cgg-dragon-left {
+  right: calc(100% - 12px);
+}
+
+.cgg-dragon-right {
+  left: calc(100% - 12px);
+}
+
+/* Dragon Body Artwork */
+.cgg-dragon-body {
+  position: relative;
+  width: 105px;
+  height: 49px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  pointer-events: none;
+  z-index: 2;
+  will-change: transform;
+}
+
+/* Left: Black Dragon Artwork (facing toward card) */
+.cgg-dragon-left .cgg-dragon-body {
+  background-image: var(--cgg-dragon-black-left) !important;
+  animation: cgg-dragon-left-hover 3.2s ease-in-out infinite alternate !important;
+  filter: drop-shadow(0 0 1.5px rgba(255, 255, 255, 0.45)) drop-shadow(0 3px 6px rgba(0, 0, 0, 0.95)) !important;
+}
+
+/* Right: White Dragon Artwork (facing toward card) */
+.cgg-dragon-right .cgg-dragon-body {
+  background-image: var(--cgg-dragon-white-right) !important;
+  animation: cgg-dragon-right-hover 3.2s ease-in-out infinite alternate !important;
+  filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.85)) drop-shadow(0 3px 6px rgba(0, 0, 0, 0.95)) !important;
+}
+
+@keyframes cgg-dragon-left-hover {
+  0% { transform: translate(0, 0) rotate(0deg); }
+  50% { transform: translate(-3px, -2px) rotate(-1.5deg); }
+  100% { transform: translate(-1px, 2px) rotate(1deg); }
+}
+
+@keyframes cgg-dragon-right-hover {
+  0% { transform: translate(0, 0) rotate(0deg); }
+  50% { transform: translate(3px, -2px) rotate(1.5deg); }
+  100% { transform: translate(1px, 2px) rotate(-1deg); }
+}
+
+/* ==========================================================================
+   DYNAMIC MOVING DRAGON AURA (Living Ink Smoke / Mist - NOT GLOW)
+   Organic morphing, undulating vapor plumes moving around the dragon bodies
+   ========================================================================== */
+.cgg-dragon-aura-smoke {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 95px;
+  height: 44px;
+  pointer-events: none;
+  z-index: 1;
+  border-radius: 42% 58% 65% 35% / 45% 55% 45% 55%;
+  will-change: transform, border-radius, opacity;
+}
+
+/* Black Dragon Moving Aura: dark ink smoke vapor */
+.cgg-dragon-left .cgg-dragon-aura-smoke {
+  background: radial-gradient(ellipse at 50% 50%, rgba(0, 0, 0, 0.96) 0%, rgba(15, 18, 24, 0.85) 45%, rgba(0, 0, 0, 0.4) 75%, transparent 100%) !important;
+  box-shadow: 0 0 16px 6px rgba(0, 0, 0, 0.95), inset 0 0 10px rgba(0, 0, 0, 1) !important;
+  animation: cgg-black-smoke-drift 3.8s ease-in-out infinite alternate !important;
+  filter: blur(3px) !important;
+}
+
+/* White Dragon Moving Aura: ethereal white mist vapor */
+.cgg-dragon-right .cgg-dragon-aura-smoke {
+  background: radial-gradient(ellipse at 50% 50%, rgba(255, 255, 255, 0.85) 0%, rgba(220, 228, 238, 0.6) 45%, rgba(180, 190, 205, 0.25) 75%, transparent 100%) !important;
+  box-shadow: 0 0 14px 5px rgba(255, 255, 255, 0.6), inset 0 0 10px rgba(255, 255, 255, 0.9) !important;
+  animation: cgg-white-smoke-drift 3.8s ease-in-out infinite alternate !important;
+  filter: blur(3px) !important;
+}
+
+/* Secondary outer billowing tendril layer */
+.cgg-dragon-aura-tendrils {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 110px;
+  height: 52px;
+  pointer-events: none;
+  z-index: 0;
+  border-radius: 58% 42% 35% 65% / 55% 45% 55% 45%;
+  will-change: transform, border-radius, opacity;
+}
+
+.cgg-dragon-left .cgg-dragon-aura-tendrils {
+  background: radial-gradient(ellipse at 55% 45%, rgba(0, 0, 0, 0.9) 10%, rgba(10, 12, 16, 0.65) 55%, transparent 85%) !important;
+  box-shadow: 0 0 20px 8px rgba(0, 0, 0, 0.92) !important;
+  animation: cgg-black-tendrils 5.2s ease-in-out infinite !important;
+  filter: blur(5px) !important;
+}
+
+.cgg-dragon-right .cgg-dragon-aura-tendrils {
+  background: radial-gradient(ellipse at 45% 45%, rgba(255, 255, 255, 0.55) 10%, rgba(210, 220, 235, 0.35) 55%, transparent 85%) !important;
+  box-shadow: 0 0 18px 7px rgba(255, 255, 255, 0.4) !important;
+  animation: cgg-white-tendrils 5.2s ease-in-out infinite !important;
+  filter: blur(5px) !important;
+}
+
+@keyframes cgg-black-smoke-drift {
   0% {
-    transform: translate(-50%, -50%) scale(0.96) rotate(0deg);
-    border-radius: 46% 54% 58% 42% / 44% 48% 52% 56%;
-    filter: blur(2px);
+    transform: translate(-50%, -50%) scale(0.95) rotate(0deg);
+    border-radius: 42% 58% 65% 35% / 45% 55% 45% 55%;
+    opacity: 0.85;
   }
   50% {
-    transform: translate(-50%, -50%) scale(1.08) rotate(-180deg);
-    border-radius: 54% 46% 40% 60% / 56% 44% 58% 42%;
-    filter: blur(4px);
+    transform: translate(-53%, -52%) scale(1.08) rotate(-2.5deg);
+    border-radius: 54% 46% 40% 60% / 58% 42% 56% 44%;
+    opacity: 0.98;
   }
   100% {
-    transform: translate(-50%, -50%) scale(0.98) rotate(-360deg);
-    border-radius: 48% 52% 54% 46% / 42% 58% 46% 54%;
-    filter: blur(2px);
+    transform: translate(-48%, -48%) scale(0.98) rotate(2deg);
+    border-radius: 46% 54% 58% 42% / 42% 58% 46% 54%;
+    opacity: 0.88;
   }
+}
+
+@keyframes cgg-white-smoke-drift {
+  0% {
+    transform: translate(-50%, -50%) scale(0.95) rotate(0deg);
+    border-radius: 42% 58% 65% 35% / 45% 55% 45% 55%;
+    opacity: 0.75;
+  }
+  50% {
+    transform: translate(-47%, -52%) scale(1.08) rotate(2.5deg);
+    border-radius: 54% 46% 40% 60% / 58% 42% 56% 44%;
+    opacity: 0.92;
+  }
+  100% {
+    transform: translate(-52%, -48%) scale(0.98) rotate(-2deg);
+    border-radius: 46% 54% 58% 42% / 42% 58% 46% 54%;
+    opacity: 0.8;
+  }
+}
+
+@keyframes cgg-black-tendrils {
+  0% { transform: translate(-50%, -50%) rotate(0deg) scale(0.92); opacity: 0.8; }
+  50% { transform: translate(-52%, -54%) rotate(-4deg) scale(1.12); opacity: 0.98; }
+  100% { transform: translate(-50%, -50%) rotate(0deg) scale(0.92); opacity: 0.8; }
+}
+
+@keyframes cgg-white-tendrils {
+  0% { transform: translate(-50%, -50%) rotate(0deg) scale(0.92); opacity: 0.65; }
+  50% { transform: translate(-48%, -54%) rotate(4deg) scale(1.12); opacity: 0.88; }
+  100% { transform: translate(-50%, -50%) rotate(0deg) scale(0.92); opacity: 0.65; }
+}
+
+/* ==========================================================================
+   Level-Specific Dragon Scaling & Escalating Visual Effects
+   ========================================================================== */
+/* Level 1: Slumbering Spirits */
+.cgg-dragon-level-1 {
+  opacity: 0.42 !important;
+}
+.cgg-dragon-level-1 .cgg-dragon-body {
+  width: 72px !important;
+  height: 34px !important;
+}
+.cgg-dragon-level-1 .cgg-dragon-aura-smoke {
+  width: 66px !important;
+  height: 30px !important;
+  opacity: 0.55 !important;
+}
+.cgg-dragon-level-1 .cgg-dragon-aura-tendrils {
+  display: none !important;
+}
+
+/* Level 2: Awakening Dragons */
+.cgg-dragon-level-2 {
+  opacity: 0.72 !important;
+}
+.cgg-dragon-level-2 .cgg-dragon-body {
+  width: 88px !important;
+  height: 41px !important;
+}
+.cgg-dragon-level-2 .cgg-dragon-aura-smoke {
+  width: 82px !important;
+  height: 38px !important;
+  opacity: 0.78 !important;
+}
+.cgg-dragon-level-2 .cgg-dragon-aura-tendrils {
+  width: 94px !important;
+  height: 44px !important;
+  opacity: 0.65 !important;
+}
+
+/* Level 3: Awakened Twin Dragons */
+.cgg-dragon-level-3 {
+  opacity: 0.96 !important;
+}
+.cgg-dragon-level-3 .cgg-dragon-body {
+  width: 108px !important;
+  height: 50px !important;
+}
+.cgg-dragon-level-3 .cgg-dragon-aura-smoke {
+  width: 102px !important;
+  height: 48px !important;
+  opacity: 0.9 !important;
+}
+.cgg-dragon-level-3 .cgg-dragon-aura-tendrils {
+  width: 116px !important;
+  height: 54px !important;
+  opacity: 0.85 !important;
+}
+
+/* Level 4: Villain Calamity Roar */
+.cgg-dragon-level-4 {
+  opacity: 1 !important;
+}
+.cgg-dragon-level-4.cgg-dragon-left {
+  right: calc(100% - 16px) !important;
+}
+.cgg-dragon-level-4.cgg-dragon-right {
+  left: calc(100% - 16px) !important;
+}
+.cgg-dragon-level-4 .cgg-dragon-body {
+  width: 126px !important;
+  height: 59px !important;
+}
+.cgg-dragon-level-4.cgg-dragon-left .cgg-dragon-body {
+  filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.6)) drop-shadow(0 4px 10px rgba(0, 0, 0, 1)) contrast(1.2) !important;
+}
+.cgg-dragon-level-4.cgg-dragon-right .cgg-dragon-body {
+  filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.95)) drop-shadow(0 4px 10px rgba(0, 0, 0, 1)) contrast(1.2) !important;
+}
+.cgg-dragon-level-4 .cgg-dragon-aura-smoke {
+  width: 120px !important;
+  height: 56px !important;
+  opacity: 1 !important;
+}
+.cgg-dragon-level-4 .cgg-dragon-aura-tendrils {
+  width: 136px !important;
+  height: 64px !important;
+  opacity: 0.95 !important;
+}
+
+/* Level 1K+: Transcendent Primordial Sovereigns */
+.cgg-dragon-level-1k {
+  opacity: 1 !important;
+}
+.cgg-dragon-level-1k.cgg-dragon-left {
+  right: calc(100% - 18px) !important;
+}
+.cgg-dragon-level-1k.cgg-dragon-right {
+  left: calc(100% - 18px) !important;
+}
+.cgg-dragon-level-1k .cgg-dragon-body {
+  width: 138px !important;
+  height: 64px !important;
+}
+.cgg-dragon-level-1k.cgg-dragon-left .cgg-dragon-body {
+  filter: drop-shadow(0 0 2.5px rgba(255, 255, 255, 0.75)) drop-shadow(0 5px 12px rgba(0, 0, 0, 1)) contrast(1.25) !important;
+}
+.cgg-dragon-level-1k.cgg-dragon-right .cgg-dragon-body {
+  filter: drop-shadow(0 0 4px rgba(255, 255, 255, 1)) drop-shadow(0 5px 12px rgba(0, 0, 0, 1)) contrast(1.25) !important;
+}
+.cgg-dragon-level-1k .cgg-dragon-aura-smoke {
+  width: 132px !important;
+  height: 62px !important;
+  opacity: 1 !important;
+}
+.cgg-dragon-level-1k .cgg-dragon-aura-tendrils {
+  width: 152px !important;
+  height: 70px !important;
+  opacity: 1 !important;
+}
+
+/* Transcendent 1K+ Badge in Tooltip */
+.cgg-tooltip-yinyang-1k-badge {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 3px !important;
+  margin-left: 8px !important;
+  padding: 1px 7px !important;
+  font-size: 10px !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.05em !important;
+  text-transform: uppercase !important;
+  color: #ffffff !important;
+  background: rgba(255, 255, 255, 0.14) !important;
+  border: 1px solid rgba(255, 255, 255, 0.6) !important;
+  border-radius: 999px !important;
+  box-shadow: 0 0 6px rgba(255, 255, 255, 0.5) !important;
 }
 
 /* ==========================================================================
@@ -483,14 +782,18 @@ html[data-cgg-theme="yinYang"] .cgg-winged-tooltip .cgg-tooltip-yinyang-badge {
   visibility: hidden !important;
 }
 
-/* Suppress Yin Yang aura, vortex emblem, and badges in Chrysanthemum Gold */
+/* Suppress Yin Yang aura, vortex, dragons, and badges in Chrysanthemum Gold */
 .cgg-winged-tooltip:not(.cgg-tooltip-yinyang) .cgg-yinyang-aura,
 .cgg-winged-tooltip:not(.cgg-tooltip-yinyang) .cgg-yinyang-vortex,
 .cgg-winged-tooltip:not(.cgg-tooltip-yinyang) .cgg-yinyang-vortex-emblem,
+.cgg-winged-tooltip:not(.cgg-tooltip-yinyang) .cgg-dragon-flank,
+.cgg-winged-tooltip:not(.cgg-tooltip-yinyang) .cgg-tooltip-yinyang-1k-badge,
 .cgg-winged-tooltip:not(.cgg-tooltip-yinyang) .cgg-tooltip-yinyang-badge,
 html[data-cgg-theme="chrysanthemum"] .cgg-yinyang-aura,
 html[data-cgg-theme="chrysanthemum"] .cgg-yinyang-vortex,
 html[data-cgg-theme="chrysanthemum"] .cgg-yinyang-vortex-emblem,
+html[data-cgg-theme="chrysanthemum"] .cgg-dragon-flank,
+html[data-cgg-theme="chrysanthemum"] .cgg-tooltip-yinyang-1k-badge,
 html[data-cgg-theme="chrysanthemum"] .cgg-tooltip-yinyang-badge {
   display: none !important;
   visibility: hidden !important;
@@ -513,6 +816,8 @@ tool-tip[for*="contribution"] {
 html[data-cgg-wings="false"] .cgg-winged-tooltip-wing,
 html[data-cgg-wings="false"] .cgg-crimson-halo,
 html[data-cgg-wings="false"] .cgg-yinyang-aura,
+html[data-cgg-wings="false"] .cgg-yinyang-vortex,
+html[data-cgg-wings="false"] .cgg-dragon-flank,
 html[data-cgg-wings="false"] .cgg-yinyang-vortex-emblem {
   display: none !important;
 }

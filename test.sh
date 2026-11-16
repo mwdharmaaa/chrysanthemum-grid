@@ -19,6 +19,8 @@ REQUIRED_FILES=(
   "icons/icon.svg"
   "src/assets/wing_left.png"
   "src/assets/wing_right.png"
+  "src/assets/dragon_black_left.png"
+  "src/assets/dragon_white_right.png"
   "src/assets/yinyang_vortex.png"
   "src/core/palette_config.js"
   "src/styles/chrysanthemum.css"
