@@ -56,7 +56,7 @@ const PaletteTokenStyler = {
     // Feature flags state - Gold features are strictly separated from Yin Yang
     const enableBorders = isChrysanthemum && settings.enableCrimsonBorders !== false;
     const enableButtons = isChrysanthemum && settings.enableCrimsonButtons !== false;
-    const enableWings = isChrysanthemum && settings.enableWingedTooltip !== false;
+    const enableWings = settings.enableWingedTooltip !== false;
     const enableHover = settings.enableHoverAnimation !== false;
 
     root.setAttribute("data-cgg-borders", enableBorders ? "true" : "false");
@@ -82,7 +82,7 @@ const PaletteTokenStyler = {
     root.style.setProperty("--button-primary-bgColor-active", btnActive, "important");
     root.style.setProperty("--button-primary-fgColor-rest", btnFg, "important");
     root.style.setProperty("--button-primary-borderColor-rest", btnBorder, "important");
-    root.style.setProperty("--bgColor-accent-emphasis", btnBg, "important");
+    root.style.setProperty("--bgColor-accent-emphasis", isYinYang ? "#ffffff" : "#1f6feb", "important");
     root.style.setProperty("--fgColor-onEmphasis", btnFg, "important");
     root.style.setProperty("--color-fg-on-emphasis", btnFg, "important");
 

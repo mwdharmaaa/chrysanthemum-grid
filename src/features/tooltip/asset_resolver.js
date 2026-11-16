@@ -10,7 +10,7 @@ const TooltipAssetResolver = {
     } catch {
       // Gracefully handle invalidated extension context after extension update/reload
     }
-    return `../src/assets/${filename}`;
+    return `/src/assets/${filename}`;
   }
 };
 

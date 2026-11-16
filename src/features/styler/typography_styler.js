@@ -55,25 +55,24 @@ const TypographyStyler = {
       });
     });
 
-    // 6. Selected & Unselected Filter Items & Year Links
-    const filterBg = isYinYang ? "#ffffff" : (enableButtons ? "#b81d42" : "#1f6feb");
+    // 6. Selected & Unselected Filter Items & Year Links (Native GitHub Blue / Monochrome; strictly NO crimson red box)
+    const filterBg = isYinYang ? "#ffffff" : "#1f6feb";
     const filterFg = isYinYang ? "#000000" : "#ffffff";
 
     document.querySelectorAll(".js-year-link, .filter-item, [id^='year-link-'], a[href*='#year-']").forEach((link) => {
+      link.style.removeProperty("box-shadow");
+      link.style.removeProperty("text-shadow");
       const isSelected = link.classList.contains("selected") || link.getAttribute("aria-current") === "page";
       if (isSelected) {
         link.style.setProperty("background-color", filterBg, "important");
         link.style.setProperty("color", filterFg, "important");
-        link.style.setProperty("font-weight", "700", "important");
-        link.style.setProperty("text-shadow", isYinYang ? "none" : "0 1px 2px rgba(0, 0, 0, 0.4)", "important");
+        link.style.setProperty("font-weight", "600", "important");
         link.querySelectorAll("*").forEach((child) => {
           child.style.setProperty("color", filterFg, "important");
           child.style.setProperty("fill", filterFg, "important");
         });
       } else {
         link.style.removeProperty("background-color");
-        link.style.removeProperty("box-shadow");
-        link.style.removeProperty("text-shadow");
         link.style.setProperty("color", isYinYang ? "#8b949e" : "var(--cgg-text-highlight, #ffe27a)", "important");
         link.style.setProperty("font-weight", "600", "important");
         link.querySelectorAll("*").forEach((child) => {

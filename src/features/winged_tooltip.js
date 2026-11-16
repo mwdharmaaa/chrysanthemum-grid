@@ -46,14 +46,39 @@ const WingedTooltip = {
 
     const level = TooltipLevelExtractor.extract(dayEl, text);
     const count = typeof TooltipLevelExtractor.extractCount === "function" ? TooltipLevelExtractor.extractCount(dayEl, text) : 0;
-    const isGrand1k = isChrysanthemum && (this.settings.enableGrand1kMilestone !== false) && count >= 1000;
-    const enableWings = isChrysanthemum && (this.settings.enableWingedTooltip !== false);
+    const isGrand1k = (this.settings.enableGrand1kMilestone !== false) && count >= 1000;
+    const enableWings = this.settings.enableWingedTooltip !== false;
 
     // Reset old classes
     host.className = `cgg-winged-tooltip cgg-level-${level}`;
 
     if (isYinYang) {
       host.classList.add("cgg-tooltip-yinyang");
+
+      // Yin Yang Vortex Ornament according to level
+      if (enableWings) {
+        const vortex = document.createElement("span");
+        const vortexLevelClass = isGrand1k ? "cgg-yinyang-vortex-level-1k" : `cgg-yinyang-vortex-level-${level}`;
+        vortex.className = `cgg-yinyang-vortex-emblem ${vortexLevelClass}`;
+        vortex.title = `Yin Yang Level ${level} Vortex (${count} contributions)`;
+        content.prepend(vortex);
+      }
+
+      // Flanking wings & aura for higher levels
+      if (enableWings && (level === 3 || level === 4 || isGrand1k)) {
+        host.classList.add("has-yinyang-wings");
+      }
+      if (enableWings && (level === 4 || isGrand1k)) {
+        host.classList.add("has-yinyang-aura");
+      }
+
+      if (isGrand1k) {
+        host.classList.add("cgg-yinyang-1k-tooltip");
+        const badge = document.createElement("span");
+        badge.className = "cgg-tooltip-yinyang-badge";
+        badge.innerHTML = ` <span class="cgg-yinyang-sparkle">✦</span> Transcendent 1K+`;
+        content.appendChild(badge);
+      }
     } else {
       if (enableWings && (level === 3 || level === 4 || isGrand1k)) {
         host.classList.add("has-wings");
@@ -106,8 +131,10 @@ const WingedTooltip = {
     this.settings = settings;
     const leftUrl = TooltipAssetResolver.resolve("wing_left.png");
     const rightUrl = TooltipAssetResolver.resolve("wing_right.png");
+    const vortexUrl = TooltipAssetResolver.resolve("yinyang_vortex.png");
     document.documentElement.style.setProperty("--cgg-wing-left", `url("${leftUrl}")`);
     document.documentElement.style.setProperty("--cgg-wing-right", `url("${rightUrl}")`);
+    document.documentElement.style.setProperty("--cgg-yinyang-vortex", `url("${vortexUrl}")`);
 
     TooltipHost.create();
     this.bindGlobalDelegation();

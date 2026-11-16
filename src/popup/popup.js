@@ -28,12 +28,12 @@ document.addEventListener("DOMContentLoaded", () => {
     if (isYinYang) {
       document.body.setAttribute("data-theme", "yinYang");
       if (rowBorders) rowBorders.classList.add("theme-disabled");
-      if (rowWings) rowWings.classList.add("theme-disabled");
+      if (rowWings) rowWings.classList.remove("theme-disabled");
       if (rowButtons) rowButtons.classList.add("theme-disabled");
       if (rowGrand1k) rowGrand1k.classList.add("theme-disabled");
 
       if (descBorders) descBorders.textContent = "Disabled in Yin Yang (Chrysanthemum Gold exclusive)";
-      if (descWings) descWings.textContent = "Disabled in Yin Yang (Chrysanthemum Gold exclusive)";
+      if (descWings) descWings.textContent = "Spinning Yin Yang vortex storm on commit hover";
       if (descButtons) descButtons.textContent = "Disabled in Yin Yang (Chrysanthemum Gold exclusive)";
       if (descGrand1k) descGrand1k.textContent = "Disabled in Yin Yang (Chrysanthemum Gold exclusive)";
     } else {

@@ -296,8 +296,14 @@
       document.getElementById("year-link-2024").click();
     }
   
-    if (urlParams.get("hover") === "1k") {
+    const hoverParam = urlParams.get("hover");
+    if (hoverParam === "1k") {
       const cell = document.getElementById("contribution-day-component-3-25");
+      if (cell) {
+        WingedTooltip.show(cell);
+      }
+    } else if (hoverParam !== null) {
+      const cell = document.querySelector(`[data-level="${hoverParam}"]`);
       if (cell) {
         WingedTooltip.show(cell);
       }

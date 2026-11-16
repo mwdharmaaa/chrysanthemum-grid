@@ -35,7 +35,7 @@ html:not([data-cgg-theme="yinYang"]) {
   --color-btn-primary-hover-bg: var(--cgg-crimson-hover) !important;
   --color-btn-primary-border: var(--cgg-crimson-border) !important;
   --color-btn-primary-text: #ffffff !important;
-  --bgColor-accent-emphasis: var(--cgg-crimson) !important;
+  --bgColor-accent-emphasis: #1f6feb !important;
   --fgColor-onEmphasis: #ffffff !important;
   --color-fg-on-emphasis: #ffffff !important;
 
@@ -195,30 +195,30 @@ html[data-cgg-theme="chrysanthemum"] .btn-primary span {
   color: #ffffff !important;
 }
 
-/* 7. Active Year Links & Selected Filter Items (Chrysanthemum Gold Exclusive) */
-html:not([data-cgg-theme="yinYang"]):not([data-cgg-buttons="false"]) .filter-item.selected,
-html:not([data-cgg-theme="yinYang"]):not([data-cgg-buttons="false"]) .filter-item[aria-current="page"],
-html:not([data-cgg-theme="yinYang"]):not([data-cgg-buttons="false"]) a.js-year-link.selected,
-html:not([data-cgg-theme="yinYang"]):not([data-cgg-buttons="false"]) a.filter-item.selected,
-html:not([data-cgg-theme="yinYang"]):not([data-cgg-buttons="false"]) .js-year-link.selected,
-html:not([data-cgg-theme="yinYang"]):not([data-cgg-buttons="false"]) [id^="year-link-"].selected,
-html:not([data-cgg-theme="yinYang"]):not([data-cgg-buttons="false"]) [id^="year-link-"][aria-current="page"],
-html:not([data-cgg-theme="yinYang"]):not([data-cgg-buttons="false"]) a[href*="#year-"].selected {
-  background-color: var(--cgg-crimson, #b81d42) !important;
+/* 7. Active Year Links & Selected Filter Items (Native GitHub Blue) */
+html:not([data-cgg-theme="yinYang"]) .filter-item.selected,
+html:not([data-cgg-theme="yinYang"]) .filter-item[aria-current="page"],
+html:not([data-cgg-theme="yinYang"]) a.js-year-link.selected,
+html:not([data-cgg-theme="yinYang"]) a.filter-item.selected,
+html:not([data-cgg-theme="yinYang"]) .js-year-link.selected,
+html:not([data-cgg-theme="yinYang"]) [id^="year-link-"].selected,
+html:not([data-cgg-theme="yinYang"]) [id^="year-link-"][aria-current="page"],
+html:not([data-cgg-theme="yinYang"]) a[href*="#year-"].selected {
+  background-color: #1f6feb !important;
   color: #ffffff !important;
-  font-weight: 700 !important;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4) !important;
-  box-shadow: 0 0 8px var(--cgg-crimson-glow, rgba(184, 29, 66, 0.45)) !important;
+  font-weight: 600 !important;
+  text-shadow: none !important;
+  box-shadow: none !important;
 }
 
-html:not([data-cgg-theme="yinYang"]):not([data-cgg-buttons="false"]) .filter-item.selected *,
-html:not([data-cgg-theme="yinYang"]):not([data-cgg-buttons="false"]) .filter-item[aria-current="page"] *,
-html:not([data-cgg-theme="yinYang"]):not([data-cgg-buttons="false"]) a.js-year-link.selected *,
-html:not([data-cgg-theme="yinYang"]):not([data-cgg-buttons="false"]) a.filter-item.selected *,
-html:not([data-cgg-theme="yinYang"]):not([data-cgg-buttons="false"]) .js-year-link.selected *,
-html:not([data-cgg-theme="yinYang"]):not([data-cgg-buttons="false"]) [id^="year-link-"].selected *,
-html:not([data-cgg-theme="yinYang"]):not([data-cgg-buttons="false"]) [id^="year-link-"][aria-current="page"] *,
-html:not([data-cgg-theme="yinYang"]):not([data-cgg-buttons="false"]) a[href*="#year-"].selected * {
+html:not([data-cgg-theme="yinYang"]) .filter-item.selected *,
+html:not([data-cgg-theme="yinYang"]) .filter-item[aria-current="page"] *,
+html:not([data-cgg-theme="yinYang"]) a.js-year-link.selected *,
+html:not([data-cgg-theme="yinYang"]) a.filter-item.selected *,
+html:not([data-cgg-theme="yinYang"]) .js-year-link.selected *,
+html:not([data-cgg-theme="yinYang"]) [id^="year-link-"].selected *,
+html:not([data-cgg-theme="yinYang"]) [id^="year-link-"][aria-current="page"] *,
+html:not([data-cgg-theme="yinYang"]) a[href*="#year-"].selected * {
   color: #ffffff !important;
   fill: #ffffff !important;
 }

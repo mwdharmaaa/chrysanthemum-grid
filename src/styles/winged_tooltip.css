@@ -7,6 +7,7 @@
 :root {
   --cgg-wing-left: url("../assets/wing_left.png");
   --cgg-wing-right: url("../assets/wing_right.png");
+  --cgg-yinyang-vortex: url("../assets/yinyang_vortex.png");
 }
 
 /* Winged Tooltip Floating Host */
@@ -249,7 +250,7 @@
 
 
 /* ==========================================================================
-   YIN YANG TOOLTIP: Pure Monochrome (Strictly Zero Wings, Halo, Crown, Red)
+   YIN YANG TOOLTIP: Dynamic Spinning Yin Yang Vortex Engine
    ========================================================================== */
 .cgg-winged-tooltip.cgg-tooltip-yinyang .cgg-winged-tooltip-content,
 html[data-cgg-theme="yinYang"] .cgg-winged-tooltip .cgg-winged-tooltip-content {
@@ -258,6 +259,8 @@ html[data-cgg-theme="yinYang"] .cgg-winged-tooltip .cgg-winged-tooltip-content {
   border: 1px solid #383838 !important;
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.7) !important;
   text-shadow: none !important;
+  display: inline-flex !important;
+  align-items: center !important;
 }
 
 .cgg-winged-tooltip.cgg-tooltip-yinyang.cgg-level-0 .cgg-winged-tooltip-content,
@@ -270,16 +273,18 @@ html[data-cgg-theme="yinYang"] .cgg-winged-tooltip.cgg-level-0 .cgg-winged-toolt
 
 .cgg-winged-tooltip.cgg-tooltip-yinyang.cgg-level-1 .cgg-winged-tooltip-content,
 html[data-cgg-theme="yinYang"] .cgg-winged-tooltip.cgg-level-1 .cgg-winged-tooltip-content {
-  background: #0a0a0a !important;
+  background: #0d0d0d !important;
   color: #ffffff !important;
   border: 1px solid #383838 !important;
+  box-shadow: 0 0 6px rgba(255, 255, 255, 0.2), 0 4px 14px rgba(0, 0, 0, 0.7) !important;
 }
 
 .cgg-winged-tooltip.cgg-tooltip-yinyang.cgg-level-2 .cgg-winged-tooltip-content,
 html[data-cgg-theme="yinYang"] .cgg-winged-tooltip.cgg-level-2 .cgg-winged-tooltip-content {
-  background: #0a0a0a !important;
+  background: #111111 !important;
   color: #ffffff !important;
   border: 1px solid #6e6e6e !important;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.35), 0 4px 14px rgba(0, 0, 0, 0.75) !important;
 }
 
 .cgg-winged-tooltip.cgg-tooltip-yinyang.cgg-level-3 .cgg-winged-tooltip-content,
@@ -287,23 +292,252 @@ html[data-cgg-theme="yinYang"] .cgg-winged-tooltip.cgg-level-3 .cgg-winged-toolt
   background: #141414 !important;
   color: #ffffff !important;
   border: 1px solid #aaaaaa !important;
+  box-shadow: 0 0 14px rgba(255, 255, 255, 0.55), 0 4px 16px rgba(0, 0, 0, 0.8) !important;
 }
 
 .cgg-winged-tooltip.cgg-tooltip-yinyang.cgg-level-4 .cgg-winged-tooltip-content,
 html[data-cgg-theme="yinYang"] .cgg-winged-tooltip.cgg-level-4 .cgg-winged-tooltip-content {
-  background: #1f1f1f !important;
+  background: #1a1a1a !important;
   color: #ffffff !important;
-  border: 1px solid #ffffff !important;
-  box-shadow: 0 0 10px rgba(255, 255, 255, 0.4), 0 4px 14px rgba(0, 0, 0, 0.8) !important;
+  border: 1.5px solid #ffffff !important;
+  box-shadow: 0 0 18px rgba(255, 255, 255, 0.75), 0 0 6px #ffffff, 0 4px 18px rgba(0, 0, 0, 0.85) !important;
+  text-shadow: 0 0 6px rgba(255, 255, 255, 0.5) !important;
 }
 
-/* Suppress all wings, halos, and crowns in Yin Yang */
-.cgg-winged-tooltip.cgg-tooltip-yinyang .cgg-winged-tooltip-wing,
+/* Transcendent 1K+ Commits Tooltip (Yin Yang Exclusive) */
+.cgg-winged-tooltip.cgg-tooltip-yinyang.cgg-yinyang-1k-tooltip .cgg-winged-tooltip-content {
+  background: #000000 !important;
+  color: #ffffff !important;
+  border: 1.5px solid #ffffff !important;
+  box-shadow: 0 0 24px rgba(255, 255, 255, 0.9), 0 0 10px #ffffff, 0 6px 20px rgba(0, 0, 0, 0.9) !important;
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.7) !important;
+  font-weight: 700 !important;
+}
+
+.cgg-tooltip-yinyang-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  margin-left: 8px;
+  padding: 1px 7px;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #000000 !important;
+  background: #ffffff !important;
+  border: 1px solid #ffffff !important;
+  border-radius: 999px;
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.6);
+}
+
+.cgg-yinyang-sparkle {
+  color: #000000 !important;
+}
+
+/* ==========================================================================
+   Center Yin Yang Vortex Ornament inside Tooltip
+   ========================================================================== */
+.cgg-yinyang-vortex-emblem {
+  display: inline-block;
+  vertical-align: middle;
+  background-image: var(--cgg-yinyang-vortex);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 50%;
+  margin-right: 8px;
+  flex-shrink: 0;
+  will-change: transform;
+}
+
+/* Level 0: faint, resting */
+.cgg-yinyang-vortex-level-0 {
+  width: 14px;
+  height: 14px;
+  opacity: 0.4;
+  filter: grayscale(1);
+}
+
+/* Level 1: gentle rotation */
+.cgg-yinyang-vortex-level-1 {
+  width: 18px;
+  height: 18px;
+  opacity: 0.95;
+  filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.35));
+  animation: cgg-vortex-spin-clock 7s linear infinite;
+}
+
+/* Level 2: steady spin */
+.cgg-yinyang-vortex-level-2 {
+  width: 22px;
+  height: 22px;
+  filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.5));
+  animation: cgg-vortex-spin-clock 4.5s linear infinite;
+}
+
+/* Level 3: dynamic spin + radiant glow */
+.cgg-yinyang-vortex-level-3 {
+  width: 26px;
+  height: 26px;
+  filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.7));
+  animation: cgg-vortex-spin-clock 2.8s linear infinite;
+}
+
+/* Level 4: rapid cosmic storm spin + intense radiant glow */
+.cgg-yinyang-vortex-level-4 {
+  width: 30px;
+  height: 30px;
+  filter: drop-shadow(0 0 14px rgba(255, 255, 255, 0.9)) drop-shadow(0 0 4px #ffffff);
+  animation: cgg-vortex-spin-clock 1.8s linear infinite;
+}
+
+/* 1K+ daily commits: hyper transcendent spin */
+.cgg-yinyang-vortex-level-1k {
+  width: 34px;
+  height: 34px;
+  filter: drop-shadow(0 0 18px rgba(255, 255, 255, 1)) drop-shadow(0 0 6px #ffffff);
+  animation: cgg-vortex-spin-clock 1.2s linear infinite;
+}
+
+/* ==========================================================================
+   Yin Yang Flanking Vortex Wings (Dual Spinning Vortex Wings)
+   ========================================================================== */
+.cgg-winged-tooltip.cgg-tooltip-yinyang.has-yinyang-wings .cgg-winged-tooltip-wing {
+  display: block !important;
+  visibility: visible !important;
+  background-image: var(--cgg-yinyang-vortex) !important;
+  background-size: contain !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+  border-radius: 50% !important;
+  filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.55)) drop-shadow(0 2px 6px rgba(0, 0, 0, 0.8)) !important;
+}
+
+.cgg-winged-tooltip.cgg-tooltip-yinyang.has-yinyang-wings.cgg-level-3 .cgg-winged-tooltip-wing {
+  width: 44px !important;
+  height: 44px !important;
+}
+
+.cgg-winged-tooltip.cgg-tooltip-yinyang.has-yinyang-wings.cgg-level-4 .cgg-winged-tooltip-wing {
+  width: 58px !important;
+  height: 58px !important;
+  filter: drop-shadow(0 0 14px rgba(255, 255, 255, 0.8)) drop-shadow(0 3px 8px rgba(0, 0, 0, 0.9)) !important;
+}
+
+.cgg-winged-tooltip.cgg-tooltip-yinyang.cgg-yinyang-1k-tooltip .cgg-winged-tooltip-wing {
+  width: 72px !important;
+  height: 72px !important;
+  filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.95)) drop-shadow(0 4px 10px rgba(0, 0, 0, 0.95)) !important;
+}
+
+/* Left & Right Wing Rotations in Yin Yang */
+.cgg-winged-tooltip.cgg-tooltip-yinyang .cgg-winged-tooltip-wing-left {
+  right: calc(100% - 12px) !important;
+  animation: cgg-vortex-spin-counter 3s linear infinite !important;
+}
+
+.cgg-winged-tooltip.cgg-tooltip-yinyang .cgg-winged-tooltip-wing-right {
+  left: calc(100% - 12px) !important;
+  animation: cgg-vortex-spin-clock 3s linear infinite !important;
+}
+
+.cgg-winged-tooltip.cgg-tooltip-yinyang.cgg-level-4 .cgg-winged-tooltip-wing-left {
+  animation-duration: 2s !important;
+  right: calc(100% - 16px) !important;
+}
+
+.cgg-winged-tooltip.cgg-tooltip-yinyang.cgg-level-4 .cgg-winged-tooltip-wing-right {
+  animation-duration: 2s !important;
+  left: calc(100% - 16px) !important;
+}
+
+.cgg-winged-tooltip.cgg-tooltip-yinyang.cgg-yinyang-1k-tooltip .cgg-winged-tooltip-wing-left {
+  animation-duration: 1.2s !important;
+  right: calc(100% - 20px) !important;
+}
+
+.cgg-winged-tooltip.cgg-tooltip-yinyang.cgg-yinyang-1k-tooltip .cgg-winged-tooltip-wing-right {
+  animation-duration: 1.2s !important;
+  left: calc(100% - 20px) !important;
+}
+
+@keyframes cgg-vortex-spin-clock {
+  from {
+    transform: translateY(-50%) rotate(0deg);
+  }
+  to {
+    transform: translateY(-50%) rotate(360deg);
+  }
+}
+
+@keyframes cgg-vortex-spin-counter {
+  from {
+    transform: translateY(-50%) rotate(360deg);
+  }
+  to {
+    transform: translateY(-50%) rotate(0deg);
+  }
+}
+
+/* ==========================================================================
+   Yin Yang Monochrome Vortex Aura Ring
+   ========================================================================== */
+.cgg-yinyang-aura {
+  display: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(255, 255, 255, 0.55);
+  box-shadow: 0 0 16px rgba(255, 255, 255, 0.5),
+              0 0 32px rgba(255, 255, 255, 0.25),
+              inset 0 0 12px rgba(255, 255, 255, 0.35);
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.9;
+  animation: cgg-yinyang-aura-pulse 2.4s ease-in-out infinite alternate;
+}
+
+.cgg-winged-tooltip.has-yinyang-aura .cgg-yinyang-aura {
+  display: block;
+}
+
+@keyframes cgg-yinyang-aura-pulse {
+  0% {
+    transform: translate(-50%, -50%) scale(1) rotate(0deg);
+    box-shadow: 0 0 12px rgba(255, 255, 255, 0.4), inset 0 0 8px rgba(255, 255, 255, 0.25);
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1.12) rotate(180deg);
+    box-shadow: 0 0 24px rgba(255, 255, 255, 0.75), 0 0 40px rgba(255, 255, 255, 0.35), inset 0 0 14px rgba(255, 255, 255, 0.5);
+  }
+}
+
+/* ==========================================================================
+   Theme Suppression Rules
+   ========================================================================== */
+/* Suppress crimson halos and gold crowns in Yin Yang; suppress wings unless has-yinyang-wings */
+.cgg-winged-tooltip.cgg-tooltip-yinyang:not(.has-yinyang-wings) .cgg-winged-tooltip-wing,
+html[data-cgg-theme="yinYang"] .cgg-winged-tooltip:not(.has-yinyang-wings) .cgg-winged-tooltip-wing,
 .cgg-winged-tooltip.cgg-tooltip-yinyang .cgg-crimson-halo,
 .cgg-winged-tooltip.cgg-tooltip-yinyang .cgg-tooltip-crown,
-html[data-cgg-theme="yinYang"] .cgg-winged-tooltip .cgg-winged-tooltip-wing,
 html[data-cgg-theme="yinYang"] .cgg-winged-tooltip .cgg-crimson-halo,
 html[data-cgg-theme="yinYang"] .cgg-winged-tooltip .cgg-tooltip-crown {
+  display: none !important;
+  visibility: hidden !important;
+}
+
+/* Suppress Yin Yang aura, vortex emblem, and badges in Chrysanthemum Gold */
+.cgg-winged-tooltip:not(.cgg-tooltip-yinyang) .cgg-yinyang-aura,
+.cgg-winged-tooltip:not(.cgg-tooltip-yinyang) .cgg-yinyang-vortex-emblem,
+.cgg-winged-tooltip:not(.cgg-tooltip-yinyang) .cgg-tooltip-yinyang-badge,
+html[data-cgg-theme="chrysanthemum"] .cgg-yinyang-aura,
+html[data-cgg-theme="chrysanthemum"] .cgg-yinyang-vortex-emblem,
+html[data-cgg-theme="chrysanthemum"] .cgg-tooltip-yinyang-badge {
   display: none !important;
   visibility: hidden !important;
 }
@@ -321,8 +555,10 @@ tool-tip[for*="contribution"] {
   pointer-events: none !important;
 }
 
-/* Winged tooltip toggle override */
+/* Tooltip decoration toggle override (wings toggle) */
 html[data-cgg-wings="false"] .cgg-winged-tooltip-wing,
-html[data-cgg-wings="false"] .cgg-crimson-halo {
+html[data-cgg-wings="false"] .cgg-crimson-halo,
+html[data-cgg-wings="false"] .cgg-yinyang-aura,
+html[data-cgg-wings="false"] .cgg-yinyang-vortex-emblem {
   display: none !important;
 }
