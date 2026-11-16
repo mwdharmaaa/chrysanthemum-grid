@@ -55,31 +55,31 @@ const WingedTooltip = {
     if (isYinYang) {
       host.classList.add("cgg-tooltip-yinyang");
 
-      content.innerHTML = "";
-
-      // Centered Yin Yang Vortex emblem
-      if (enableWings) {
-        const vortex = document.createElement("span");
-        const vortexLevelClass = isGrand1k ? "cgg-yinyang-vortex-level-1k" : `cgg-yinyang-vortex-level-${level}`;
-        vortex.className = `cgg-yinyang-vortex-emblem ${vortexLevelClass}`;
-        vortex.title = `Yin Yang Level ${level} (${count} contributions)`;
-        content.appendChild(vortex);
-      }
-
-      // Centered text label
-      const textSpan = document.createElement("span");
-      textSpan.className = "cgg-tooltip-text-label";
-      textSpan.textContent = text;
-      content.appendChild(textSpan);
+      // Yin Yang keeps the content pill clean (ornament is outside the pill)
+      content.textContent = text;
 
       if (isGrand1k) {
         host.classList.add("cgg-yinyang-1k-tooltip");
-        const badge = document.createElement("span");
-        badge.className = "cgg-tooltip-yinyang-badge";
-        badge.innerHTML = ` <span class="cgg-yinyang-sparkle">✦</span> Transcendent 1K+`;
-        content.appendChild(badge);
+      }
+
+      // Positioned outside content pill
+      const vortex = host.querySelector(".cgg-yinyang-vortex");
+      if (vortex) {
+        if (enableWings) {
+          const vortexLevelClass = isGrand1k ? "cgg-yinyang-vortex-level-1k" : `cgg-yinyang-vortex-level-${level}`;
+          vortex.className = `cgg-yinyang-vortex ${vortexLevelClass}`;
+          vortex.title = `Yin Yang Level ${level} (${count} contributions)`;
+          vortex.style.display = "";
+        } else {
+          vortex.style.display = "none";
+        }
       }
     } else {
+      const vortex = host.querySelector(".cgg-yinyang-vortex");
+      if (vortex) {
+        vortex.style.display = "none";
+      }
+
       if (enableWings && (level === 3 || level === 4 || isGrand1k)) {
         host.classList.add("has-wings");
       }

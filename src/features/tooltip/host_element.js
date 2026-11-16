@@ -13,7 +13,7 @@ const TooltipHost = {
     host.id = "cggWingedTooltip";
     host.setAttribute("aria-hidden", "true");
     host.innerHTML = '<span class="cgg-crimson-halo"></span>' +
-                     '<span class="cgg-yinyang-aura"></span>' +
+                     '<span class="cgg-yinyang-vortex"></span>' +
                      '<span class="cgg-winged-tooltip-wing cgg-winged-tooltip-wing-left"></span>' +
                      '<span class="cgg-winged-tooltip-content"></span>' +
                      '<span class="cgg-winged-tooltip-wing cgg-winged-tooltip-wing-right"></span>';
