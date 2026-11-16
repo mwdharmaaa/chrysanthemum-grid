@@ -201,6 +201,34 @@ html[data-cgg-theme="yinYang"] [data-cgg-milestone="1k-plus"] {
   box-shadow: none !important;
 }
 
+/* Chrysanthemum Gold Selected Filter Item / Year Link */
+html:not([data-cgg-theme="yinYang"]):not([data-cgg-buttons="false"]) .filter-item.selected,
+html:not([data-cgg-theme="yinYang"]):not([data-cgg-buttons="false"]) .filter-item[aria-current="page"],
+html:not([data-cgg-theme="yinYang"]):not([data-cgg-buttons="false"]) a.js-year-link.selected,
+html:not([data-cgg-theme="yinYang"]):not([data-cgg-buttons="false"]) a.filter-item.selected,
+html:not([data-cgg-theme="yinYang"]):not([data-cgg-buttons="false"]) .js-year-link.selected,
+html:not([data-cgg-theme="yinYang"]):not([data-cgg-buttons="false"]) [id^="year-link-"].selected,
+html:not([data-cgg-theme="yinYang"]):not([data-cgg-buttons="false"]) [id^="year-link-"][aria-current="page"],
+html:not([data-cgg-theme="yinYang"]):not([data-cgg-buttons="false"]) a[href*="#year-"].selected {
+  background-color: var(--cgg-crimson, #b81d42) !important;
+  color: #ffffff !important;
+  font-weight: 700 !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4) !important;
+  box-shadow: 0 0 8px var(--cgg-crimson-glow, rgba(184, 29, 66, 0.45)) !important;
+}
+
+html:not([data-cgg-theme="yinYang"]):not([data-cgg-buttons="false"]) .filter-item.selected *,
+html:not([data-cgg-theme="yinYang"]):not([data-cgg-buttons="false"]) .filter-item[aria-current="page"] *,
+html:not([data-cgg-theme="yinYang"]):not([data-cgg-buttons="false"]) a.js-year-link.selected *,
+html:not([data-cgg-theme="yinYang"]):not([data-cgg-buttons="false"]) a.filter-item.selected *,
+html:not([data-cgg-theme="yinYang"]):not([data-cgg-buttons="false"]) .js-year-link.selected *,
+html:not([data-cgg-theme="yinYang"]):not([data-cgg-buttons="false"]) [id^="year-link-"].selected *,
+html:not([data-cgg-theme="yinYang"]):not([data-cgg-buttons="false"]) [id^="year-link-"][aria-current="page"] *,
+html:not([data-cgg-theme="yinYang"]):not([data-cgg-buttons="false"]) a[href*="#year-"].selected * {
+  color: #ffffff !important;
+  fill: #ffffff !important;
+}
+
 /* Yin Yang Selected Filter Item / Year Link */
 html[data-cgg-theme="yinYang"] .filter-item.selected,
 html[data-cgg-theme="yinYang"] .filter-item[aria-current="page"],

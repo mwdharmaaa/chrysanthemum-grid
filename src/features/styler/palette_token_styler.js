@@ -83,6 +83,8 @@ const PaletteTokenStyler = {
     root.style.setProperty("--button-primary-fgColor-rest", btnFg, "important");
     root.style.setProperty("--button-primary-borderColor-rest", btnBorder, "important");
     root.style.setProperty("--bgColor-accent-emphasis", btnBg, "important");
+    root.style.setProperty("--fgColor-onEmphasis", btnFg, "important");
+    root.style.setProperty("--color-fg-on-emphasis", btnFg, "important");
 
     // Border and divider tokens (Strictly neutral monochrome dark for Yin Yang; Crimson/muted for Gold)
     const borderColor = isYinYang ? "#30363d" : (enableBorders ? "#b81d42" : "#30363d");

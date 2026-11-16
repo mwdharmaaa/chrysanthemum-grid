@@ -36,6 +36,8 @@ html:not([data-cgg-theme="yinYang"]) {
   --color-btn-primary-border: var(--cgg-crimson-border) !important;
   --color-btn-primary-text: #ffffff !important;
   --bgColor-accent-emphasis: var(--cgg-crimson) !important;
+  --fgColor-onEmphasis: #ffffff !important;
+  --color-fg-on-emphasis: #ffffff !important;
 
   /* Imperial Crimson Border & Divider Tokens */
   --cgg-border-crimson: #b81d42;
@@ -129,7 +131,7 @@ html:not([data-cgg-theme="yinYang"]) .pinned-item-list-item a,
 html:not([data-cgg-theme="yinYang"]) .pinned-item-list-item a.text-bold,
 html:not([data-cgg-theme="yinYang"]) .pinned-item-list-item span.repo,
 html:not([data-cgg-theme="yinYang"]) span.repo,
-html:not([data-cgg-theme="yinYang"]) a.text-bold,
+html:not([data-cgg-theme="yinYang"]) a.text-bold:not(.selected):not([aria-current="page"]):not(.filter-item.selected):not(.js-year-link.selected):not([id^="year-link-"].selected),
 html:not([data-cgg-theme="yinYang"]) a[data-hovercard-type="repository"],
 html:not([data-cgg-theme="yinYang"]) .repo {
   color: var(--cgg-text-highlight, #ffe27a) !important;
@@ -149,11 +151,11 @@ html:not([data-cgg-theme="yinYang"]) .pinned-item-list-item .octicon {
 }
 
 /* 5. Universal Anchor Link Overrides (Chrysanthemum Gold) */
-html:not([data-cgg-theme="yinYang"]) a:not(.btn-primary):not(.btn):not(.filter-item.selected) {
+html:not([data-cgg-theme="yinYang"]) a:not(.btn-primary):not(.btn):not(.filter-item.selected):not(.js-year-link.selected):not([id^="year-link-"].selected):not([aria-current="page"]) {
   color: var(--cgg-text-highlight, #ffe27a) !important;
 }
 
-html:not([data-cgg-theme="yinYang"]) a:not(.btn-primary):not(.btn):not(.filter-item.selected):hover {
+html:not([data-cgg-theme="yinYang"]) a:not(.btn-primary):not(.btn):not(.filter-item.selected):not(.js-year-link.selected):not([id^="year-link-"].selected):not([aria-current="page"]):hover {
   color: var(--cgg-l4, #ffcb47) !important;
 }
 
@@ -194,14 +196,31 @@ html[data-cgg-theme="chrysanthemum"] .btn-primary span {
 }
 
 /* 7. Active Year Links & Selected Filter Items (Chrysanthemum Gold Exclusive) */
-html[data-cgg-theme="chrysanthemum"]:not([data-cgg-buttons="false"]) .filter-item.selected,
-html[data-cgg-theme="chrysanthemum"]:not([data-cgg-buttons="false"]) .filter-item[aria-current="page"],
-html[data-cgg-theme="chrysanthemum"]:not([data-cgg-buttons="false"]) a.js-year-link.selected,
-html[data-cgg-theme="chrysanthemum"]:not([data-cgg-buttons="false"]) a.filter-item.selected,
-html[data-cgg-theme="chrysanthemum"]:not([data-cgg-buttons="false"]) [id^="year-link-"].selected {
+html:not([data-cgg-theme="yinYang"]):not([data-cgg-buttons="false"]) .filter-item.selected,
+html:not([data-cgg-theme="yinYang"]):not([data-cgg-buttons="false"]) .filter-item[aria-current="page"],
+html:not([data-cgg-theme="yinYang"]):not([data-cgg-buttons="false"]) a.js-year-link.selected,
+html:not([data-cgg-theme="yinYang"]):not([data-cgg-buttons="false"]) a.filter-item.selected,
+html:not([data-cgg-theme="yinYang"]):not([data-cgg-buttons="false"]) .js-year-link.selected,
+html:not([data-cgg-theme="yinYang"]):not([data-cgg-buttons="false"]) [id^="year-link-"].selected,
+html:not([data-cgg-theme="yinYang"]):not([data-cgg-buttons="false"]) [id^="year-link-"][aria-current="page"],
+html:not([data-cgg-theme="yinYang"]):not([data-cgg-buttons="false"]) a[href*="#year-"].selected {
   background-color: var(--cgg-crimson, #b81d42) !important;
   color: #ffffff !important;
+  font-weight: 700 !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4) !important;
   box-shadow: 0 0 8px var(--cgg-crimson-glow, rgba(184, 29, 66, 0.45)) !important;
+}
+
+html:not([data-cgg-theme="yinYang"]):not([data-cgg-buttons="false"]) .filter-item.selected *,
+html:not([data-cgg-theme="yinYang"]):not([data-cgg-buttons="false"]) .filter-item[aria-current="page"] *,
+html:not([data-cgg-theme="yinYang"]):not([data-cgg-buttons="false"]) a.js-year-link.selected *,
+html:not([data-cgg-theme="yinYang"]):not([data-cgg-buttons="false"]) a.filter-item.selected *,
+html:not([data-cgg-theme="yinYang"]):not([data-cgg-buttons="false"]) .js-year-link.selected *,
+html:not([data-cgg-theme="yinYang"]):not([data-cgg-buttons="false"]) [id^="year-link-"].selected *,
+html:not([data-cgg-theme="yinYang"]):not([data-cgg-buttons="false"]) [id^="year-link-"][aria-current="page"] *,
+html:not([data-cgg-theme="yinYang"]):not([data-cgg-buttons="false"]) a[href*="#year-"].selected * {
+  color: #ffffff !important;
+  fill: #ffffff !important;
 }
 
 /* 8. Imperial Crimson Borders (Chrysanthemum Gold Exclusive) */
