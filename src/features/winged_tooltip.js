@@ -55,22 +55,22 @@ const WingedTooltip = {
     if (isYinYang) {
       host.classList.add("cgg-tooltip-yinyang");
 
-      // Yin Yang Vortex Ornament according to level
+      content.innerHTML = "";
+
+      // Centered Yin Yang Vortex emblem
       if (enableWings) {
         const vortex = document.createElement("span");
         const vortexLevelClass = isGrand1k ? "cgg-yinyang-vortex-level-1k" : `cgg-yinyang-vortex-level-${level}`;
         vortex.className = `cgg-yinyang-vortex-emblem ${vortexLevelClass}`;
-        vortex.title = `Yin Yang Level ${level} Vortex (${count} contributions)`;
-        content.prepend(vortex);
+        vortex.title = `Yin Yang Level ${level} (${count} contributions)`;
+        content.appendChild(vortex);
       }
 
-      // Flanking wings & aura for higher levels
-      if (enableWings && (level === 3 || level === 4 || isGrand1k)) {
-        host.classList.add("has-yinyang-wings");
-      }
-      if (enableWings && (level === 4 || isGrand1k)) {
-        host.classList.add("has-yinyang-aura");
-      }
+      // Centered text label
+      const textSpan = document.createElement("span");
+      textSpan.className = "cgg-tooltip-text-label";
+      textSpan.textContent = text;
+      content.appendChild(textSpan);
 
       if (isGrand1k) {
         host.classList.add("cgg-yinyang-1k-tooltip");
