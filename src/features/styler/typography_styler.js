@@ -22,7 +22,7 @@ const TypographyStyler = {
 
     // 2. All anchor links, username, and tab labels (exclude buttons and selected items)
     document.querySelectorAll("a, a.AppHeader-context-item, .UnderlineNav-item, .UnderlineNav-item span, span.repo").forEach((el) => {
-      if (el.closest(".btn-primary") || el.classList.contains("btn-primary") || el.classList.contains("btn") || el.classList.contains("selected")) return;
+      if (el.closest(".btn-primary") || el.classList.contains("btn-primary") || el.classList.contains("btn") || el.classList.contains("selected") || el.classList.contains("js-year-link")) return;
       el.style.setProperty("color", palette.textHighlight, "important");
       el.setAttribute("data-dm-text", isYinYang ? "yinyang" : "gold");
     });
@@ -58,9 +58,14 @@ const TypographyStyler = {
     // 6. Selected Filter Items & Year Links
     const filterBg = isYinYang ? "#ffffff" : (enableButtons ? "#b81d42" : "#1f6feb");
     const filterFg = isYinYang ? "#000000" : "#ffffff";
-    document.querySelectorAll(".filter-item.selected, a.js-year-link.selected, [id^='year-link-'].selected").forEach((link) => {
+    document.querySelectorAll(".filter-item.selected, a.js-year-link.selected, [id^='year-link-'].selected, .js-year-link.selected").forEach((link) => {
       link.style.setProperty("background-color", filterBg, "important");
       link.style.setProperty("color", filterFg, "important");
+      link.style.setProperty("font-weight", "700", "important");
+      link.querySelectorAll("*").forEach((child) => {
+        child.style.setProperty("color", filterFg, "important");
+        child.style.setProperty("fill", filterFg, "important");
+      });
     });
 
     // 7. Repository Commit Counters (Grand 1K+ Commits - Chrysanthemum Gold Exclusive)

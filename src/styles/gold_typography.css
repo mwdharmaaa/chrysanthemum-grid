@@ -376,7 +376,7 @@ html[data-cgg-theme="yinYang"] span.repo,
 html[data-cgg-theme="yinYang"] a.text-bold,
 html[data-cgg-theme="yinYang"] a[data-hovercard-type="repository"],
 html[data-cgg-theme="yinYang"] .repo,
-html[data-cgg-theme="yinYang"] a:not(.btn-primary):not(.btn):not(.filter-item.selected) {
+html[data-cgg-theme="yinYang"] a:not(.btn-primary):not(.btn):not(.filter-item.selected):not(.js-year-link.selected):not([id^="year-link-"].selected) {
   color: #ffffff !important;
 }
 
@@ -416,10 +416,31 @@ html[data-cgg-theme="yinYang"] .filter-item.selected,
 html[data-cgg-theme="yinYang"] .filter-item[aria-current="page"],
 html[data-cgg-theme="yinYang"] a.js-year-link.selected,
 html[data-cgg-theme="yinYang"] a.filter-item.selected,
+html[data-cgg-theme="yinYang"] .js-year-link.selected,
 html[data-cgg-theme="yinYang"] [id^="year-link-"].selected {
   background-color: #ffffff !important;
   color: #000000 !important;
+  font-weight: 700 !important;
   box-shadow: 0 0 6px rgba(255, 255, 255, 0.4) !important;
+}
+
+html[data-cgg-theme="yinYang"] .filter-item.selected *,
+html[data-cgg-theme="yinYang"] .filter-item[aria-current="page"] *,
+html[data-cgg-theme="yinYang"] a.js-year-link.selected *,
+html[data-cgg-theme="yinYang"] a.filter-item.selected *,
+html[data-cgg-theme="yinYang"] .js-year-link.selected *,
+html[data-cgg-theme="yinYang"] [id^="year-link-"].selected * {
+  color: #000000 !important;
+  fill: #000000 !important;
+}
+
+/* Yin Yang Explicit Badge Suppression */
+html[data-cgg-theme="yinYang"] .cgg-badge,
+html[data-cgg-theme="yinYang"] .cgg-badge-yinyang,
+html[data-cgg-theme="yinYang"] .cgg-badge-gold,
+html[data-cgg-theme="yinYang"] .cgg-badge-grand-1k,
+html[data-cgg-theme="yinYang"] .cgg-grand-crown {
+  display: none !important;
 }
 
 /* Yin Yang Neutral Dark Borders: Strictly NO RED */

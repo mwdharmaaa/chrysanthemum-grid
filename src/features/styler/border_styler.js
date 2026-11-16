@@ -24,11 +24,17 @@ const BorderStyler = {
       "#user-profile-frame",
       "header[style*='border']",
       "div[style*='border: 1px solid #30363d']",
-      ".js-yearly-contributions .border"
+      ".js-yearly-contributions .border",
+      ".graph-before-activity-overview",
+      ".ContributionCalendar",
+      ".js-yearly-contributions"
     ];
     const cardBorderCol = isYinYang ? "#30363d" : (enabled ? "var(--cgg-border-crimson, #b81d42)" : "#30363d");
     document.querySelectorAll(cardSelectors.join(", ")).forEach((el) => {
       el.style.setProperty("border-color", cardBorderCol, "important");
+      if (isYinYang) {
+        el.style.setProperty("box-shadow", "none", "important");
+      }
     });
   }
 };

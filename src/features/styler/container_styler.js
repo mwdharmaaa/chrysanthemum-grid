@@ -84,26 +84,32 @@ const ContainerStyler = {
   },
 
   cleanGrandMilestone(header, container) {
-    if (!header) return;
-    header.classList.remove("cgg-grand-milestone-header");
-    header.removeAttribute("data-cgg-milestone");
+    document.querySelectorAll("[data-cgg-milestone]").forEach((el) => {
+      el.removeAttribute("data-cgg-milestone");
+    });
+    document.querySelectorAll(".cgg-grand-milestone-header").forEach((el) => {
+      el.classList.remove("cgg-grand-milestone-header");
+    });
+    document.querySelectorAll(".cgg-badge-grand-1k").forEach((el) => {
+      el.remove();
+    });
+    document.querySelectorAll(".cgg-grand-crown").forEach((el) => {
+      el.remove();
+    });
 
-    const frame = container?.closest?.(".profile-container, #user-profile-frame, .js-yearly-contributions") || container?.parentElement;
-    if (frame) {
-      frame.removeAttribute("data-cgg-milestone");
-    }
+    if (header) {
+      header.classList.remove("cgg-grand-milestone-header");
+      header.removeAttribute("data-cgg-milestone");
 
-    const grandBadge = header.querySelector(".cgg-badge-grand-1k");
-    if (grandBadge) grandBadge.remove();
-
-    const wrap = header.querySelector(".cgg-grand-count-wrap");
-    if (wrap) {
-      const countSpan = wrap.querySelector(".cgg-grand-count");
-      const labelSpan = wrap.querySelector(".cgg-grand-label");
-      const simpleText = `${countSpan ? countSpan.textContent : ""} ${labelSpan ? labelSpan.textContent : ""}`.trim();
-      const span = document.createElement("span");
-      span.textContent = simpleText;
-      wrap.replaceWith(span);
+      const wrap = header.querySelector(".cgg-grand-count-wrap");
+      if (wrap) {
+        const countSpan = wrap.querySelector(".cgg-grand-count");
+        const labelSpan = wrap.querySelector(".cgg-grand-label");
+        const simpleText = `${countSpan ? countSpan.textContent : ""} ${labelSpan ? labelSpan.textContent : ""}`.trim();
+        const span = document.createElement("span");
+        span.textContent = simpleText;
+        wrap.replaceWith(span);
+      }
     }
   },
 
@@ -117,7 +123,9 @@ const ContainerStyler = {
     // The concept is strictly separate: Imperial Gold 1K+ Milestone belongs EXCLUSIVELY to Chrysanthemum Gold
     if (isYinYang) {
       this.cleanGrandMilestone(header, container);
-      this.injectPlainBadge(header, settings);
+      // In Yin Yang, remove all badges completely (no "Yin Yang" badge, no gold badge)
+      header.querySelectorAll(".cgg-badge").forEach((b) => b.remove());
+      document.querySelectorAll(".cgg-badge").forEach((b) => b.remove());
       return;
     }
 
@@ -201,24 +209,29 @@ const ContainerStyler = {
   injectPlainBadge(header, settings = {}) {
     if (!header) return;
     const isYinYang = (settings.activePalette || "") === "yinYang";
+    if (isYinYang) {
+      header.querySelectorAll(".cgg-badge").forEach((b) => b.remove());
+      document.querySelectorAll(".cgg-badge").forEach((b) => b.remove());
+      return;
+    }
     let badge = header.querySelector(".cgg-badge:not(.cgg-badge-grand-1k)");
     if (!badge) {
       badge = document.createElement("span");
-      badge.className = `cgg-badge ${isYinYang ? "cgg-badge-yinyang" : "cgg-badge-gold"}`;
+      badge.className = "cgg-badge cgg-badge-gold";
       const dot = document.createElement("span");
       dot.className = "cgg-badge-dot";
       badge.appendChild(dot);
-      badge.appendChild(document.createTextNode(isYinYang ? "Yin Yang" : "Gold"));
+      badge.appendChild(document.createTextNode("Gold"));
       header.appendChild(badge);
     } else {
-      badge.className = `cgg-badge ${isYinYang ? "cgg-badge-yinyang" : "cgg-badge-gold"}`;
+      badge.className = "cgg-badge cgg-badge-gold";
       badge.childNodes.forEach((n) => {
         if (n.nodeType === Node.TEXT_NODE) {
-          n.textContent = isYinYang ? "Yin Yang" : "Gold";
+          n.textContent = "Gold";
         }
       });
     }
-    badge.title = isYinYang ? "Yin Yang Theme Active" : "Chrysanthemum Gold Theme Active";
+    badge.title = "Chrysanthemum Gold Theme Active";
   }
 };
 

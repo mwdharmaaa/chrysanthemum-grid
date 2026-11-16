@@ -7,7 +7,9 @@ const NavigationStyler = {
     const isChrysanthemum = !isYinYang;
     const enabled = isChrysanthemum && settings.enableCrimsonButtons !== false;
 
-    const navItems = document.querySelectorAll(".UnderlineNav-item.selected, .js-year-link.selected");
+    // Only style UnderlineNav items (Overview, Repositories, etc.)
+    // Do NOT touch .js-year-link items here
+    const navItems = document.querySelectorAll(".UnderlineNav-item.selected");
     navItems.forEach((el) => {
       if (isYinYang) {
         el.style.setProperty("border-bottom-color", "#ffffff", "important");

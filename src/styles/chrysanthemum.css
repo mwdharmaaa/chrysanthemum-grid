@@ -289,8 +289,17 @@ html[data-cgg-theme="chrysanthemum"] .js-yearly-contributions[data-cgg-milestone
   box-shadow: 0 0 24px rgba(255, 203, 71, 0.16), 0 0 44px rgba(184, 29, 66, 0.1) !important;
 }
 
-/* Yin Yang Explicit Aura Suppression */
-html[data-cgg-theme="yinYang"] .cgg-grand-milestone-header,
+/* Yin Yang Explicit Aura & Badge Suppression */
+html[data-cgg-theme="yinYang"] .cgg-grand-milestone-header {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+}
+
+html[data-cgg-theme="yinYang"] .cgg-badge,
+html[data-cgg-theme="yinYang"] .cgg-badge-yinyang,
+html[data-cgg-theme="yinYang"] .cgg-badge-gold,
 html[data-cgg-theme="yinYang"] .cgg-badge-grand-1k,
 html[data-cgg-theme="yinYang"] .cgg-grand-crown {
   display: none !important;
@@ -299,9 +308,35 @@ html[data-cgg-theme="yinYang"] .cgg-grand-crown {
 html[data-cgg-theme="yinYang"] [data-cgg-milestone="1k-plus"] .ContributionCalendar,
 html[data-cgg-theme="yinYang"] .profile-container[data-cgg-milestone="1k-plus"],
 html[data-cgg-theme="yinYang"] #user-profile-frame[data-cgg-milestone="1k-plus"],
-html[data-cgg-theme="yinYang"] .js-yearly-contributions[data-cgg-milestone="1k-plus"] .border {
+html[data-cgg-theme="yinYang"] .js-yearly-contributions[data-cgg-milestone="1k-plus"] .border,
+html[data-cgg-theme="yinYang"] .js-yearly-contributions .border,
+html[data-cgg-theme="yinYang"] .graph-before-activity-overview,
+html[data-cgg-theme="yinYang"] [data-cgg-milestone="1k-plus"] {
   border-color: #30363d !important;
   box-shadow: none !important;
+}
+
+/* Yin Yang Selected Filter Item / Year Link */
+html[data-cgg-theme="yinYang"] .filter-item.selected,
+html[data-cgg-theme="yinYang"] .filter-item[aria-current="page"],
+html[data-cgg-theme="yinYang"] a.js-year-link.selected,
+html[data-cgg-theme="yinYang"] a.filter-item.selected,
+html[data-cgg-theme="yinYang"] .js-year-link.selected,
+html[data-cgg-theme="yinYang"] [id^="year-link-"].selected {
+  background-color: #ffffff !important;
+  color: #000000 !important;
+  font-weight: 700 !important;
+  box-shadow: 0 0 6px rgba(255, 255, 255, 0.4) !important;
+}
+
+html[data-cgg-theme="yinYang"] .filter-item.selected *,
+html[data-cgg-theme="yinYang"] .filter-item[aria-current="page"] *,
+html[data-cgg-theme="yinYang"] a.js-year-link.selected *,
+html[data-cgg-theme="yinYang"] a.filter-item.selected *,
+html[data-cgg-theme="yinYang"] .js-year-link.selected *,
+html[data-cgg-theme="yinYang"] [id^="year-link-"].selected * {
+  color: #000000 !important;
+  fill: #000000 !important;
 }
 
 /* Repository Commits 1K+ Pill (Chrysanthemum Gold Exclusive) */
