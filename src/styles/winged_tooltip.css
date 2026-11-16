@@ -50,7 +50,8 @@
   font-weight: 600;
   letter-spacing: 0.02em;
   white-space: nowrap;
-  z-index: 2;
+  z-index: 5;
+  visibility: visible;
   transition: all 0.15s ease;
 }
 
@@ -273,6 +274,8 @@ html[data-cgg-theme="yinYang"] .cgg-winged-tooltip .cgg-winged-tooltip-content {
   text-shadow: none !important;
   white-space: nowrap !important;
   z-index: 5 !important;
+  visibility: visible !important;
+  opacity: 1 !important;
 }
 
 .cgg-winged-tooltip.cgg-tooltip-yinyang.cgg-level-0 .cgg-winged-tooltip-content,
@@ -338,47 +341,47 @@ html[data-cgg-theme="yinYang"] .cgg-winged-tooltip.cgg-level-4 .cgg-winged-toolt
   display: block;
 }
 
-/* Strictly compact vortex sizes (smaller than card width of ~160px-220px) */
+/* Scaled Yin Yang Vortex (Dynamic Level Scaling: 32px -> 195px) */
 .cgg-yinyang-vortex.cgg-yinyang-vortex-level-0 {
-  width: 20px !important;
-  height: 20px !important;
-  opacity: 0.35 !important;
+  width: 32px !important;
+  height: 32px !important;
+  opacity: 0.3 !important;
   filter: grayscale(1) !important;
 }
 
 .cgg-yinyang-vortex.cgg-yinyang-vortex-level-1 {
-  width: 28px !important;
-  height: 28px !important;
+  width: 58px !important;
+  height: 58px !important;
   opacity: 0.75 !important;
-  filter: drop-shadow(0 0 4px rgba(0, 0, 0, 0.9)) contrast(1.15) !important;
+  filter: drop-shadow(0 0 6px rgba(0, 0, 0, 0.9)) contrast(1.15) !important;
 }
 
 .cgg-yinyang-vortex.cgg-yinyang-vortex-level-2 {
-  width: 36px !important;
-  height: 36px !important;
+  width: 88px !important;
+  height: 88px !important;
   opacity: 0.88 !important;
-  filter: drop-shadow(0 0 6px rgba(0, 0, 0, 0.95)) contrast(1.2) !important;
+  filter: drop-shadow(0 0 8px rgba(0, 0, 0, 0.95)) contrast(1.2) !important;
 }
 
 .cgg-yinyang-vortex.cgg-yinyang-vortex-level-3 {
-  width: 44px !important;
-  height: 44px !important;
-  opacity: 0.96 !important;
-  filter: drop-shadow(0 0 8px rgba(0, 0, 0, 1)) contrast(1.25) !important;
+  width: 120px !important;
+  height: 120px !important;
+  opacity: 0.95 !important;
+  filter: drop-shadow(0 0 10px rgba(0, 0, 0, 1)) contrast(1.25) !important;
 }
 
 .cgg-yinyang-vortex.cgg-yinyang-vortex-level-4 {
-  width: 52px !important;
-  height: 52px !important;
+  width: 155px !important;
+  height: 155px !important;
   opacity: 1 !important;
-  filter: drop-shadow(0 0 10px rgba(0, 0, 0, 1)) contrast(1.28) !important;
+  filter: drop-shadow(0 0 14px rgba(0, 0, 0, 1)) contrast(1.28) !important;
 }
 
 .cgg-yinyang-vortex.cgg-yinyang-vortex-level-1k {
-  width: 56px !important;
-  height: 56px !important;
+  width: 195px !important;
+  height: 195px !important;
   opacity: 1 !important;
-  filter: drop-shadow(0 0 12px rgba(0, 0, 0, 1)) contrast(1.3) !important;
+  filter: drop-shadow(0 0 16px rgba(0, 0, 0, 1)) contrast(1.3) !important;
 }
 
 @keyframes cgg-vortex-spin-counter {
@@ -391,7 +394,7 @@ html[data-cgg-theme="yinYang"] .cgg-winged-tooltip.cgg-level-4 .cgg-winged-toolt
 }
 
 /* ==========================================================================
-   Yin Yang Central Micro-Aura (Compact Depth Core)
+   Yin Yang Central Micro-Aura (Dynamic Level Scaling: 36px -> 210px)
    ========================================================================== */
 .cgg-yinyang-aura {
   display: none;
@@ -412,35 +415,35 @@ html[data-cgg-theme="yinYang"] .cgg-winged-tooltip.cgg-level-4 .cgg-winged-toolt
 }
 
 .cgg-yinyang-aura.cgg-yinyang-aura-level-1 {
-  width: 28px !important;
-  height: 28px !important;
+  width: 64px !important;
+  height: 64px !important;
   opacity: 0.5 !important;
 }
 
 .cgg-yinyang-aura.cgg-yinyang-aura-level-2 {
-  width: 36px !important;
-  height: 36px !important;
+  width: 96px !important;
+  height: 96px !important;
   opacity: 0.65 !important;
 }
 
 .cgg-yinyang-aura.cgg-yinyang-aura-level-3 {
-  width: 44px !important;
-  height: 44px !important;
+  width: 130px !important;
+  height: 130px !important;
   opacity: 0.8 !important;
 }
 
 .cgg-yinyang-aura.cgg-yinyang-aura-level-4 {
-  width: 52px !important;
-  height: 52px !important;
+  width: 168px !important;
+  height: 168px !important;
   opacity: 0.9 !important;
-  box-shadow: 0 0 12px 3px rgba(0, 0, 0, 0.95) !important;
+  box-shadow: 0 0 16px 4px rgba(0, 0, 0, 0.95) !important;
 }
 
 .cgg-yinyang-aura.cgg-yinyang-aura-level-1k {
-  width: 56px !important;
-  height: 56px !important;
+  width: 210px !important;
+  height: 210px !important;
   opacity: 1 !important;
-  box-shadow: 0 0 14px 4px rgba(0, 0, 0, 1) !important;
+  box-shadow: 0 0 20px 6px rgba(0, 0, 0, 1) !important;
 }
 
 @keyframes cgg-villain-aura-pulse {
