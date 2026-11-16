@@ -68,42 +68,13 @@ const TypographyStyler = {
       });
     });
 
-    // 7. Repository Commit Counters (Grand 1K+ Commits - Chrysanthemum Gold Exclusive)
+    // Clean up any repository commit pills (1K+ milestone is strictly for daily commits in tooltip)
     this.styleRepoCommits(settings);
   },
 
   styleRepoCommits(settings = {}) {
-    const isYinYang = (settings.activePalette || "") === "yinYang";
-    const isChrysanthemum = !isYinYang;
-    const enableGrand = isChrysanthemum && settings.enableGrand1kMilestone !== false;
-
-    document.querySelectorAll("a[href*='/commits'], .commits a").forEach((el) => {
-      const pill = el.querySelector(".cgg-repo-1k-commit-pill");
-      if (isYinYang) {
-        el.classList.remove("cgg-commit-grand-1k");
-        if (pill) pill.remove();
-        return;
-      }
-
-      const text = el.textContent || "";
-      const match = text.match(/([\d,.]+)\s+commits?/i);
-      if (match) {
-        const cleanNum = match[1].replace(/[,.]/g, "");
-        const count = parseInt(cleanNum, 10) || 0;
-        if (count >= 1000 && enableGrand) {
-          el.classList.add("cgg-commit-grand-1k");
-          if (!pill) {
-            const newPill = document.createElement("span");
-            newPill.className = "cgg-repo-1k-commit-pill";
-            newPill.innerHTML = `<span class="cgg-repo-crown">👑</span> 1K+`;
-            el.appendChild(newPill);
-          }
-        } else {
-          el.classList.remove("cgg-commit-grand-1k");
-          if (pill) pill.remove();
-        }
-      }
-    });
+    document.querySelectorAll(".cgg-repo-1k-commit-pill").forEach((pill) => pill.remove());
+    document.querySelectorAll(".cgg-commit-grand-1k").forEach((el) => el.classList.remove("cgg-commit-grand-1k"));
   }
 };
 

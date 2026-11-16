@@ -4,7 +4,7 @@
 const SparklineStyler = {
   style(settings = {}) {
     const isYinYang = (settings.activePalette || "") === "yinYang";
-    const strokeCol = isYinYang ? "#ffffff" : "var(--cgg-l4, #ffcb47)";
+    const strokeCol = isYinYang ? "#ffffff" : "var(--cgg-accent-primary, var(--cgg-l4, #ffcb47))";
     const fillCol = isYinYang ? "rgba(255, 255, 255, 0.25)" : "var(--cgg-accent-glow, rgba(255, 203, 71, 0.25))";
 
     const sparklines = document.querySelectorAll(

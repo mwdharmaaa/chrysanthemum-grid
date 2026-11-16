@@ -16,6 +16,10 @@ const ContainerStyler = {
       textHighlight: "#ffe27a"
     };
 
+    const isYinYang = (settings.activePalette || "") === "yinYang";
+    const isChrysanthemum = !isYinYang;
+    const enableGrand = isChrysanthemum && settings.enableGrand1kMilestone !== false;
+
     const days = container.querySelectorAll("[data-level]");
     days.forEach((day) => {
       const level = day.getAttribute("data-level");
@@ -37,6 +41,22 @@ const ContainerStyler = {
         if (settings.enableGlow) {
           day.style.setProperty("box-shadow", `0 0 6px ${palette.glowColor}`, "important");
         }
+      }
+
+      // Check if this day is a grand 1K+ daily commit
+      if (enableGrand && typeof TooltipLevelExtractor !== "undefined" && typeof TooltipTextFormatter !== "undefined") {
+        const text = TooltipTextFormatter.resolve(day);
+        const count = TooltipLevelExtractor.extractCount(day, text);
+        if (count >= 1000) {
+          day.classList.add("cgg-grand-1k-day");
+          if (settings.enableGlow) {
+            day.style.setProperty("box-shadow", "0 0 10px rgba(255, 203, 71, 0.95), 0 0 4px #b81d42", "important");
+          }
+        } else {
+          day.classList.remove("cgg-grand-1k-day");
+        }
+      } else {
+        day.classList.remove("cgg-grand-1k-day");
       }
     });
 
@@ -97,19 +117,23 @@ const ContainerStyler = {
       el.remove();
     });
 
+    const frame = container?.closest?.(".profile-container, #user-profile-frame, .js-yearly-contributions") || container?.parentElement;
+    if (frame) {
+      frame.removeAttribute("data-cgg-milestone");
+    }
+
+    document.querySelectorAll(".cgg-grand-count-wrap").forEach((wrap) => {
+      const countSpan = wrap.querySelector(".cgg-grand-count");
+      const labelSpan = wrap.querySelector(".cgg-grand-label");
+      const simpleText = `${countSpan ? countSpan.textContent : ""} ${labelSpan ? labelSpan.textContent : ""}`.trim();
+      const span = document.createElement("span");
+      span.textContent = simpleText;
+      wrap.replaceWith(span);
+    });
+
     if (header) {
       header.classList.remove("cgg-grand-milestone-header");
       header.removeAttribute("data-cgg-milestone");
-
-      const wrap = header.querySelector(".cgg-grand-count-wrap");
-      if (wrap) {
-        const countSpan = wrap.querySelector(".cgg-grand-count");
-        const labelSpan = wrap.querySelector(".cgg-grand-label");
-        const simpleText = `${countSpan ? countSpan.textContent : ""} ${labelSpan ? labelSpan.textContent : ""}`.trim();
-        const span = document.createElement("span");
-        span.textContent = simpleText;
-        wrap.replaceWith(span);
-      }
     }
   },
 
@@ -117,91 +141,24 @@ const ContainerStyler = {
     const header = this.findHeader(container);
     if (!header) return;
 
-    const isYinYang = (settings.activePalette || "") === "yinYang";
-    const isChrysanthemum = !isYinYang;
+    // Clean up any 1K milestone display from the header (1K+ milestone is strictly for daily commits in tooltip)
+    this.cleanGrandMilestone(header, container);
 
-    // The concept is strictly separate: Imperial Gold 1K+ Milestone belongs EXCLUSIVELY to Chrysanthemum Gold
+    const isYinYang = (settings.activePalette || "") === "yinYang";
     if (isYinYang) {
-      this.cleanGrandMilestone(header, container);
       // In Yin Yang, remove all badges completely (no "Yin Yang" badge, no gold badge)
       header.querySelectorAll(".cgg-badge").forEach((b) => b.remove());
       document.querySelectorAll(".cgg-badge").forEach((b) => b.remove());
       return;
     }
 
-    // Chrysanthemum Gold 1K+ Milestone logic
-    const { count, countStr, labelStr } = this.parseContributionCount(header);
-    const enableGrand = settings.enableGrand1kMilestone !== false;
-    const isGrand1k = isChrysanthemum && enableGrand && count >= 1000;
+    // In Chrysanthemum Gold, retain the classic clean Gold badge
+    this.injectPlainBadge(header, settings);
+  },
 
-    const frame = container.closest(".profile-container, #user-profile-frame, .js-yearly-contributions") || container.parentElement;
-
-    if (isGrand1k) {
-      header.classList.add("cgg-grand-milestone-header");
-      header.setAttribute("data-cgg-milestone", "1k-plus");
-      if (frame) {
-        frame.setAttribute("data-cgg-milestone", "1k-plus");
-      }
-
-      let wrap = header.querySelector(".cgg-grand-count-wrap");
-      if (!wrap) {
-        let targetNode = null;
-        for (const child of header.children) {
-          if (!child.classList.contains("cgg-badge") &&
-              !child.querySelector("a[href*='settings']") &&
-              child.textContent.match(/contributions?/i)) {
-            targetNode = child;
-            break;
-          }
-        }
-
-        wrap = document.createElement("span");
-        wrap.className = "cgg-grand-count-wrap";
-        wrap.innerHTML = `
-          <span class="cgg-grand-crown" title="Imperial 1K+ Milestone">👑</span>
-          <span class="cgg-grand-count">${countStr}</span>
-          <span class="cgg-grand-label">${labelStr}</span>
-        `;
-
-        if (targetNode) {
-          targetNode.replaceWith(wrap);
-        } else {
-          let replaced = false;
-          header.childNodes.forEach((node) => {
-            if (node.nodeType === Node.TEXT_NODE && node.textContent.match(/contributions?/i)) {
-              node.textContent = "";
-              header.insertBefore(wrap, node);
-              replaced = true;
-            }
-          });
-          if (!replaced) {
-            header.prepend(wrap);
-          }
-        }
-      } else {
-        const countEl = wrap.querySelector(".cgg-grand-count");
-        const labelEl = wrap.querySelector(".cgg-grand-label");
-        if (countEl && countStr) countEl.textContent = countStr;
-        if (labelEl && labelStr) labelEl.textContent = labelStr;
-      }
-
-      const oldPlainBadge = header.querySelector(".cgg-badge:not(.cgg-badge-grand-1k)");
-      if (oldPlainBadge) oldPlainBadge.remove();
-
-      let badge = header.querySelector(".cgg-badge-grand-1k");
-      if (!badge) {
-        badge = document.createElement("span");
-        badge.className = "cgg-badge cgg-badge-grand-1k";
-        badge.title = `Chrysanthemum Imperial Milestone: ${count.toLocaleString()} Contributions`;
-        badge.innerHTML = `
-          <span class="cgg-badge-grand-sparkle">✦</span>
-          <span class="cgg-badge-grand-text">Imperial 1K+</span>
-          <span class="cgg-badge-grand-dot"></span>
-        `;
-        wrap.after(badge);
-      }
-    } else {
-      this.cleanGrandMilestone(header, container);
+  injectBadge(container, settings = {}) {
+    const header = this.findHeader(container);
+    if (header) {
       this.injectPlainBadge(header, settings);
     }
   },

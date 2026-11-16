@@ -151,142 +151,27 @@ html[data-cgg-theme="yinYang"] .cgg-badge-dot,
 }
 
 /* ==========================================================================
-   Grand Imperial 1K+ Milestone Display (Chrysanthemum Gold Exclusive)
+   Header Milestone Reset (1K+ Milestone is strictly for daily commits)
    ========================================================================== */
-html:not([data-cgg-theme="yinYang"]) .cgg-grand-milestone-header {
-  display: flex !important;
-  align-items: center !important;
-  flex-wrap: wrap !important;
-  gap: 8px !important;
-  padding: 8px 16px !important;
-  border-radius: 8px !important;
-  background: linear-gradient(90deg, rgba(22, 32, 44, 0.95) 0%, rgba(184, 29, 66, 0.22) 35%, rgba(221, 160, 52, 0.18) 70%, rgba(22, 32, 44, 0.88) 100%) !important;
-  border: 1px solid rgba(255, 203, 71, 0.35) !important;
-  border-left: 4px solid #ffcb47 !important;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.45), 0 0 16px rgba(255, 203, 71, 0.18), inset 0 0 12px rgba(184, 29, 66, 0.15) !important;
-  position: relative !important;
+.cgg-grand-milestone-header {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
 }
 
-html:not([data-cgg-theme="yinYang"]) .cgg-grand-count-wrap {
-  display: inline-flex !important;
-  align-items: center !important;
-  gap: 6px !important;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif !important;
+.cgg-badge-grand-1k,
+.cgg-grand-crown,
+.cgg-grand-count-wrap .cgg-grand-crown {
+  display: none !important;
 }
 
-html:not([data-cgg-theme="yinYang"]) .cgg-grand-crown {
-  display: inline-flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  font-size: 20px !important;
-  line-height: 1 !important;
-  filter: drop-shadow(0 0 6px #ffcb47) drop-shadow(0 0 12px rgba(230, 25, 75, 0.8)) !important;
-  animation: cgg-crown-float 2.6s ease-in-out infinite alternate !important;
-  transform-origin: center !important;
-}
-
-@keyframes cgg-crown-float {
-  0% {
-    transform: translateY(0) scale(1) rotate(0deg);
-  }
-  50% {
-    transform: translateY(-2px) scale(1.08) rotate(-4deg);
-  }
-  100% {
-    transform: translateY(-4px) scale(1.14) rotate(4deg);
-  }
-}
-
-html:not([data-cgg-theme="yinYang"]) .cgg-grand-count {
-  font-size: 20px !important;
-  font-weight: 800 !important;
-  letter-spacing: 0.03em !important;
-  background: linear-gradient(135deg, #ffffff 0%, #ffe27a 25%, #ffcb47 50%, #dda034 75%, #ffcb47 100%) !important;
-  background-size: 200% auto !important;
-  -webkit-background-clip: text !important;
-  -webkit-text-fill-color: transparent !important;
-  filter: drop-shadow(0 0 8px rgba(255, 203, 71, 0.75)) drop-shadow(0 0 16px rgba(221, 160, 52, 0.4)) !important;
-  animation: cgg-shimmer-text 3.5s ease-in-out infinite alternate !important;
-}
-
-@keyframes cgg-shimmer-text {
-  0% {
-    background-position: 0% 50%;
-    filter: drop-shadow(0 0 6px rgba(255, 203, 71, 0.6)) drop-shadow(0 0 12px rgba(221, 160, 52, 0.3));
-  }
-  100% {
-    background-position: 100% 50%;
-    filter: drop-shadow(0 0 14px rgba(255, 203, 71, 0.95)) drop-shadow(0 0 24px rgba(184, 29, 66, 0.55));
-  }
-}
-
-html:not([data-cgg-theme="yinYang"]) .cgg-grand-label {
-  font-size: 14px !important;
-  font-weight: 600 !important;
-  color: #edd287 !important;
-  letter-spacing: 0.02em !important;
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.9) !important;
-}
-
-/* Imperial 1K+ Grand Badge (Chrysanthemum Gold Exclusive) */
-html:not([data-cgg-theme="yinYang"]) .cgg-badge-grand-1k {
-  display: inline-flex !important;
-  align-items: center !important;
-  gap: 5px !important;
-  padding: 3px 10px !important;
-  border-radius: 999px !important;
-  background: linear-gradient(135deg, rgba(184, 29, 66, 0.35) 0%, rgba(22, 32, 44, 0.92) 50%, rgba(255, 203, 71, 0.28) 100%) !important;
-  border: 1px solid #ffcb47 !important;
-  box-shadow: 0 0 12px rgba(255, 203, 71, 0.5), inset 0 0 6px rgba(184, 29, 66, 0.6) !important;
-  font-size: 11px !important;
-  font-weight: 700 !important;
-  letter-spacing: 0.05em !important;
-  text-transform: uppercase !important;
-  color: #ffe27a !important;
-  animation: cgg-grand-pulse 2.8s ease-in-out infinite alternate !important;
-  cursor: default !important;
-  margin-left: 10px !important;
-}
-
-@keyframes cgg-grand-pulse {
-  0% {
-    box-shadow: 0 0 8px rgba(255, 203, 71, 0.4), inset 0 0 4px rgba(184, 29, 66, 0.4);
-    border-color: rgba(255, 203, 71, 0.6);
-  }
-  100% {
-    box-shadow: 0 0 18px rgba(255, 203, 71, 0.85), 0 0 8px rgba(230, 25, 75, 0.6), inset 0 0 8px rgba(184, 29, 66, 0.7);
-    border-color: #fff2a3;
-  }
-}
-
-html:not([data-cgg-theme="yinYang"]) .cgg-badge-grand-sparkle {
-  color: #ffcb47 !important;
-  font-size: 12px !important;
-  filter: drop-shadow(0 0 4px #ffcb47) !important;
-  animation: cgg-sparkle-spin 4s linear infinite !important;
-}
-
-@keyframes cgg-sparkle-spin {
-  0% { transform: rotate(0deg) scale(1); }
-  50% { transform: rotate(180deg) scale(1.2); }
-  100% { transform: rotate(360deg) scale(1); }
-}
-
-html:not([data-cgg-theme="yinYang"]) .cgg-badge-grand-dot {
-  width: 6px !important;
-  height: 6px !important;
-  border-radius: 50% !important;
-  background: #ffcb47 !important;
-  box-shadow: 0 0 6px #ffcb47, 0 0 10px rgba(230, 25, 75, 0.8) !important;
-}
-
-/* 1K+ Milestone Frame Aura (Chrysanthemum Gold Exclusive) */
-html[data-cgg-theme="chrysanthemum"] [data-cgg-milestone="1k-plus"] .ContributionCalendar,
-html[data-cgg-theme="chrysanthemum"] .profile-container[data-cgg-milestone="1k-plus"],
-html[data-cgg-theme="chrysanthemum"] #user-profile-frame[data-cgg-milestone="1k-plus"],
-html[data-cgg-theme="chrysanthemum"] .js-yearly-contributions[data-cgg-milestone="1k-plus"] .border {
-  border-color: rgba(255, 203, 71, 0.45) !important;
-  box-shadow: 0 0 24px rgba(255, 203, 71, 0.16), 0 0 44px rgba(184, 29, 66, 0.1) !important;
+/* Grand 1K+ Milestone Day (Daily commit on calendar grid) */
+html:not([data-cgg-theme="yinYang"]) .cgg-grand-1k-day,
+html:not([data-cgg-theme="yinYang"]) [data-cgg-grand-day="true"] {
+  outline: 1.5px solid #ffcb47 !important;
+  outline-offset: -1px !important;
+  box-shadow: 0 0 10px rgba(255, 203, 71, 0.95), 0 0 4px #b81d42 !important;
 }
 
 /* Yin Yang Explicit Aura & Badge Suppression */

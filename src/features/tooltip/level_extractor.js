@@ -13,7 +13,7 @@ const TooltipLevelExtractor = {
     if (text) {
       const lower = text.toLowerCase().trim();
       if (lower.startsWith("no ") || lower.includes("no contribution") || lower.startsWith("0 ")) return 0;
-      const match = lower.match(/^([\d,.]+)\s+contribution/);
+      const match = lower.match(/^([\d,.]+)\s+(?:contribution|commit)/);
       if (match) {
         const clean = match[1].replace(/[,.]/g, "");
         const count = parseInt(clean, 10);
@@ -28,8 +28,15 @@ const TooltipLevelExtractor = {
   },
 
   extractCount(dayEl, text) {
+    if (dayEl && typeof dayEl.getAttribute === "function") {
+      const rawCount = dayEl.getAttribute("data-count");
+      if (rawCount !== null && rawCount !== undefined && rawCount !== "") {
+        const parsed = parseInt(String(rawCount).replace(/[,.]/g, ""), 10);
+        if (!isNaN(parsed)) return parsed;
+      }
+    }
     if (text) {
-      const match = text.match(/([\d,.]+)\s+contribution/i);
+      const match = text.match(/([\d,.]+)\s+(?:contribution|commit)/i);
       if (match) {
         return parseInt(match[1].replace(/[,.]/g, ""), 10) || 0;
       }

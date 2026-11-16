@@ -67,6 +67,11 @@ const WingedTooltip = {
         crown.className = "cgg-tooltip-crown";
         crown.textContent = "👑 ";
         content.prepend(crown);
+
+        const badge = document.createElement("span");
+        badge.className = "cgg-tooltip-grand-badge";
+        badge.innerHTML = ` <span class="cgg-tooltip-sparkle">✦</span> Imperial 1K+`;
+        content.appendChild(badge);
       }
     }
 

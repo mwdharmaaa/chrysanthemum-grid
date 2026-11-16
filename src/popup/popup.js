@@ -46,7 +46,7 @@ document.addEventListener("DOMContentLoaded", () => {
       if (descBorders) descBorders.textContent = "Imperial crimson outlines on cards & boxes";
       if (descWings) descWings.textContent = "Royal gold mecha wings on commit hover";
       if (descButtons) descButtons.textContent = "Vibrant crimson style on primary action buttons";
-      if (descGrand1k) descGrand1k.textContent = "Regal gold aura & imperial crown on 1,000+ commits";
+      if (descGrand1k) descGrand1k.textContent = "Regal gold aura & imperial crown on 1,000+ daily commits";
     }
   }
 
