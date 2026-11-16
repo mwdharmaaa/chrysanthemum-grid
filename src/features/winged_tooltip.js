@@ -74,10 +74,26 @@ const WingedTooltip = {
           vortex.style.display = "none";
         }
       }
+
+      // Villain shadow aura layer behind the vortex
+      const aura = host.querySelector(".cgg-yinyang-aura");
+      if (aura) {
+        if (enableWings && (level >= 1 || isGrand1k)) {
+          const auraLevelClass = isGrand1k ? "cgg-yinyang-aura-level-1k" : `cgg-yinyang-aura-level-${level}`;
+          aura.className = `cgg-yinyang-aura ${auraLevelClass}`;
+          aura.style.display = "";
+        } else {
+          aura.style.display = "none";
+        }
+      }
     } else {
       const vortex = host.querySelector(".cgg-yinyang-vortex");
       if (vortex) {
         vortex.style.display = "none";
+      }
+      const aura = host.querySelector(".cgg-yinyang-aura");
+      if (aura) {
+        aura.style.display = "none";
       }
 
       if (enableWings && (level === 3 || level === 4 || isGrand1k)) {
