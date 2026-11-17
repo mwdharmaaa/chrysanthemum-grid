@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", () => {
       if (rowGrand1k) rowGrand1k.classList.add("theme-disabled");
 
       if (descBorders) descBorders.textContent = "Disabled in Yin Yang (Chrysanthemum Gold exclusive)";
-      if (descWings) descWings.textContent = "Centered Yin Yang vortex ornament on commit hover";
+      if (descWings) descWings.textContent = "Flowing ink aura & centered Yin Yang ornament on commit hover";
       if (descButtons) descButtons.textContent = "Disabled in Yin Yang (Chrysanthemum Gold exclusive)";
       if (descGrand1k) descGrand1k.textContent = "Disabled in Yin Yang (Chrysanthemum Gold exclusive)";
     } else {

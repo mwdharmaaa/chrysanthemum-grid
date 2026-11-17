@@ -13,21 +13,15 @@ const TooltipHost = {
     host.id = "cggWingedTooltip";
     host.setAttribute("aria-hidden", "true");
     host.innerHTML = '<span class="cgg-crimson-halo"></span>' +
-                     '<span class="cgg-yinyang-aura"></span>' +
-                     '<span class="cgg-yinyang-vortex"></span>' +
-                     '<span class="cgg-dragon-flank cgg-dragon-left">' +
-                       '<span class="cgg-dragon-aura-tendrils"></span>' +
-                       '<span class="cgg-dragon-aura-smoke"></span>' +
-                       '<span class="cgg-dragon-body"></span>' +
+                     '<span class="cgg-yinyang-aura">' +
+                       '<span class="cgg-yinyang-stream-mist"></span>' +
+                       '<span class="cgg-yinyang-stream-ink"></span>' +
+                       '<span class="cgg-yinyang-stream-orbit"></span>' +
                      '</span>' +
+                     '<span class="cgg-yinyang-vortex"></span>' +
                      '<span class="cgg-winged-tooltip-wing cgg-winged-tooltip-wing-left"></span>' +
                      '<span class="cgg-winged-tooltip-content"></span>' +
-                     '<span class="cgg-winged-tooltip-wing cgg-winged-tooltip-wing-right"></span>' +
-                     '<span class="cgg-dragon-flank cgg-dragon-right">' +
-                       '<span class="cgg-dragon-aura-tendrils"></span>' +
-                       '<span class="cgg-dragon-aura-smoke"></span>' +
-                       '<span class="cgg-dragon-body"></span>' +
-                     '</span>';
+                     '<span class="cgg-winged-tooltip-wing cgg-winged-tooltip-wing-right"></span>';
 
     document.body.appendChild(host);
     this.element = host;

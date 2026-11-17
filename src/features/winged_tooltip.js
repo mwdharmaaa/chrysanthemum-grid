@@ -90,27 +90,7 @@ const WingedTooltip = {
           aura.style.display = "none";
         }
       }
-      // Dragons flanking card (left: black dragon, right: white dragon)
-      const dragonLeft = host.querySelector(".cgg-dragon-left");
-      const dragonRight = host.querySelector(".cgg-dragon-right");
-      if (dragonLeft && dragonRight) {
-        if (enableWings && (level >= 1 || isGrand1k)) {
-          const dragonLevelClass = isGrand1k ? "cgg-dragon-level-1k" : `cgg-dragon-level-${level}`;
-          dragonLeft.className = `cgg-dragon-flank cgg-dragon-left ${dragonLevelClass}`;
-          dragonRight.className = `cgg-dragon-flank cgg-dragon-right ${dragonLevelClass}`;
-          dragonLeft.style.display = "";
-          dragonRight.style.display = "";
-        } else {
-          dragonLeft.style.display = "none";
-          dragonRight.style.display = "none";
-        }
-      }
     } else {
-      const dragonLeft = host.querySelector(".cgg-dragon-left");
-      if (dragonLeft) dragonLeft.style.display = "none";
-      const dragonRight = host.querySelector(".cgg-dragon-right");
-      if (dragonRight) dragonRight.style.display = "none";
-
       const vortex = host.querySelector(".cgg-yinyang-vortex");
       if (vortex) {
         vortex.style.display = "none";
@@ -172,13 +152,9 @@ const WingedTooltip = {
     const leftUrl = TooltipAssetResolver.resolve("wing_left.png");
     const rightUrl = TooltipAssetResolver.resolve("wing_right.png");
     const vortexUrl = TooltipAssetResolver.resolve("yinyang_vortex.png");
-    const dragonBlackUrl = TooltipAssetResolver.resolve("dragon_black_left.png");
-    const dragonWhiteUrl = TooltipAssetResolver.resolve("dragon_white_right.png");
     document.documentElement.style.setProperty("--cgg-wing-left", `url("${leftUrl}")`);
     document.documentElement.style.setProperty("--cgg-wing-right", `url("${rightUrl}")`);
     document.documentElement.style.setProperty("--cgg-yinyang-vortex", `url("${vortexUrl}")`);
-    document.documentElement.style.setProperty("--cgg-dragon-black-left", `url("${dragonBlackUrl}")`);
-    document.documentElement.style.setProperty("--cgg-dragon-white-right", `url("${dragonWhiteUrl}")`);
 
     TooltipHost.create();
     this.bindGlobalDelegation();
